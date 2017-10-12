@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Meal Planner</string>
+    <string name="title_home">Planner</string>
+    <string name="title_dashboard">Profile</string>
+    <string name="title_notifications">Recipe Book</string>
+    <string name="tab_name1">Breakfast</string>
+    <string name="tab_name2">Lunch</string>
+    <string name="tab_name3">Dinner</string>
+</resources>
