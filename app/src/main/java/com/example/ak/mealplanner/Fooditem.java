@@ -13,6 +13,13 @@ public class Fooditem {
         this.info = info;
     }
 
+    public String getName(){
+        return name;
+    }
+
+    public String getInfo(){
+        return info;
+    }
 
     @Override
     public String toString(){
