@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         spec.setContent(R.id.tab1);
         spec.setIndicator("Builder");
         host.addTab(spec);
+        //stuff
 
         //Tab 2
         spec = host.newTabSpec("Profile");
