@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -70,25 +72,31 @@ public class MainActivity extends AppCompatActivity {
         ListView mainListView2 = (ListView) findViewById(R.id.list_main2);
         ListView mainListView3 = (ListView) findViewById(R.id.list_main3);
 
-        // Create and populate a List of food names.
-        String[] planets = new String[] { "Bread", "Milk", "Eggs", "Bananas", "Sugar", "Pizza", "Tomato", "Yogurt"};
-        ArrayList<String> foodList = new ArrayList<String>();
-        foodList.addAll( Arrays.asList(planets) );
+        // Create and populate a List of food names
+        ArrayList<Fooditem> foodList = new ArrayList<Fooditem>();
 
-        // Create ArrayAdapter using the planet list.
-        ArrayAdapter<String> listAdapter  = new ArrayAdapter<String>(this, R.layout.listrow, foodList);
+        // Create ArrayAdapter
+        ArrayAdapter<Fooditem> listAdapter  = new ArrayAdapter<Fooditem>(this, R.layout.listrow, foodList);
 
         // Add more foods
-        listAdapter.add( "Orange" );
-        listAdapter.add( "Chicken" );
-        listAdapter.add( "Butter" );
-        listAdapter.add( "Syrup" );
-        listAdapter.add( "Ham" );
+        listAdapter.add(new Fooditem("Bread", "10"));
+        listAdapter.add(new Fooditem("Milk", "10"));
+        listAdapter.add(new Fooditem("Eggs", "10"));
+        listAdapter.add(new Fooditem("Oranges", "10"));
 
         // Set the ArrayAdapter as the ListView's adapter.
         mainListView.setAdapter(listAdapter);
         mainListView2.setAdapter(listAdapter);
         mainListView3.setAdapter(listAdapter);
+
+        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View arg1, int position, long arg3)
+            {
+                Fooditem entry= (Fooditem) parent.getAdapter().getItem(position);
+            }
+        });
 
         //mTextMessage = (TextView) findViewById(R.id.message);
         //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
