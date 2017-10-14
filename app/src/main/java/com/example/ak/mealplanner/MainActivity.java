@@ -1,5 +1,6 @@
 package com.example.ak.mealplanner;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View arg1, int position, long arg3)
             {
                 Fooditem entry= (Fooditem) parent.getAdapter().getItem(position);
+
             }
         });
 
@@ -103,6 +105,16 @@ public class MainActivity extends AppCompatActivity {
         //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
+    }
+
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, profile.class);
+        startActivity(intent);
+    }
+
+    public void textUpdate(String x){
+        TextView text = (TextView) findViewById(R.id.textView4);
+        text.setText(text.getText() +  " " + x);
     }
 
 }
