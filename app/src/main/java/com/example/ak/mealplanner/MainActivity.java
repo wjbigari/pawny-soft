@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,33 +24,39 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 
-/**
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    //mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    //mTextMessage.setText(R.string.title_dashboard);
-                    return true
-                case R.id.navigation_notifications:
-                    //mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }//
-
-    };
- */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount()));
+        tabLayout.setupWithViewPager(viewPager);
+        /**
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
+        /**
         TabHost host = (TabHost)findViewById(R.id.tabHost);
         host.setup();
 
@@ -100,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        */
         //mTextMessage = (TextView) findViewById(R.id.message);
         //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -107,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /**
     public void sendMessage(View view) {
         Intent intent = new Intent(this, profile.class);
         startActivity(intent);
@@ -116,5 +129,5 @@ public class MainActivity extends AppCompatActivity {
         TextView text = (TextView) findViewById(R.id.textView4);
         text.setText(text.getText() +  " " + x);
     }
-
+    */
 }
