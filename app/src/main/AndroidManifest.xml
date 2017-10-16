@@ -22,16 +22,32 @@
             android:name=".profile"
             android:label="About"
             android:parentActivityName=".MainActivity">
+
         </activity>
         <activity
             android:name=".RecipeBook"
             android:label="@string/title_activity_recipe_book"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme">
+
         </activity>
         <activity
             android:name=".Favorites"
             android:label="Favorites"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+
+        </activity>
+        <activity
+            android:name=".EditProfile"
+            android:label="Edit"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+
+        </activity>
+        <activity
+            android:name=".EditGender"
+            android:label="Edit"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme">
         </activity>

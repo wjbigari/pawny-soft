@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Breakfast"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -27,6 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Lunch"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -41,6 +43,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:text="Dinner" />

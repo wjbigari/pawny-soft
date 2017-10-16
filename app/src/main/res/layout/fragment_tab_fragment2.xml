@@ -21,9 +21,11 @@
         android:id="@+id/editName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0.12"
+        android:clickable="true"
+        android:onClick="startEdit"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:layout_weight="0.12" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/ageTitle"
@@ -38,6 +40,8 @@
         android:id="@+id/editAge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="startEdit"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:layout_weight="0.13" />
@@ -55,6 +59,8 @@
         android:id="@+id/editHeight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="startEdit"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:layout_weight="0.14" />
@@ -72,6 +78,8 @@
         android:id="@+id/editWeight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="startEdit"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:layout_weight="0.12" />
@@ -89,6 +97,8 @@
         android:id="@+id/editGender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="startEditGender"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:layout_weight="0.10" />

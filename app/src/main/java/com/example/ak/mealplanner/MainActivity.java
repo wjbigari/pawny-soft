@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.io.FileReader;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount()));
         tabLayout.setupWithViewPager(viewPager);
+
 
     }
 
@@ -57,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startEdit(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, EditProfile.class);
+        startActivity(intent);
+    }
+
+    public void startEditGender(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, EditGender.class);
+        startActivity(intent);
+    }
     /**
     public void sendMessage(View view) {
         Intent intent = new Intent(this, profile.class);
