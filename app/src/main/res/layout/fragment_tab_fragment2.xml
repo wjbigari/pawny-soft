@@ -101,5 +101,15 @@
         android:onClick="startEditGender"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:layout_weight="0.10" />
+        android:layout_weight="0.33" />
+
+    <Button
+        android:id="@+id/buttonGoals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="startGoals"
+        android:layout_weight="0.17"
+        android:background="@color/colorPrimary"
+        android:text="Goals"
+        android:textColor="@android:color/white" />
 </LinearLayout>

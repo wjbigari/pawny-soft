@@ -16,7 +16,7 @@
         android:id="@+id/buttonBook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.40"
+        android:layout_weight="0.66"
         android:background="@color/colorPrimary"
         android:onClick="startBook"
         android:text="Recipe Book"

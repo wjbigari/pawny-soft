@@ -6,9 +6,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import java.io.FileReader;
 
@@ -27,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount()));
         tabLayout.setupWithViewPager(viewPager);
-
 
     }
 
@@ -69,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
     public void startEditGender(View view) {
         // Do something in response to button
         Intent intent = new Intent(this, EditGender.class);
+        startActivity(intent);
+    }
+
+    public void startGoals(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, Goals.class);
         startActivity(intent);
     }
     /**

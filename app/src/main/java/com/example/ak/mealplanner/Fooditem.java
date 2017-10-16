@@ -23,7 +23,7 @@ public class Fooditem {
 
     @Override
     public String toString(){
-        return name + " " + info;
+        return name;
     }
 
 }

@@ -4,14 +4,18 @@ package com.example.ak.mealplanner;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 
 /**
@@ -31,6 +35,8 @@ public class TabFragment1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ArrayAdapter<Fooditem> listAdapter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -62,26 +68,41 @@ public class TabFragment1 extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_tab_fragment1, container, false);
 
         ListView mainListView =  rootView.findViewById(R.id.list_main);
-        ListView mainListView2 = rootView.findViewById(R.id.list_main2);
-        ListView mainListView3 = rootView.findViewById(R.id.list_main3);
 
         // Create and populate a List of food names
         ArrayList<Fooditem> foodList = new ArrayList<Fooditem>();
 
         // Create ArrayAdapter
-        ArrayAdapter<Fooditem> listAdapter  = new ArrayAdapter<Fooditem>(getActivity(), R.layout.listrow, foodList);
+        listAdapter  = new ArrayAdapter<Fooditem>(getActivity(), R.layout.listrow, foodList);
 
 
         // Add more foods
         listAdapter.add(new Fooditem("Bread", "10"));
         listAdapter.add(new Fooditem("Milk", "10"));
         listAdapter.add(new Fooditem("Eggs", "10"));
-        listAdapter.add(new Fooditem("Oranges", "10"));
+        listAdapter.add(new Fooditem("Orange", "10"));
+        listAdapter.add(new Fooditem("Yogurt", "10"));
+        listAdapter.add(new Fooditem("Bacon", "10"));
+        listAdapter.add(new Fooditem("Ham", "10"));
+        listAdapter.add(new Fooditem("Lettuce", "10"));
+        listAdapter.add(new Fooditem("Apple", "10"));
+        listAdapter.add(new Fooditem("Rice", "10"));
+        listAdapter.add(new Fooditem("Steak", "10"));
+        listAdapter.add(new Fooditem("Avocado", "10"));
+        listAdapter.add(new Fooditem("Beans", "10"));
+        listAdapter.add(new Fooditem("Salsa", "10"));
+
+        listAdapter.sort(new Comparator<Fooditem>() {
+            @Override
+            public int compare(Fooditem o1, Fooditem o2) {
+                return o1.getName().compareTo(o2.getInfo());
+            }
+        });
+
+        listAdapter.notifyDataSetChanged();
 
         // Set the ArrayAdapter as the ListView's adapter.
         mainListView.setAdapter(listAdapter);
-        mainListView2.setAdapter(listAdapter);
-        mainListView3.setAdapter(listAdapter);
 
         mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -90,6 +111,29 @@ public class TabFragment1 extends Fragment {
             {
                 Fooditem entry= (Fooditem) parent.getAdapter().getItem(position);
 
+            }
+        });
+
+        EditText inputSearch = (EditText) rootView.findViewById(R.id.inputSearch);
+
+        inputSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                // When user changed the Text
+                listAdapter.getFilter().filter(cs);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+                                          int arg3) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                // TODO Auto-generated method stub
             }
         });
 
