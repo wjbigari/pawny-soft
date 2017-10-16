@@ -16,13 +16,15 @@
         android:id="@+id/buttonBook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Recipe Book"
-        android:layout_weight="0.40" />
+        android:layout_weight="0.40"
+        android:onClick="startBook"
+        android:text="Recipe Book" />
 
     <Button
         android:id="@+id/buttonFave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Favorites"
-        android:layout_weight="0.38" />
+        android:layout_weight="0.38"
+        android:onClick="startFavorites"
+        android:text="Favorites" />
 </LinearLayout>

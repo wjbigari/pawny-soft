@@ -18,8 +18,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".profile"
+        <activity
+            android:name=".profile"
+            android:label="About"
             android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".RecipeBook"
+            android:label="@string/title_activity_recipe_book"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".Favorites"
+            android:label="Favorites"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 

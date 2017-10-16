@@ -35,8 +35,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.02"
-        android:text="Adarsh Kurian | Will Bigari | Nick Bialk | Yash Mishra | Paul Perepel"
+        android:text="Paul Perepel | Adarsh Kurian | Will Bigari | Nick Bialk | Yash Mishra"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ImageView>
 </LinearLayout>
