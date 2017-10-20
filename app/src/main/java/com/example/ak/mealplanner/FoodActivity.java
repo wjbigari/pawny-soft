@@ -1,19 +1,18 @@
 package com.example.ak.mealplanner;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.widget.TextView;
 
-public class EditProfile extends AppCompatActivity {
+public class FoodActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.activity_food);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -21,23 +20,14 @@ public class EditProfile extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        EditText text = (EditText) findViewById(R.id.editField);
-        text.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        Intent intent = getIntent();
+        TextView x = (TextView)findViewById(R.id.textView5);
 
-            }
+        x.setText(intent.getStringExtra("name"));
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+        x = (TextView)findViewById(R.id.textView6);
 
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        x.setText(intent.getStringExtra("info"));
 
     }
 
@@ -46,9 +36,11 @@ public class EditProfile extends AppCompatActivity {
         super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case android.R.id.home:
+
                 finish();
                 break;
         }
         return true;
     }
+
 }

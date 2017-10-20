@@ -1,6 +1,7 @@
 package com.example.ak.mealplanner;
 
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -67,7 +68,7 @@ public class TabFragment1 extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_tab_fragment1, container, false);
 
-        ListView mainListView =  rootView.findViewById(R.id.list_main);
+        final ListView mainListView =  rootView.findViewById(R.id.list_main);
 
         // Create and populate a List of food names
         ArrayList<Fooditem> foodList = new ArrayList<Fooditem>();
@@ -95,7 +96,7 @@ public class TabFragment1 extends Fragment {
         listAdapter.sort(new Comparator<Fooditem>() {
             @Override
             public int compare(Fooditem o1, Fooditem o2) {
-                return o1.getName().compareTo(o2.getInfo());
+                return o1.getName().compareTo(o2.getName());
             }
         });
 
@@ -134,6 +135,17 @@ public class TabFragment1 extends Fragment {
             @Override
             public void afterTextChanged(Editable arg0) {
                 // TODO Auto-generated method stub
+            }
+        });
+
+        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Fooditem x = (Fooditem) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getActivity(), FoodActivity.class);
+                intent.putExtra("name", x.getName());
+                intent.putExtra("info", x.getInfo());
+                startActivity(intent);
             }
         });
 
