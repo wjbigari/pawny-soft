@@ -59,7 +59,7 @@
                         <ListView
                             android:id="@+id/list_main"
                             android:layout_width="match_parent"
-                            android:layout_height="130dp"
+                            android:layout_height="100dp"
                             android:scrollbars="none" />
 
                         <TextView
@@ -76,7 +76,7 @@
                         <ListView
                             android:id="@+id/list_main2"
                             android:layout_width="match_parent"
-                            android:layout_height="151dp" />
+                            android:layout_height="100dp" />
 
                         <TextView
                             android:id="@+id/textView3"
@@ -92,7 +92,23 @@
                         <ListView
                             android:id="@+id/list_main3"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="100dp" />
+
+                        <EditText
+                            android:id="@+id/searchText"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:ems="10"
+                            android:hint="Enter Search Here"
+                            android:inputType="textPersonName"
+                            android:textAlignment="center" />
+
+                        <Button
+                            android:id="@+id/searchButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="Search" />
+
                     </LinearLayout>
 
                     <LinearLayout

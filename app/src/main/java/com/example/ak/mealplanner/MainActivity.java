@@ -8,39 +8,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import Controllers.MealPlannerController;
 public class MainActivity extends AppCompatActivity {
-
+    final String serverurl = "localhost:9001\\mealplanner\\search";
+    ArrayList<Fooditem> foodList;
     private TextView mTextMessage;
 
-/**
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    //mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    //mTextMessage.setText(R.string.title_dashboard);
-                    return true
-                case R.id.navigation_notifications:
-                    //mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }//
-
-    };
- */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         ListView mainListView3 = (ListView) findViewById(R.id.list_main3);
 
         // Create and populate a List of food names
-        ArrayList<Fooditem> foodList = new ArrayList<Fooditem>();
+        foodList = new ArrayList<Fooditem>();
 
         // Create ArrayAdapter
         ArrayAdapter<Fooditem> listAdapter  = new ArrayAdapter<Fooditem>(this, R.layout.listrow, foodList);
@@ -98,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button searchButton = (Button) findViewById(R.id.searchButton);
+        final EditText searchText = (EditText) findViewById(R.id.searchText);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new MealPlannerController(serverurl, foodList).execute(searchText.getText().toString());
+            }
+        });
         //mTextMessage = (TextView) findViewById(R.id.message);
         //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
