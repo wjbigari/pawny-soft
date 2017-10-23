@@ -42,7 +42,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:text="Add to Breakfast"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:layout_weight="0.16" />
 
     <Button
         android:id="@+id/button2"
@@ -50,7 +51,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:text="Add to Lunch"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:layout_weight="0.23" />
 
     <Button
         android:id="@+id/button3"
@@ -58,6 +60,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:text="Add To Dinner"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:layout_weight="0.12" />
 
 </LinearLayout>

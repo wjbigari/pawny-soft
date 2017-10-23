@@ -84,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void buildMeals(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, Results.class);
+        startActivity(intent);
+    }
+
     public void changeText(String s){
         x.setText(s);
     }
