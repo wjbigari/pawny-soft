@@ -12,10 +12,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.FileReader;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView x;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount()));
         tabLayout.setupWithViewPager(viewPager);
 
+        x = (TextView)findViewById(R.id.editName);
     }
 
     @Override
@@ -78,6 +82,16 @@ public class MainActivity extends AppCompatActivity {
         // Do something in response to button
         Intent intent = new Intent(this, Goals.class);
         startActivity(intent);
+    }
+
+    public void buildMeals(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, Results.class);
+        startActivity(intent);
+    }
+
+    public void changeText(String s){
+        x.setText(s);
     }
     /**
     public void sendMessage(View view) {
