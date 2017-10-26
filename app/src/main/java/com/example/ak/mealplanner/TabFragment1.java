@@ -18,6 +18,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import Controllers.SearchController;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +39,7 @@ public class TabFragment1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ArrayAdapter<Fooditem> listAdapter;
+    private ArrayAdapter<FoodItem> listAdapter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -71,31 +73,31 @@ public class TabFragment1 extends Fragment {
         final ListView mainListView =  rootView.findViewById(R.id.list_main);
 
         // Create and populate a List of food names
-        ArrayList<Fooditem> foodList = new ArrayList<Fooditem>();
+        ArrayList<FoodItem> foodList = new ArrayList<FoodItem>();
 
         // Create ArrayAdapter
-        listAdapter  = new ArrayAdapter<Fooditem>(getActivity(), R.layout.listrow, foodList);
+        listAdapter  = new ArrayAdapter<FoodItem>(getActivity(), R.layout.listrow, foodList);
 
 
         // Add more foods
-        listAdapter.add(new Fooditem("Bread", "10"));
-        listAdapter.add(new Fooditem("Milk", "10"));
-        listAdapter.add(new Fooditem("Eggs", "10"));
-        listAdapter.add(new Fooditem("Orange", "10"));
-        listAdapter.add(new Fooditem("Yogurt", "10"));
-        listAdapter.add(new Fooditem("Bacon", "10"));
-        listAdapter.add(new Fooditem("Ham", "10"));
-        listAdapter.add(new Fooditem("Lettuce", "10"));
-        listAdapter.add(new Fooditem("Apple", "10"));
-        listAdapter.add(new Fooditem("Rice", "10"));
-        listAdapter.add(new Fooditem("Steak", "10"));
-        listAdapter.add(new Fooditem("Avocado", "10"));
-        listAdapter.add(new Fooditem("Beans", "10"));
-        listAdapter.add(new Fooditem("Salsa", "10"));
+        listAdapter.add(new FoodItem("Bread", 10));
+        listAdapter.add(new FoodItem("Milk", 10));
+        listAdapter.add(new FoodItem("Eggs", 10));
+//        listAdapter.add(new Fooditem("Orange", "10"));
+//        listAdapter.add(new Fooditem("Yogurt", "10"));
+//        listAdapter.add(new Fooditem("Bacon", "10"));
+//        listAdapter.add(new Fooditem("Ham", "10"));
+//        listAdapter.add(new Fooditem("Lettuce", "10"));
+//        listAdapter.add(new Fooditem("Apple", "10"));
+//        listAdapter.add(new Fooditem("Rice", "10"));
+//        listAdapter.add(new Fooditem("Steak", "10"));
+//        listAdapter.add(new Fooditem("Avocado", "10"));
+//        listAdapter.add(new Fooditem("Beans", "10"));
+//        listAdapter.add(new Fooditem("Salsa", "10"));
 
-        listAdapter.sort(new Comparator<Fooditem>() {
+        listAdapter.sort(new Comparator<FoodItem>() {
             @Override
-            public int compare(Fooditem o1, Fooditem o2) {
+            public int compare(FoodItem o1, FoodItem o2) {
                 return o1.getName().compareTo(o2.getName());
             }
         });
@@ -122,7 +124,9 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 // When user changed the Text
-                listAdapter.getFilter().filter(cs);
+                SearchController sc = new SearchController(cs.toString(), listAdapter);
+                sc.execute();
+                //listAdapter.getFilter().filter(cs);
             }
 
             @Override

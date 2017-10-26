@@ -33,7 +33,7 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
     ArrayList<FoodItem> foodList;
     ArrayAdapter<FoodItem> arrayAdapter;
 
-    SearchController(String addr,ArrayAdapter<FoodItem> mealItemArrayAdapter) {
+    public SearchController(String addr,ArrayAdapter<FoodItem> mealItemArrayAdapter) {
         dstAddress ="10.0.2.2";
         dstPort = 8083;
         searchString = addr + "\r\n";
