@@ -110,7 +110,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View arg1, int position, long arg3)
             {
-                Fooditem entry= (Fooditem) parent.getAdapter().getItem(position);
+                FoodItem entry= (FoodItem) parent.getAdapter().getItem(position);
 
             }
         });
@@ -141,10 +141,10 @@ public class TabFragment1 extends Fragment {
         mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Fooditem x = (Fooditem) parent.getItemAtPosition(position);
+                FoodItem x = (FoodItem) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getActivity(), FoodActivity.class);
-                intent.putExtra("name", x.getName());
-                intent.putExtra("info", x.getInfo());
+                intent.putExtra("foodItem", x);
+                //intent.putExtra("info", x.getInfo());
                 startActivity(intent);
             }
         });
