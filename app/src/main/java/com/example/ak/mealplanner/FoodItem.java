@@ -20,6 +20,11 @@ public class FoodItem implements Serializable{
     private int gramsFatPerServing;
     private double internalCoefficient;
 
+    @Override
+    public String toString(){
+        return "\nServing Value: " + servingValue + "\nServing Unit: " + servingUnit + "\nCalories: " + calPerServing + "\nCarbohydrates: "  + gramsCarbPerServing + "\nProtein: " + gramsProtPerServing + "\nFat: " + gramsFatPerServing;
+    }
+
 
     //Constructors - any fields that are not explicitly set will be set to default values
     public FoodItem(String foodName, int id, int value, String unit, int cals, int carbs, int prot, int fat){
@@ -170,5 +175,6 @@ public class FoodItem implements Serializable{
         returnObject.put("internalCoefficient", this.internalCoefficient);
         return returnObject;
     }
+
 }
 

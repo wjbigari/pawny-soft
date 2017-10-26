@@ -21,10 +21,12 @@ public class FoodActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent intent = getIntent();
-        TextView x = (TextView)findViewById(R.id.textView5);
         FoodItem foodItem = (FoodItem)intent.getSerializableExtra("foodItem");
-        
+
+        TextView x = (TextView)findViewById(R.id.textView5);
+        x.setText(foodItem.getName());
         x = (TextView)findViewById(R.id.textView6);
+        x.setText(foodItem.toString());
 
 
     }
