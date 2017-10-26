@@ -1,101 +1,101 @@
 package com.example.ak.mealplanner;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TabHost;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.FileReader;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import Controllers.MealPlannerController;
 public class MainActivity extends AppCompatActivity {
-    final String serverurl = "localhost:9001\\mealplanner\\search";
-    ArrayList<Fooditem> foodList;
-    private TextView mTextMessage;
+
+    TextView x;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        TabHost host = (TabHost)findViewById(R.id.tabHost);
-        host.setup();
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        //Tab 1
-        TabHost.TabSpec spec = host.newTabSpec("Builder");
-        spec.setContent(R.id.tab1);
-        spec.setIndicator("Builder");
-        host.addTab(spec);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount()));
+        tabLayout.setupWithViewPager(viewPager);
 
-        //Tab 2
-        spec = host.newTabSpec("Profile");
-        spec.setContent(R.id.tab2);
-        spec.setIndicator("Profile");
-        host.addTab(spec);
-
-        //Tab 3
-        spec = host.newTabSpec("Calendar");
-        spec.setContent(R.id.tab3);
-        spec.setIndicator("Calendar");
-        host.addTab(spec);
-
-        // Find the ListView resource.
-        ListView mainListView = (ListView) findViewById(R.id.list_main);
-        ListView mainListView2 = (ListView) findViewById(R.id.list_main2);
-        ListView mainListView3 = (ListView) findViewById(R.id.list_main3);
-
-        // Create and populate a List of food names
-        foodList = new ArrayList<Fooditem>();
-
-        // Create ArrayAdapter
-        ArrayAdapter<Fooditem> listAdapter  = new ArrayAdapter<Fooditem>(this, R.layout.listrow, foodList);
-
-        // Add more foods
-        listAdapter.add(new Fooditem("Bread", "10"));
-        listAdapter.add(new Fooditem("Milk", "10"));
-        listAdapter.add(new Fooditem("Eggs", "10"));
-        listAdapter.add(new Fooditem("Oranges", "10"));
-
-        // Set the ArrayAdapter as the ListView's adapter.
-        mainListView.setAdapter(listAdapter);
-        mainListView2.setAdapter(listAdapter);
-        mainListView3.setAdapter(listAdapter);
-
-        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View arg1, int position, long arg3)
-            {
-                Fooditem entry= (Fooditem) parent.getAdapter().getItem(position);
-            }
-        });
-
-        Button searchButton = (Button) findViewById(R.id.searchButton);
-        final EditText searchText = (EditText) findViewById(R.id.searchText);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new MealPlannerController(serverurl, foodList).execute(searchText.getText().toString());
-            }
-        });
-        //mTextMessage = (TextView) findViewById(R.id.message);
-        //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-
+        x = (TextView)findViewById(R.id.editName);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, profile.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void startBook(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, RecipeBook.class);
+        startActivity(intent);
+    }
+
+    public void startFavorites(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, Favorites.class);
+        startActivity(intent);
+    }
+
+    public void startEdit(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, EditProfile.class);
+        startActivity(intent);
+    }
+
+    public void startEditGender(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, EditGender.class);
+        startActivity(intent);
+    }
+
+    public void startGoals(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, Goals.class);
+        startActivity(intent);
+    }
+
+    public void changeText(String s){
+        x.setText(s);
+    }
+    /**
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, profile.class);
+        startActivity(intent);
+    }
+
+    public void textUpdate(String x){
+        TextView text = (TextView) findViewById(R.id.textView4);
+        text.setText(text.getText() +  " " + x);
+    }
+    */
 }
