@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 import Controllers.MealPlannerController;
 
+import java.util.ArrayList;
+
 public class Results extends AppCompatActivity {
 
     @Override
@@ -40,6 +42,10 @@ public class Results extends AppCompatActivity {
         mpc.execute();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent intent = getIntent();
+        ArrayList <MealItem> items = (ArrayList<MealItem>) intent.getSerializableExtra("list");
+        System.out.println(items);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
