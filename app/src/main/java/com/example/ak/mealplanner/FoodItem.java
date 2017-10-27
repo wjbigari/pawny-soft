@@ -181,5 +181,19 @@ public class FoodItem implements Serializable{
         return returnObject;
     }
 
+    public JSONObject toJson() throws JSONException{
+        JSONObject returnObject = new JSONObject();
+        returnObject.put("name", this.name);
+        returnObject.put("foodId", this.foodId);
+        returnObject.put("servingValue", this.servingValue);
+        returnObject.put("servingUnit", this.servingUnit);
+        returnObject.put("calPerServing", this.calPerServing);
+        returnObject.put("gramsCarbPerServing", this.gramsCarbPerServing);
+        returnObject.put("gramsFatPerServing", this.gramsFatPerServing);
+        returnObject.put("gramsProtPerServing", this.gramsProtPerServing);
+        returnObject.put("internalCoefficient", this.internalCoefficient);
+        return returnObject;
+    }
+
 }
 

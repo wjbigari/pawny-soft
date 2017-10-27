@@ -101,4 +101,12 @@ public class MealItem implements Serializable{
         returnObject.put("numServings", this.numServings);
         return returnObject;
     }
+    public JSONObject toJson() throws JSONException{
+        JSONObject returnObject = new JSONObject();
+        returnObject.put("foodItem", this.foodItem.toJson().toString());
+        returnObject.put("enum", this.meal.name());
+        returnObject.put("isLocked", this.isLocked);
+        returnObject.put("numServings", this.numServings);
+        return returnObject;
+    }
 }
