@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import Controllers.MealPlannerController;
 
 public class Results extends AppCompatActivity {
 
@@ -11,6 +14,8 @@ public class Results extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
+        TextView text = (TextView) findViewById(R.id.resultview);
+        MealPlannerController mpc = new MealPlannerController();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
