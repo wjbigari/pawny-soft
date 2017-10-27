@@ -155,6 +155,8 @@ public class TabFragment1 extends Fragment {
                 FoodItem x = (FoodItem) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getActivity(), FoodActivity.class);
                 intent.putExtra("foodItem", x);
+                MainActivity main = (MainActivity) getActivity();
+                intent.putExtra("list", main.getList());
                 //intent.putExtra("info", x.getInfo());
                 startActivity(intent);
             }
