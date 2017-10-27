@@ -3,6 +3,7 @@ package com.example.ak.mealplanner;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -38,6 +39,7 @@ public class TabFragment1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private SearchController searchController;
 
     private ArrayAdapter<FoodItem> listAdapter;
 
@@ -124,8 +126,12 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 // When user changed the Text
-                SearchController sc = new SearchController(cs.toString(), listAdapter);
-                sc.execute();
+                if(searchController!= null && searchController.getStatus()== AsyncTask.Status.RUNNING){
+                    searchController.cancel(true);
+                }
+                searchController = new SearchController(cs.toString(), listAdapter);
+
+                searchController.execute();
                 //listAdapter.getFilter().filter(cs);
             }
 
@@ -139,6 +145,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void afterTextChanged(Editable arg0) {
                 // TODO Auto-generated method stub
+
             }
         });
 

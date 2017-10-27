@@ -100,8 +100,13 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void result) {
-        arrayAdapter.addAll(foodList);
-        super.onPostExecute(result);
+        arrayAdapter.clear();
+        if(foodList != null && foodList.size() > 0) {
+            for (int i = 0; i < foodList.size(); i++) {
+                arrayAdapter.add(foodList.get(i));
+            }
+            super.onPostExecute(result);
+        }
     }
 
 }
