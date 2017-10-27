@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.ak.mealplanner.FoodItem;
 import com.example.ak.mealplanner.MealItem;
+import com.example.ak.mealplanner.MyCustomAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,9 +33,9 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
     TextView textResponse;
     String searchString;
     ArrayList<FoodItem> foodList;
-    ArrayAdapter<FoodItem> arrayAdapter;
+    MyCustomAdapter arrayAdapter;
 
-    public SearchController(String addr,ArrayAdapter<FoodItem> mealItemArrayAdapter) {
+    public SearchController(String addr,MyCustomAdapter mealItemArrayAdapter) {
         dstAddress ="10.0.2.2";
         dstPort = 8083;
         searchString = addr + "\r\n";
@@ -102,9 +104,7 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void result) {
         arrayAdapter.clear();
         if(foodList != null && foodList.size() > 0) {
-            for (int i = 0; i < foodList.size(); i++) {
-                arrayAdapter.add(foodList.get(i));
-            }
+            arrayAdapter.addList(foodList);
             super.onPostExecute(result);
         }
     }

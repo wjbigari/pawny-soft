@@ -96,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
         items.add(item);
     }
 
+    public ArrayList<MealItem> getList(){
+        return items;
+    }
+
     public void changeText(String s){
         x.setText(s);
     }

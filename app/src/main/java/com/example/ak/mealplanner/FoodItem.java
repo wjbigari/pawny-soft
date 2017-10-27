@@ -58,6 +58,12 @@ public class FoodItem implements Serializable{
         this();
         this.name = foodName;
         this.foodId = id;
+        this.servingValue = -1;
+        this.servingUnit = "default";
+        this.calPerServing = -1;
+        this.gramsCarbPerServing = -1;
+        this.gramsProtPerServing = -1;
+        this.gramsFatPerServing = -1;
     }
     public FoodItem(String name, int calories, int protein, int fat, int carbs) {
         this();

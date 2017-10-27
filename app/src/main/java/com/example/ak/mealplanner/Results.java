@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,8 @@ public class Results extends AppCompatActivity {
         Intent intent = getIntent();
         ArrayList <MealItem> items = (ArrayList<MealItem>) intent.getSerializableExtra("list");
         Log.i("adarsh", items.toString());
+        TextView text = (TextView) findViewById(R.id.textView7);
+        text.setText(items.toString());
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
