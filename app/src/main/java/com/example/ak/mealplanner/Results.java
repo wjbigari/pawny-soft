@@ -29,26 +29,24 @@ public class Results extends AppCompatActivity {
 //        ArrayList<MealItem> mi = new ArrayList<MealItem>();
 //        mi.add(m_pineapple);
 //        mi.add(m_bread);
-
         Intent intent = getIntent();
         ArrayList<MealItem> mealList = (ArrayList<MealItem>)intent.getSerializableExtra("list");
-        Log.i("adarsh",mealList.toString());
-        Constraints c = new Constraints(
-                2000, 2100,			//Min Cals, Max Cals
-                150, 170,			//Min Carbs, Max Carbs (in g)
-                150, 170,			//Min Prot, Max Prot  (in g)
-                80, 85);
-        MealPlannerController mpc = new MealPlannerController(c,mealList,text);
-        mpc.execute();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        Intent intent = getIntent();
-        ArrayList <MealItem> items = (ArrayList<MealItem>) intent.getSerializableExtra("list");
-        System.out.println(items);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Log.i("adarsh", mealList.toString());
+//        Constraints c = new Constraints(
+//                2000, 2100,			//Min Cals, Max Cals
+//                150, 170,			//Min Carbs, Max Carbs (in g)
+//                150, 170,			//Min Prot, Max Prot  (in g)
+//                80, 85);
+//        MealPlannerController mpc = new MealPlannerController(c,mealList,text);
+//        mpc.execute();
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//
+//        ArrayList <MealItem> items = (ArrayList<MealItem>) intent.getSerializableExtra("list");
+//        System.out.println(items);
+//
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
     }
 
