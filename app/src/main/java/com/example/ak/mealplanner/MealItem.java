@@ -13,8 +13,10 @@ import static com.example.ak.mealplanner.MealItem.Meal.DINNER;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 
-public class MealItem {
+
+public class MealItem implements Serializable{
     //Enumerable type to easily identify the meal this FoodItem is a part of
     public enum Meal{BREAKFAST, LUNCH, DINNER}
     //Fields for qualifying the FoodItem in context of the meal it's in

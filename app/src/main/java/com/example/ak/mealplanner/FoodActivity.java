@@ -5,9 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class FoodActivity extends AppCompatActivity {
+    ArrayList<MealItem> items;
+    FoodItem foodItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +26,28 @@ public class FoodActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent intent = getIntent();
-        FoodItem foodItem = (FoodItem)intent.getSerializableExtra("foodItem");
+        foodItem = (FoodItem)intent.getSerializableExtra("foodItem");
+        items = (ArrayList<MealItem>) intent.getSerializableExtra("list");
 
         TextView x = (TextView)findViewById(R.id.textView5);
         x.setText(foodItem.getName());
         x = (TextView)findViewById(R.id.textView6);
         x.setText(foodItem.toString());
+    }
 
+    public void addBreakFast(View view) {
+        // Do something in response to button
+        items.add(new MealItem(foodItem, MealItem.Meal.BREAKFAST));
+    }
 
+    public void addLunch(View view) {
+        // Do something in response to button
+        items.add(new MealItem(foodItem, MealItem.Meal.LUNCH));
+    }
+
+    public void addDinner(View view) {
+        // Do something in response to button
+        items.add(new MealItem(foodItem, MealItem.Meal.DINNER));
     }
 
     @Override
@@ -42,5 +61,6 @@ public class FoodActivity extends AppCompatActivity {
         }
         return true;
     }
+
 
 }

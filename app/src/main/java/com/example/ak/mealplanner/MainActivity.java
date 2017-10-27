@@ -15,11 +15,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.FileReader;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView x;
-
+    ArrayList<MealItem> items = new ArrayList<MealItem>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +88,12 @@ public class MainActivity extends AppCompatActivity {
     public void buildMeals(View view) {
         // Do something in response to button
         Intent intent = new Intent(this, Results.class);
+        intent.putExtra("list", items);
         startActivity(intent);
+    }
+
+    public ArrayList<MealItem> getList(){
+        return items;
     }
 
     public void changeText(String s){
