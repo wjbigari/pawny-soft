@@ -37,17 +37,20 @@ public class FoodActivity extends AppCompatActivity {
 
     public void addBreakFast(View view) {
         // Do something in response to button
-        items.add(new MealItem(foodItem, MealItem.Meal.BREAKFAST));
+        MainActivity main = (MainActivity)getParent();
+        main.addItem(new MealItem(foodItem, MealItem.Meal.BREAKFAST));
     }
 
     public void addLunch(View view) {
         // Do something in response to button
-        items.add(new MealItem(foodItem, MealItem.Meal.LUNCH));
+        MainActivity main = (MainActivity)getParent();
+        main.addItem(new MealItem(foodItem, MealItem.Meal.BREAKFAST));
     }
 
     public void addDinner(View view) {
         // Do something in response to button
-        items.add(new MealItem(foodItem, MealItem.Meal.DINNER));
+        MainActivity main = (MainActivity)getParent();
+        main.addItem(new MealItem(foodItem, MealItem.Meal.BREAKFAST));
     }
 
     @Override

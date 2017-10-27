@@ -25,6 +25,11 @@ public class MealItem implements Serializable{
     private int numServings;
     private Meal meal;
 
+    @Override
+    public String toString(){
+        return foodItem.toString();
+    }
+
     //Three available constructors - with the FoodItem and Meal specified; with both plus the Locked state; and with all fields specified
     public MealItem(FoodItem food, MealItem.Meal meal){
         this.foodItem = food;
