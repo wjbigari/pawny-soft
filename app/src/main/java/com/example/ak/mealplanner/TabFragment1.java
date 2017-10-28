@@ -85,9 +85,9 @@ public class TabFragment1 extends Fragment {
 
 
         // Add more foods
-        listAdapter.add(new FoodItem("Bread", 10));
-        listAdapter.add(new FoodItem("Milk", 10));
-        listAdapter.add(new FoodItem("Eggs", 10));
+//        listAdapter.add(new FoodItem("Bread", 10));
+//        listAdapter.add(new FoodItem("Milk", 10));
+//        listAdapter.add(new FoodItem("Eggs", 10));
 //        listAdapter.add(new Fooditem("Orange", "10"));
 //        listAdapter.add(new Fooditem("Yogurt", "10"));
 //        listAdapter.add(new Fooditem("Bacon", "10"));
@@ -130,14 +130,14 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 // When user changed the Text
-                /**
+
                 if(searchController!= null && searchController.getStatus()== AsyncTask.Status.RUNNING){
                     searchController.cancel(true);
                 }
                 searchController = new SearchController(cs.toString(), listAdapter);
 
                 searchController.execute();
-                 */
+
                 //listAdapter.getFilter().filter(cs);
             }
 

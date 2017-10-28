@@ -4,9 +4,11 @@ package Controllers;
  * Created by wbigari on 10/26/17.
  */
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -46,7 +48,7 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... arg0) {
 
         Socket socket = null;
-
+        BufferedReader in;
         try {
             socket = new Socket(dstAddress, dstPort);
             OutputStream byteArrayOutputStream = socket.getOutputStream();
@@ -56,19 +58,13 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
             byteArrayOutputStream.flush();
 
 
-            int bytesRead;
-            InputStream inputStream = socket.getInputStream();
-
 			/*
 			 * notice: inputStream.read() will block if no data return
 			 */
             String jsonresponse = "";
-            byteArrayOutputStream = new ByteArrayOutputStream();
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                byteArrayOutputStream.write(buffer, 0, bytesRead);
-                jsonresponse += byteArrayOutputStream.toString();
-            }
-
+            in = new BufferedReader(new InputStreamReader(
+                    socket.getInputStream()));
+            jsonresponse = in.readLine();
             JSONObject responseObject = new JSONObject(jsonresponse);
             JSONArray responseList = new JSONArray(responseObject.getString("search"));
             foodList = new ArrayList<FoodItem>();
@@ -105,8 +101,10 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
         arrayAdapter.clear();
         if(foodList != null && foodList.size() > 0) {
             arrayAdapter.addList(foodList);
-            super.onPostExecute(result);
         }
+        arrayAdapter.notifyDataSetChanged();
+
+        super.onPostExecute(result);
     }
 
 }

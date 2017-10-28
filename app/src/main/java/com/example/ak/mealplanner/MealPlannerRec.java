@@ -1,15 +1,12 @@
 package com.example.ak.mealplanner;
 
-/**
- * Created by wbigari on 10/26/17.
- */
-
-
+import org.json.JSONObject;
 import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.example.ak.mealplanner.MealItem.Meal.*;
 
 public class MealPlannerRec {
     private ArrayList<MealItem> breakfastItems;
@@ -49,13 +46,13 @@ public class MealPlannerRec {
         if(item.getNumServings() > 0){
             switch(item.getMeal()){
                 case BREAKFAST:
-                    breakfastItems.add(item);
+                    breakfastItems.add(new MealItem(item.getFoodItem(), item.isLocked(), item.getNumServings(), MealItem.Meal.BREAKFAST));
                     break;
                 case LUNCH:
-                    lunchItems.add(item);
+                    lunchItems.add(new MealItem(item.getFoodItem(), item.isLocked(), item.getNumServings(), MealItem.Meal.LUNCH));
                     break;
                 case DINNER:
-                    dinnerItems.add(item);
+                    dinnerItems.add(new MealItem(item.getFoodItem(), item.isLocked(), item.getNumServings(), MealItem.Meal.DINNER));
                     break;
             }
             totalCals += (item.getNumServings() * item.getFoodItem().getCalPerServing());
@@ -89,22 +86,28 @@ public class MealPlannerRec {
         this.breakfastItems.clear();
         this.lunchItems.clear();
         this.dinnerItems.clear();
-        JSONArray items = in.optJSONArray("breakfastItems");
-        for(int i = 0; i < items.length(); i++){
-            breakfastItems.add(new MealItem(items.optJSONObject(i)));
+        JSONArray items = new JSONArray(in.getString("breakfastItems"));
+        if(items != null && items.length() != 0){
+            for(int i = 0; i < items.length(); i++){
+                breakfastItems.add(new MealItem(new JSONObject(items.getString(i))));
+            }
         }
-        items = in.optJSONArray("lunchItems");
-        for(int i = 0; i < items.length(); i++){
-            lunchItems.add(new MealItem(items.optJSONObject(i)));
+        items = new JSONArray(in.getString("lunchItems"));
+        if(items != null){
+            for(int i = 0; i < items.length(); i++){
+                lunchItems.add(new MealItem(new JSONObject(items.getString(i))));
+            }
         }
-        items = in.optJSONArray("dinnerItems");
-        for(int i = 0; i < items.length(); i++){
-            dinnerItems.add(new MealItem(items.optJSONObject(i)));
+        items = new JSONArray(in.getString("dinnerItems"));
+        if(items != null){
+            for(int i = 0; i < items.length(); i++){
+                dinnerItems.add(new MealItem(new JSONObject(items.getString(i))));
+            }
         }
-        this.totalCals = in.optInt("totalCals");
-        this.totalCarbs = in.optInt("totalCarbs");
-        this.totalProt = in.optInt("totalProt");
-        this.totalFat = in.optInt("totalFat");
+        this.totalCals = in.getInt("totalCals");
+        this.totalCarbs = in.getInt("totalCarbs");
+        this.totalProt = in.getInt("totalProt");
+        this.totalFat = in.getInt("totalFat");
     }
 
     //toString function to help with visualization of the structure of a meal recommendation
