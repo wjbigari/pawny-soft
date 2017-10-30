@@ -16,7 +16,8 @@ import java.util.Comparator;
  * Created by ak on 10/26/17.
  */
 
-public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
+public class MyCustomAdapter {
+    /**
     private ArrayList<FoodItem> list = new ArrayList<FoodItem>();
     private Context context;
 
@@ -98,4 +99,5 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
 
         return view;
     }
+    */
 }

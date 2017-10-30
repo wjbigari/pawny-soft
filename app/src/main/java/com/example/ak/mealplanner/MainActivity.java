@@ -1,5 +1,6 @@
 package com.example.ak.mealplanner;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -16,11 +17,14 @@ import android.widget.TextView;
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView x;
     ArrayList<MealItem> items = new ArrayList<MealItem>();
+    MyApplication app;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         x = (TextView)findViewById(R.id.editName);
+
+        String [] profile = {"Will", "1", "2", "3", "Male"};
+        ArrayList<String> user = new ArrayList<String>(Arrays.asList(profile));
+
+        app = (MyApplication) getApplicationContext();
+        app.loadProfile(user);
     }
 
     @Override
@@ -70,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
     public void startEdit(View view) {
         // Do something in response to button
         Intent intent = new Intent(this, EditProfile.class);
+        intent.putExtra("id", view.getId());
         startActivity(intent);
     }
 
@@ -87,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void buildMeals(View view) {
         // Do something in response to button
+        if(app.isEmpty()){
+            return;
+        }
         Intent intent = new Intent(this, Results.class);
         intent.putExtra("list", items);
         startActivity(intent);

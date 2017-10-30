@@ -22,9 +22,12 @@ public class Results extends AppCompatActivity {
 
         Intent intent = getIntent();
         ArrayList <MealItem> items = (ArrayList<MealItem>) intent.getSerializableExtra("list");
-        Log.i("adarsh", items.toString());
-        TextView text = (TextView) findViewById(R.id.textView7);
-        text.setText(items.toString());
+
+        MyApplication app = (MyApplication) getApplicationContext();
+        Log.i("adarsh", app.getList().toString());
+        TextView text = (TextView) findViewById(R.id.resultview);
+        text.setText(app.getList().toString());
+        app.clearItems();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
