@@ -7,31 +7,27 @@ import android.widget.TextView;
 import com.example.ak.mealplanner.Constraints;
 import com.example.ak.mealplanner.FoodItem;
 import com.example.ak.mealplanner.MealItem;
+import com.example.ak.mealplanner.MealPlannerRec;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
+
+import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.URL;
-import java.net.URLEncoder;
+
 import java.net.UnknownHostException;
+import java.nio.Buffer;
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.net.ssl.HttpsURLConnection;
-
 
 /**
  * Created by wbigari on 10/26/17.
@@ -44,6 +40,7 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
     private Constraints requestConstraints;
     private ArrayList<MealItem> responseList;
     private TextView textResponse;
+    MealPlannerRec mealPlannerRec;
 
     public MealPlannerController(Constraints c, ArrayList<MealItem> rl, TextView response){
         this.requestList = rl;
@@ -55,40 +52,47 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... voids) {
         String requestString = MakeRequestString();
         Socket socket = null;
-
+        BufferedReader in;
         try {
             socket = new Socket(dstAddress, dstPort);
-            OutputStream byteArrayOutputStream = socket.getOutputStream();
-            Log.i("al", "I'm here");
-            byte[] buffer = new byte[1024];
-            byteArrayOutputStream.write(requestString.getBytes());
-            byteArrayOutputStream.flush();
-            Log.i("al", "I'm here1");
-            int bytesRead;
-            Log.i("al", "I'm here2");
+            PrintWriter writer  = new PrintWriter(socket.getOutputStream());
+
+            writer.println(requestString);
+            Log.i("al", requestString);
+            writer.flush();
+
             InputStream inputStream = socket.getInputStream();
-            Log.i("al", "I'm here3");
 			/*
 			 * notice: inputStream.read() will block if no data return
 			 */
-            String jsonresponse = "";
-            Log.i("al", "I'm here4");
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            Log.i("al", "I'm here 2.5");
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                Log.i("al", "I'm here5");
-                outputStream.write(buffer, 0, bytesRead);
-                jsonresponse += byteArrayOutputStream.toString();
+//            int bytesRead;
+//            byte[] buffer = new byte[1024];
+//            String jsonresponse = "";
+//            Log.i("al", "I'm here4");
+//            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//            Log.i("al", "I'm here 2.5");
+//            while ((bytesRead = inputStream.read(buffer)) != -1) {
+//                Log.i("al", "I'm here5");
+//                outputStream.write(buffer, 0, bytesRead);
+//                jsonresponse += byteArrayOutputStream.toString();
+//            }
+            in = new BufferedReader(new InputStreamReader(
+                    socket.getInputStream()));
+            String lineInput;
+            String jsonresponse = null;
+            while((lineInput = in.readLine()) != null){
+                jsonresponse = lineInput;
             }
 
-            JSONArray mealItemsJSON = new JSONArray(jsonresponse);
-            for(int i=0; i < mealItemsJSON.length(); i++){
-                responseList.add(new MealItem(mealItemsJSON.getJSONObject(i)));
-            }
 
+            JSONObject mealRecJSON = new JSONObject(jsonresponse);
+            Log.i("al",mealRecJSON.toString(2));
+            mealPlannerRec = new MealPlannerRec(mealRecJSON);
+            Log.i("al", "HEY THIS IS THE MEAL PLAN " + mealPlannerRec.toString());
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            Log.i("al", e.getMessage() + e.getClass().toString());
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
@@ -101,11 +105,14 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
         try {
             JSONArray requestJSONArray = new JSONArray();
             for (int i = 0; i < requestList.size(); i++) {
+                Log.i("al", requestList.get(i).toString());
                 requestJSONArray.put(requestList.get(i).toJSON().toString());
             }
             String constraintsJSONString = requestConstraints.toJSON().toString();
+            Log.i("al", constraintsJSONString);
             sendObject.put("constraints", constraintsJSONString);
             sendObject.put("mealList", requestJSONArray.toString());
+            Log.i("al", requestJSONArray.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -113,11 +120,7 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
     }
     @Override
     protected void onPostExecute(Void result) {
-        String response = "";
-        for(int i =0; i < responseList.size(); i++){
-            response += responseList.get(i).getFoodItem().getName() + "\n";
-        }
-        textResponse.setText(response);
+        textResponse.setText(mealPlannerRec.toString());
         super.onPostExecute(result);
     }
 }

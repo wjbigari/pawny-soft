@@ -13,8 +13,10 @@ import static com.example.ak.mealplanner.MealItem.Meal.DINNER;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 
-public class MealItem {
+
+public class MealItem implements Serializable{
     //Enumerable type to easily identify the meal this FoodItem is a part of
     public enum Meal{BREAKFAST, LUNCH, DINNER}
     //Fields for qualifying the FoodItem in context of the meal it's in
@@ -22,6 +24,11 @@ public class MealItem {
     private boolean isLocked;
     private int numServings;
     private Meal meal;
+
+    @Override
+    public String toString(){
+        return foodItem.toString();
+    }
 
     //Three available constructors - with the FoodItem and Meal specified; with both plus the Locked state; and with all fields specified
     public MealItem(FoodItem food, MealItem.Meal meal){
@@ -90,6 +97,14 @@ public class MealItem {
         JSONObject returnObject = new JSONObject();
         returnObject.put("foodItem", this.foodItem.toJSON().toString());
         returnObject.put("meal", this.meal.name());
+        returnObject.put("isLocked", this.isLocked);
+        returnObject.put("numServings", this.numServings);
+        return returnObject;
+    }
+    public JSONObject toJson() throws JSONException{
+        JSONObject returnObject = new JSONObject();
+        returnObject.put("foodItem", this.foodItem.toJson().toString());
+        returnObject.put("enum", this.meal.name());
         returnObject.put("isLocked", this.isLocked);
         returnObject.put("numServings", this.numServings);
         return returnObject;

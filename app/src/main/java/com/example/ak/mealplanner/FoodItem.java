@@ -2,10 +2,9 @@ package com.example.ak.mealplanner;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.Serializable;
 
-
+@SuppressWarnings("serial")
 public class FoodItem implements Serializable{
     //Values used for identifying the food item
     private String name;
@@ -59,6 +58,12 @@ public class FoodItem implements Serializable{
         this();
         this.name = foodName;
         this.foodId = id;
+        this.servingValue = -1;
+        this.servingUnit = "default";
+        this.calPerServing = -1;
+        this.gramsCarbPerServing = -1;
+        this.gramsProtPerServing = -1;
+        this.gramsFatPerServing = -1;
     }
     public FoodItem(String name, int calories, int protein, int fat, int carbs) {
         this();
@@ -163,6 +168,20 @@ public class FoodItem implements Serializable{
 
 
     public JSONObject toJSON() throws JSONException {
+        JSONObject returnObject = new JSONObject();
+        returnObject.put("name", this.name);
+        returnObject.put("foodId", this.foodId);
+        returnObject.put("servingValue", this.servingValue);
+        returnObject.put("servingUnit", this.servingUnit);
+        returnObject.put("calPerServing", this.calPerServing);
+        returnObject.put("gramsCarbPerServing", this.gramsCarbPerServing);
+        returnObject.put("gramsFatPerServing", this.gramsFatPerServing);
+        returnObject.put("gramsProtPerServing", this.gramsProtPerServing);
+        returnObject.put("internalCoefficient", this.internalCoefficient);
+        return returnObject;
+    }
+
+    public JSONObject toJson() throws JSONException{
         JSONObject returnObject = new JSONObject();
         returnObject.put("name", this.name);
         returnObject.put("foodId", this.foodId);
