@@ -24,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.97"
-        android:text="TextView" />
+        android:text="Loading...."
+        android:textSize="24sp" />
 
 </LinearLayout>

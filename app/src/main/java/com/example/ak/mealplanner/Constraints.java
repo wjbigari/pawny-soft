@@ -38,14 +38,14 @@ public class Constraints {
 
     //No-arg constructor sets all fields to an invalid state (-1); when using this constructor any fields used must be set via Setter methods
     public Constraints() {
-        minCals = -1;
-        maxCals = -1;
-        minCarbs = -1;
-        maxCarbs = -1;
-        minProt = -1;
-        maxProt = -1;
-        minFat = -1;
-        maxFat = -1;
+        minCals = 2000;
+        maxCals = 2100;
+        minCarbs = 150;
+        maxCarbs = 170;
+        minProt = 150;
+        maxProt = 170;
+        minFat = 80;
+        maxFat = 85;
     }
 
     public Constraints(JSONObject jc) throws JSONException {
