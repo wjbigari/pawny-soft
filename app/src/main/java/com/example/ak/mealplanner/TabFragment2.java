@@ -56,8 +56,17 @@ public class TabFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_tab_fragment2, container, false);
+        MyApplication app = (MyApplication) getActivity().getApplicationContext();
         TextView x = (TextView) rootView.findViewById(R.id.editName);
-        //x.setText("Adarsh");
+        x.setText(app.getName());
+        x = (TextView) rootView.findViewById(R.id.editAge);
+        x.setText(app.getAge());
+        x = (TextView) rootView.findViewById(R.id.editHeight);
+        x.setText(app.getHeight());
+        x = (TextView) rootView.findViewById(R.id.editWeight);
+        x.setText(app.getWeight());
+        x = (TextView) rootView.findViewById(R.id.editGender);
+        x.setText(app.getGender());
         return rootView;
     }
 

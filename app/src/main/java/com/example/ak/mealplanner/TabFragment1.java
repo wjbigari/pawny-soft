@@ -44,7 +44,7 @@ public class TabFragment1 extends Fragment {
     private String mParam2;
     private SearchController searchController;
 
-    private MyCustomAdapter listAdapter;
+    private ArrayAdapter<FoodItem> listAdapter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -81,7 +81,7 @@ public class TabFragment1 extends Fragment {
         ArrayList<FoodItem> foodList = new ArrayList<FoodItem>();
 
         // Create ArrayAdapter
-        listAdapter  = new MyCustomAdapter(foodList, getActivity());
+        listAdapter  = new ArrayAdapter<FoodItem>(getContext(), R.layout.listrow, foodList);
 
 
         // Add more foods
@@ -100,14 +100,13 @@ public class TabFragment1 extends Fragment {
 //        listAdapter.add(new Fooditem("Beans", "10"));
 //        listAdapter.add(new Fooditem("Salsa", "10"));
 
-        /**
+
         listAdapter.sort(new Comparator<FoodItem>() {
             @Override
             public int compare(FoodItem o1, FoodItem o2) {
                 return o1.getName().compareTo(o2.getName());
             }
         });
-        */
         listAdapter.notifyDataSetChanged();
 
         // Set the ArrayAdapter as the ListView's adapter.
@@ -116,9 +115,11 @@ public class TabFragment1 extends Fragment {
         mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
-            public void onItemClick(AdapterView<?> parent, View arg1, int position, long arg3)
-            {
-                FoodItem entry= (FoodItem) parent.getAdapter().getItem(position);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FoodItem x = (FoodItem) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getActivity(), FoodActivity.class);
+                intent.putExtra("foodItem", x);
+                startActivity(intent);
 
             }
         });
@@ -152,21 +153,6 @@ public class TabFragment1 extends Fragment {
             public void afterTextChanged(Editable arg0) {
                 // TODO Auto-generated method stub
 
-            }
-        });
-
-        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /**
-                FoodItem x = (FoodItem) parent.getItemAtPosition(position);
-                Intent intent = new Intent(getActivity(), FoodActivity.class);
-                intent.putExtra("foodItem", x);
-                MainActivity main = (MainActivity) getActivity();
-                intent.putExtra("list", main.getList());
-                //intent.putExtra("info", x.getInfo());
-                startActivityForResult(intent, 2);
-                 */
             }
         });
 
