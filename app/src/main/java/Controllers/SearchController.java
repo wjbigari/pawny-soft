@@ -4,9 +4,11 @@ package Controllers;
  * Created by wbigari on 10/26/17.
  */
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -33,9 +35,9 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
     TextView textResponse;
     String searchString;
     ArrayList<FoodItem> foodList;
-    MyCustomAdapter arrayAdapter;
+    ArrayAdapter<FoodItem> arrayAdapter;
 
-    public SearchController(String addr,MyCustomAdapter mealItemArrayAdapter) {
+    public SearchController(String addr,ArrayAdapter<FoodItem> mealItemArrayAdapter) {
         dstAddress ="10.0.2.2";
         dstPort = 8083;
         searchString = addr + "\r\n";
@@ -57,17 +59,19 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
 
 
             int bytesRead;
-            InputStream inputStream = socket.getInputStream();
+            BufferedReader inputStream = new BufferedReader(new InputStreamReader(
+                    socket.getInputStream()));
 
 			/*
 			 * notice: inputStream.read() will block if no data return
 			 */
             String jsonresponse = "";
             byteArrayOutputStream = new ByteArrayOutputStream();
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                byteArrayOutputStream.write(buffer, 0, bytesRead);
-                jsonresponse += byteArrayOutputStream.toString();
-            }
+//            while ((bytesRead = inputStream.read(buffer)) != -1) {
+//                byteArrayOutputStream.write(buffer, 0, bytesRead);
+//                jsonresponse += byteArrayOutputStream.toString();
+//            }
+            jsonresponse = inputStream.readLine();
 
             JSONObject responseObject = new JSONObject(jsonresponse);
             JSONArray responseList = new JSONArray(responseObject.getString("search"));
@@ -102,13 +106,17 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void result) {
-        /**
-        arrayAdapter.clear();
+
+
         if(foodList != null && foodList.size() > 0) {
-            arrayAdapter.addList(foodList);
+            arrayAdapter.clear();
+            for(FoodItem fi : foodList){
+                arrayAdapter.add(fi);
+            }
+            arrayAdapter.notifyDataSetChanged();
             super.onPostExecute(result);
         }
-         */
+
     }
 
 }

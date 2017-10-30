@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Results extends AppCompatActivity {
+import Controllers.MealPlannerController;
 
+public class Results extends AppCompatActivity {
+    MyApplication app;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +25,11 @@ public class Results extends AppCompatActivity {
         Intent intent = getIntent();
         ArrayList <MealItem> items = (ArrayList<MealItem>) intent.getSerializableExtra("list");
 
-        MyApplication app = (MyApplication) getApplicationContext();
+        app = (MyApplication) getApplicationContext();
         Log.i("adarsh", app.getList().toString());
         TextView text = (TextView) findViewById(R.id.resultview);
-        text.setText(app.getList().toString());
-        app.clearItems();
+        MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), text);
+        mpc.execute();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -38,7 +40,7 @@ public class Results extends AppCompatActivity {
         super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case android.R.id.home:
-
+                app.clearItems();
                 finish();
                 break;
         }
