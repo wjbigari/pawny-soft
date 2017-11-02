@@ -22,7 +22,7 @@ public class FoodItem implements Serializable, MealItemContent{
 
     @Override
     public String toString(){
-        return "\nname:"+ this.name + "\nServing Value: " + servingValue + "\nServing Unit: " + servingUnit + "\nCalories: " + calPerServing + "\nCarbohydrates: "  + gramsCarbPerServing + "\nProtein: " + gramsProtPerServing + "\nFat: " + gramsFatPerServing;
+        return this.name;
     }
 
 

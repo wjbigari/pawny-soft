@@ -4,6 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_cart"
+        android:icon="@drawable/cart2"
+        android:orderInCategory="100"
+        android:title="Cart"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="About"

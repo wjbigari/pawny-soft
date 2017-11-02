@@ -10,10 +10,39 @@ import java.util.ArrayList;
 
 public class MyApplication extends Application {
     private ArrayList<MealItem> items;
+    private ArrayList<MealItem> breakfast;
+    private ArrayList<MealItem> lunch;
+    private ArrayList<MealItem> dinner;
     private Constraints constraint;
     private ArrayList<String> profile = new ArrayList<String>();
 
-    public void addItem(MealItem item){
+    public void addBreakfast(MealItem item){
+        if(breakfast == null){
+            breakfast = new ArrayList<MealItem>();
+        }
+        breakfast.add(item);
+        if(items == null){
+            items = new ArrayList<MealItem>();
+        }
+        items.add(item);
+    }
+
+    public void addLunch(MealItem item){
+        if(lunch == null){
+            lunch = new ArrayList<MealItem>();
+        }
+        lunch.add(item);
+        if(items == null){
+            items = new ArrayList<MealItem>();
+        }
+        items.add(item);
+    }
+
+    public void addDinner(MealItem item){
+        if(dinner == null){
+            dinner = new ArrayList<MealItem>();
+        }
+        dinner.add(item);
         if(items == null){
             items = new ArrayList<MealItem>();
         }
@@ -21,14 +50,20 @@ public class MyApplication extends Application {
     }
 
     public ArrayList<MealItem> getList(){
-        if(items != null){
+        if(items == null){
+            items = new ArrayList<MealItem>();
             return items;
         }
-        return new ArrayList<MealItem>();
+        return items;
     }
 
     public void clearItems(){
-        items.clear();
+        if(items != null){
+            items.clear();
+        }
+        breakfast = null;
+        lunch = null;
+        dinner = null;
     }
 
     public boolean isEmpty(){
@@ -75,5 +110,29 @@ public class MyApplication extends Application {
             return;
         }
         this.profile = profile;
+    }
+
+    public ArrayList<MealItem> getDinner() {
+        if(dinner == null){
+            dinner = new ArrayList<MealItem>();
+            return dinner;
+        }
+        return dinner;
+    }
+
+    public ArrayList<MealItem> getLunch() {
+        if(lunch == null){
+            lunch = new ArrayList<MealItem>();
+            return lunch;
+        }
+        return lunch;
+    }
+
+    public ArrayList<MealItem> getBreakfast() {
+        if(breakfast == null){
+            breakfast = new ArrayList<MealItem>();
+            return breakfast;
+        }
+        return breakfast;
     }
 }
