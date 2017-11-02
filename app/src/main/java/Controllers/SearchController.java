@@ -5,23 +5,20 @@ package Controllers;
  */
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
+
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Comparator;
+
 
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.ak.mealplanner.FoodItem;
-import com.example.ak.mealplanner.MealItem;
-import com.example.ak.mealplanner.MyCustomAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +37,7 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
     public SearchController(String addr,ArrayAdapter<FoodItem> mealItemArrayAdapter) {
         dstAddress ="10.0.2.2";
         dstPort = 8083;
-        searchString = addr + "\r\n";
+        searchString = addr;
         this.arrayAdapter = mealItemArrayAdapter;
     }
 
@@ -51,28 +48,21 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
 
         try {
             socket = new Socket(dstAddress, dstPort);
-            OutputStream byteArrayOutputStream = socket.getOutputStream();
+            PrintWriter writer = new PrintWriter(socket.getOutputStream());
             byte[] buffer = new byte[1024];
-            byte[] stringb = (searchString + "\r\n").getBytes();
-            byteArrayOutputStream.write(stringb, 0, stringb.length);
-            byteArrayOutputStream.flush();
+            JSONObject requestObject = new JSONObject();
+            requestObject.put("option", "search");
+            requestObject.put("search", searchString);
 
+            writer.println(requestObject.toString());
+            writer.flush();
 
             int bytesRead;
             BufferedReader inputStream = new BufferedReader(new InputStreamReader(
                     socket.getInputStream()));
 
-			/*
-			 * notice: inputStream.read() will block if no data return
-			 */
             String jsonresponse = "";
-            byteArrayOutputStream = new ByteArrayOutputStream();
-//            while ((bytesRead = inputStream.read(buffer)) != -1) {
-//                byteArrayOutputStream.write(buffer, 0, bytesRead);
-//                jsonresponse += byteArrayOutputStream.toString();
-//            }
             jsonresponse = inputStream.readLine();
-
             JSONObject responseObject = new JSONObject(jsonresponse);
             JSONArray responseList = new JSONArray(responseObject.getString("search"));
             foodList = new ArrayList<FoodItem>();
