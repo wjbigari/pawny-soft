@@ -62,20 +62,7 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
             writer.flush();
 
             InputStream inputStream = socket.getInputStream();
-			/*
-			 * notice: inputStream.read() will block if no data return
-			 */
-//            int bytesRead;
-//            byte[] buffer = new byte[1024];
-//            String jsonresponse = "";
-//            Log.i("al", "I'm here4");
-//            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//            Log.i("al", "I'm here 2.5");
-//            while ((bytesRead = inputStream.read(buffer)) != -1) {
-//                Log.i("al", "I'm here5");
-//                outputStream.write(buffer, 0, bytesRead);
-//                jsonresponse += byteArrayOutputStream.toString();
-//            }
+
             in = new BufferedReader(new InputStreamReader(
                     socket.getInputStream()));
             String lineInput;
@@ -83,8 +70,6 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
             while((lineInput = in.readLine()) != null){
                 jsonresponse = lineInput;
             }
-
-
             JSONObject mealRecJSON = new JSONObject(jsonresponse);
             Log.i("al",mealRecJSON.toString(2));
             mealPlannerRec = new MealPlannerRec(mealRecJSON);
