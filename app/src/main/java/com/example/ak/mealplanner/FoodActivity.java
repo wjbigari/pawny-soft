@@ -77,20 +77,20 @@ public class FoodActivity extends AppCompatActivity {
     public void addLunch(View view) {
         // Do something in response to button
         if(servings.getText().toString().equals("")){
-            app.addBreakfast(new MealItem(foodItem, locked, MealItem.Meal.LUNCH));
+            app.addLunch(new MealItem(foodItem, locked, MealItem.Meal.LUNCH));
         }
         else{
-            app.addBreakfast(new MealItem(foodItem, locked, Integer.parseInt(servings.getText().toString()), MealItem.Meal.LUNCH));
+            app.addLunch(new MealItem(foodItem, locked, Integer.parseInt(servings.getText().toString()), MealItem.Meal.LUNCH));
         }
     }
 
     public void addDinner(View view) {
         // Do something in response to button
         if(servings.getText().toString().equals("")){
-            app.addBreakfast(new MealItem(foodItem, locked, MealItem.Meal.DINNER));
+            app.addDinner(new MealItem(foodItem, locked, MealItem.Meal.DINNER));
         }
         else{
-            app.addBreakfast(new MealItem(foodItem, locked, Integer.parseInt(servings.getText().toString()), MealItem.Meal.DINNER));
+            app.addDinner(new MealItem(foodItem, locked, Integer.parseInt(servings.getText().toString()), MealItem.Meal.DINNER));
         }
     }
 
