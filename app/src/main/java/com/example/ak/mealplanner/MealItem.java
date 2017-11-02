@@ -47,11 +47,11 @@ public class MealItem implements Serializable{
     }
     public MealItem(JSONObject fromObject) throws JSONException {
         JSONObject mealContent = new JSONObject(fromObject.optString("content"));
-        if(mealContent.opt("ingredients").equals("")){
+//        if(mealContent.getString("ingredients").equals("")){
             this.content = new FoodItem(mealContent);
-        }else{
-            this.content = new UserRecipe(mealContent);
-        }
+//        }else{
+//            this.content = new UserRecipe(mealContent);
+//        }
         this.isLocked = fromObject.getBoolean("isLocked");
         this.numServings = fromObject.getInt("numServings");
         String mealString = fromObject.getString("meal");
