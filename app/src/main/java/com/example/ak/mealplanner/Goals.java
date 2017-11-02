@@ -39,9 +39,11 @@ public class Goals extends AppCompatActivity {
 
     public void saveGoals(View view){
         if(calMin.getText().toString().equals("") || calMax.getText().toString().equals("") || carbMin.getText().toString().equals("") || carbMax.getText().toString().equals("") || protMin.getText().toString().equals("") || protMax.getText().toString().equals("") || fatMin.getText().toString().equals("") || fatMax.getText().toString().equals("")){
+            finish();
             return;
         }
         app.addConstraint(new Constraints(Integer.parseInt(calMin.getText().toString()), Integer.parseInt(calMax.getText().toString()), Integer.parseInt(carbMin.getText().toString()), Integer.parseInt(carbMax.getText().toString()), Integer.parseInt(protMin.getText().toString()), Integer.parseInt(protMax.getText().toString()), Integer.parseInt(fatMin.getText().toString()), Integer.parseInt(fatMax.getText().toString())));
+        finish();
     }
 
     @Override

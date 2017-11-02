@@ -20,6 +20,7 @@ public class FoodActivity extends AppCompatActivity {
     MyApplication app;
     CheckBox checkBox;
     boolean locked = false;
+    EditText servings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +40,10 @@ public class FoodActivity extends AppCompatActivity {
         app = (MyApplication) getApplicationContext();
 
         TextView x = (TextView)findViewById(R.id.textView5);
-        x.setText(foodItem.getName());
+        x.setText(foodItem.getName().toUpperCase());
         x = (TextView)findViewById(R.id.textView6);
-        x.setText(foodItem.toString());
+        String details = "Serving Size: " + foodItem.getServingSize() + "\nCalories: " + foodItem.getCalPerServing() + "\nCarbohydrates: " + foodItem.getGramsCarbPerServing() + " grams" + "\nProtein: " + foodItem.getGramsProtPerServing() + " grams" + "\nFat: " + foodItem.getGramsFatPerServing() + " grams";
+        x.setText(details);
 
         checkBox = (CheckBox) findViewById(R.id.checkBox);
 
@@ -56,25 +58,40 @@ public class FoodActivity extends AppCompatActivity {
             }
         });
 
+        servings = (EditText) findViewById(R.id.editServing);
+
 
     }
 
     public void addBreakFast(View view) {
         // Do something in response to button
-        MainActivity main = (MainActivity)getParent();
-        app.addItem(new MealItem(foodItem, locked, MealItem.Meal.BREAKFAST));
+        if(servings.getText().toString().equals("")){
+            app.addBreakfast(new MealItem(foodItem, locked, MealItem.Meal.BREAKFAST));
+        }
+        else{
+            app.addBreakfast(new MealItem(foodItem, locked, Integer.parseInt(servings.getText().toString()), MealItem.Meal.BREAKFAST));
+        }
+
     }
 
     public void addLunch(View view) {
         // Do something in response to button
-        MainActivity main = (MainActivity)getParent();
-        app.addItem(new MealItem(foodItem, locked, MealItem.Meal.LUNCH));
+        if(servings.getText().toString().equals("")){
+            app.addBreakfast(new MealItem(foodItem, locked, MealItem.Meal.LUNCH));
+        }
+        else{
+            app.addBreakfast(new MealItem(foodItem, locked, Integer.parseInt(servings.getText().toString()), MealItem.Meal.LUNCH));
+        }
     }
 
     public void addDinner(View view) {
         // Do something in response to button
-        MainActivity main = (MainActivity)getParent();
-        app.addItem(new MealItem(foodItem, locked, MealItem.Meal.DINNER));
+        if(servings.getText().toString().equals("")){
+            app.addBreakfast(new MealItem(foodItem, locked, MealItem.Meal.DINNER));
+        }
+        else{
+            app.addBreakfast(new MealItem(foodItem, locked, Integer.parseInt(servings.getText().toString()), MealItem.Meal.DINNER));
+        }
     }
 
     @Override
