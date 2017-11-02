@@ -25,6 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.97"
         android:text="Loading...."
-        android:textSize="24sp" />
+        android:textSize="18sp" />
 
 </LinearLayout>
