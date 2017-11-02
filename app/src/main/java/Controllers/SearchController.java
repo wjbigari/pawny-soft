@@ -113,6 +113,12 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
             for(FoodItem fi : foodList){
                 arrayAdapter.add(fi);
             }
+            arrayAdapter.sort(new Comparator<FoodItem>() {
+                @Override
+                public int compare(FoodItem o1, FoodItem o2) {
+                    return o1.getName().compareTo(o2.getName());
+                }
+            });
             arrayAdapter.notifyDataSetChanged();
             super.onPostExecute(result);
         }

@@ -67,21 +67,21 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/protMax"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="maximum"
-            android:inputType="number" />
-
-        <EditText
             android:id="@+id/protMin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:hint="minimum"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/protMax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="maximum"
             android:inputType="number" />
     </LinearLayout>
 
