@@ -13,7 +13,9 @@ import org.json.JSONException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Constraints {
+import java.io.Serializable;
+
+public class Constraints implements Serializable{
     //Fields for constraints set by the user; all nutrient fields are to be stored as Calories, not as Grams
     private int minCals;
     private int maxCals;
