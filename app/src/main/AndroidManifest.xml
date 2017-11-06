@@ -68,7 +68,9 @@
             android:label="Cart"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme"></activity>
-        <activity android:name=".FirstStartActivity"></activity>
+        <activity
+            android:name=".FirstStartActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
