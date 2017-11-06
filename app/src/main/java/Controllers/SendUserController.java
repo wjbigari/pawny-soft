@@ -48,6 +48,7 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
             JSONObject putObject = packageObject();
             out = new PrintWriter(socket.getOutputStream());
             out.println(putObject.toString());
+            out.flush();
 
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String response = in.readLine();
@@ -67,7 +68,7 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
         JSONObject outObject = new JSONObject();
         outObject.put("option", this.optionString);
         outObject.put("constraints", this.constraints.toJSON().toString());
-        outObject.put("userProfile", this.user.toJSON());
+        outObject.put("userProfile", this.user.toJSON().toString());
         return outObject;
     }
     @Override

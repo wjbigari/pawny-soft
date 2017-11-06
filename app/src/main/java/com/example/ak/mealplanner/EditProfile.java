@@ -15,6 +15,8 @@ import android.widget.TextView;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
+import Controllers.SendUserController;
+
 public class EditProfile extends AppCompatActivity {
 
     MyApplication app;
@@ -104,6 +106,8 @@ public class EditProfile extends AppCompatActivity {
             objectOut.writeObject(profile);
             objectOut.close();
 
+            SendUserController sendUserController = new SendUserController(this, "updateUser", profile, app.getConstraint() );
+            sendUserController.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
