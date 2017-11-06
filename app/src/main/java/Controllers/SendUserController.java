@@ -1,6 +1,8 @@
 package Controllers;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.example.ak.mealplanner.Constraints;
 import com.example.ak.mealplanner.UserProfile;
@@ -26,13 +28,14 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
     private String optionString;
     private PrintWriter out;
     private BufferedReader in;
+    Context context;
     JSONObject responseObject;
     private Socket socket;
     String dstAddress ="10.0.2.2";
     int dstPort = 8083;
 
-    public SendUserController(String optionString, UserProfile user, Constraints constraints){
-
+    public SendUserController(Context context, String optionString, UserProfile user, Constraints constraints){
+        this.context = context;
         this.user = user;
         this.optionString = optionString;
         this.constraints = constraints;
@@ -71,8 +74,7 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void result) {
         try {
             String responseText = responseObject.getString("response");
-            //TODO popup to display whether the operation was successful?
-
+            Toast.makeText(this.context, responseText, Toast.LENGTH_SHORT);
         } catch (JSONException e) {
             e.printStackTrace();
         }
