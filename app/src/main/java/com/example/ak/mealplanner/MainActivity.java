@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -33,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .getBoolean("isFirstRun", true);
+
+        if (isFirstRun) {
+            //show start activity
+            startActivity(new Intent(MainActivity.this, FirstStartActivity.class));
+            Toast.makeText(MainActivity.this, "First Run", Toast.LENGTH_LONG)
+                    .show();
+        }
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                .putBoolean("isFirstRun", false).commit();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -53,22 +66,24 @@ public class MainActivity extends AppCompatActivity {
         app = (MyApplication) getApplicationContext();
         app.loadProfile(user);
 
-        FileInputStream fileIn;
-        ObjectInputStream objectIn;
-        UserProfile userProfile = new UserProfile();
+        if(!isFirstRun) {
+            FileInputStream fileIn;
+            ObjectInputStream objectIn;
+            UserProfile userProfile = new UserProfile();
 
-        try {
-            fileIn = openFileInput("profile");
-            objectIn = new ObjectInputStream(fileIn);
+            try {
+                fileIn = openFileInput("profile");
+                objectIn = new ObjectInputStream(fileIn);
 
-            userProfile = (UserProfile) objectIn.readObject();
-            objectIn.close();
+                userProfile = (UserProfile) objectIn.readObject();
+                objectIn.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            app.addUser(userProfile);
         }
-
-        app.addUser(userProfile);
     }
 
     @Override

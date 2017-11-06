@@ -35,4 +35,13 @@
         android:hint="Enter username"
         android:inputType="textPersonName" />
 
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:onClick="nextStart"
+        android:text="Next"
+        android:textColor="@android:color/white" />
+
 </LinearLayout>
