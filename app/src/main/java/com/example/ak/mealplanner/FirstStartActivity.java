@@ -36,7 +36,10 @@ public class FirstStartActivity extends AppCompatActivity {
     public void nextStart(View view) {
         // Do something in response to button
         EditText text = (EditText) findViewById(R.id.editUser);
-        app.addUser(new UserProfile(text.getText().toString(), "", 0,0,0,UserProfile.gender.MALE));
+        String userName = text.getText().toString();
+        text = (EditText) findViewById(R.id.editFirstName);
+
+        app.addUser(new UserProfile(userName,text.getText().toString() , 0,0,0,UserProfile.gender.MALE));
         Intent intent = new Intent(this, EditProfile.class);
         startActivity(intent);
     }
