@@ -11,9 +11,31 @@ import java.io.Serializable;
 
 public class UserProfile implements Serializable {
 
-    String username;
+    String username = "will";
     String name;
     int age,height,weight;
+    gender gen;
+
+    public enum gender{MALE, FEMALE}
+
+    public UserProfile(){
+        this.username = "will";
+        this.name = "Will";
+        this.age = 1;
+        this.height = 2;
+        this.weight =3;
+        this.gen = gender.MALE;
+    }
+
+    public UserProfile(String username, String name, int age, int height, int weight, gender gen){
+        this.username = username;
+        this.name = name;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.gen = gen;
+    }
+
     public UserProfile(JSONObject jobject) throws JSONException {
         this.username = jobject.getString("username");
         this.name = jobject.getString("name");
@@ -21,6 +43,46 @@ public class UserProfile implements Serializable {
         this.height = jobject.getInt("height");
         this.weight = jobject.getInt("weight");
 
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getAge(){
+        return Integer.toString(age);
+    }
+
+    public String getWeight(){
+        return Integer.toString(weight);
+    }
+
+    public String getHeight(){
+        return Integer.toString(height);
+    }
+
+    public gender getGen(){
+        return gen;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setAge(int age){
+        this.age = age;
+    }
+
+    public void setHeight(int height){
+        this.height = height;
+    }
+
+    public void setWeight(int weight){
+        this.weight = weight;
+    }
+
+    public void setGen(gender gen){
+        this.gen = gen;
     }
 
     public String getHeighString(){

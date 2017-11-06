@@ -8,108 +8,14 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/nameTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/editName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.12"
-        android:clickable="true"
-        android:onClick="startEdit"
-        android:textColor="@android:color/black"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/ageTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Age"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/editAge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="startEdit"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:layout_weight="0.13" />
-
-    <TextView
-        android:id="@+id/heightTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Height"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/editHeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="startEdit"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:layout_weight="0.14" />
-
-    <TextView
-        android:id="@+id/weightTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Weight"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/editWeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="startEdit"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:layout_weight="0.12" />
-
-    <TextView
-        android:id="@+id/genderTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Gender"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/editGender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="startEditGender"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:layout_weight="0.33" />
 
     <Button
         android:id="@+id/buttonGoals"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="startGoals"
+        android:layout_height="144dp"
         android:layout_weight="0.17"
         android:background="@color/colorPrimary"
+        android:onClick="startGoals"
         android:text="Goals"
         android:textColor="@android:color/white" />
 </LinearLayout>
