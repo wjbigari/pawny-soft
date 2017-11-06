@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import Controllers.SendUserController;
+
 public class FirstStartActivity extends AppCompatActivity {
     MyApplication app;
 
@@ -37,6 +39,8 @@ public class FirstStartActivity extends AppCompatActivity {
         // Do something in response to button
         EditText text = (EditText) findViewById(R.id.editUser);
         app.addUser(new UserProfile(text.getText().toString(), "", 0,0,0,UserProfile.gender.MALE));
+        SendUserController sendUserController = new SendUserController(this, "insertUser", app.getUser(), app.getConstraint() );
+        sendUserController.execute();
         Intent intent = new Intent(this, EditProfile.class);
         startActivity(intent);
     }
