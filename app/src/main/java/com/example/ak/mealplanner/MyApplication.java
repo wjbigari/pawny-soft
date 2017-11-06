@@ -15,6 +15,7 @@ public class MyApplication extends Application {
     private ArrayList<MealItem> dinner;
     private Constraints constraint;
     private ArrayList<String> profile = new ArrayList<String>();
+    UserProfile user;
 
     public void addBreakfast(MealItem item){
         if(breakfast == null){
@@ -134,5 +135,21 @@ public class MyApplication extends Application {
             return breakfast;
         }
         return breakfast;
+    }
+
+    public void addUser(UserProfile user){
+        if(user != null){
+            this.user = user;
+        }
+        else{
+            user = new UserProfile();
+        }
+    }
+
+    public UserProfile getUser(){
+        if(user != null){
+            return user;
+        }
+        return new UserProfile();
     }
 }

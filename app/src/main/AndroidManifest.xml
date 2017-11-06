@@ -27,65 +27,48 @@
         <activity
             android:name=".profile"
             android:label="About"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".RecipeBook"
             android:label="@string/title_activity_recipe_book"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".Favorites"
             android:label="Favorites"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".EditProfile"
-            android:label="Edit"
+            android:label="Profile"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".EditGender"
             android:label="Edit"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".Goals"
             android:label="Goals"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".FoodActivity"
             android:label="Item"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".Results"
             android:label="Recommendation"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".Cart"
             android:label="Cart"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".FirstStartActivity"></activity>
     </application>
 
 </manifest>

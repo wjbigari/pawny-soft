@@ -1,6 +1,7 @@
 package com.example.ak.mealplanner;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -15,7 +16,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -46,6 +52,23 @@ public class MainActivity extends AppCompatActivity {
 
         app = (MyApplication) getApplicationContext();
         app.loadProfile(user);
+
+        FileInputStream fileIn;
+        ObjectInputStream objectIn;
+        UserProfile userProfile = new UserProfile();
+
+        try {
+            fileIn = openFileInput("profile");
+            objectIn = new ObjectInputStream(fileIn);
+
+            userProfile = (UserProfile) objectIn.readObject();
+            objectIn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        app.addUser(userProfile);
     }
 
     @Override
@@ -67,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
+        else if(id == R.id.action_user){
+            Intent intent = new Intent(this, EditProfile.class);
+            startActivity(intent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -79,19 +107,6 @@ public class MainActivity extends AppCompatActivity {
     public void startFavorites(View view) {
         // Do something in response to button
         Intent intent = new Intent(this, Favorites.class);
-        startActivity(intent);
-    }
-
-    public void startEdit(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, EditProfile.class);
-        intent.putExtra("id", view.getId());
-        startActivity(intent);
-    }
-
-    public void startEditGender(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, EditGender.class);
         startActivity(intent);
     }
 
