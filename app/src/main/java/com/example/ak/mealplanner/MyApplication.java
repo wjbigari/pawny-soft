@@ -13,8 +13,7 @@ public class MyApplication extends Application {
     private ArrayList<MealItem> breakfast;
     private ArrayList<MealItem> lunch;
     private ArrayList<MealItem> dinner;
-    private Constraints constraint;
-    private ArrayList<String> profile = new ArrayList<String>();
+    private ArrayList<RecipeItem> recipes;
     UserProfile user;
 
     public void addBreakfast(MealItem item){
@@ -72,45 +71,15 @@ public class MyApplication extends Application {
     }
 
     public void addConstraint(Constraints constraint){
-        this.constraint = constraint;
+        user.setConstraints(constraint);
     }
 
     public Constraints getConstraint(){
-        if(constraint != null){
-            return constraint;
+        if(user != null) {
+            return user.getConstraints();
         }
-        return new Constraints();
-    }
-
-    public boolean hasConstraint(){
-        return constraint != null;
-    }
-
-    public String getName(){
-        return profile.get(0);
-    }
-
-    public String getAge(){
-        return profile.get(1);
-    }
-
-    public String getHeight(){
-        return profile.get(2);
-    }
-
-    public String getWeight(){
-        return profile.get(3);
-    }
-
-    public String getGender(){
-        return profile.get(4);
-    }
-
-    public void loadProfile(ArrayList<String> profile){
-        if(profile == null){
-            return;
-        }
-        this.profile = profile;
+        this.user = new UserProfile();
+        return user.getConstraints();
     }
 
     public ArrayList<MealItem> getDinner() {
@@ -142,7 +111,7 @@ public class MyApplication extends Application {
             this.user = user;
         }
         else{
-            user = new UserProfile();
+            this.user = new UserProfile();
         }
     }
 
@@ -151,5 +120,34 @@ public class MyApplication extends Application {
             return user;
         }
         return new UserProfile();
+    }
+
+    public void addRecipeItem(RecipeItem item){
+        if(recipes == null){
+            recipes = new ArrayList<RecipeItem>();
+        }
+        recipes.add(item);
+    }
+
+    public void clearRecipeItems(){
+        if(recipes != null){
+            recipes.clear();
+        }
+    }
+
+    public boolean hasIngredients(){
+        if(recipes != null){
+            if(recipes.size() == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public ArrayList<RecipeItem> getIngredients(){
+        if(recipes != null){
+            return recipes;
+        }
+        return new ArrayList<RecipeItem>();
     }
 }

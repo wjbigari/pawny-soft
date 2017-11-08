@@ -1,128 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context="com.example.ak.mealplanner.EditProfile"
-android:orientation="vertical">
-
-<android.support.v7.widget.Toolbar
-    android:id="@+id/toolbar"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    android:background="?attr/colorPrimary"
-    android:elevation="6dp"
-    android:minHeight="?attr/actionBarSize"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    android:layout_height="match_parent"
+    tools:context="com.example.ak.mealplanner.Favorites"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/nameTitle"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <TextView
+        android:id="@+id/textview91"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Food Name:"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editName"
+        android:id="@+id/foodNameEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter name"
+        android:hint="Enter food name"
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/ageTitle"
+        android:id="@+id/textview100"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Age"
+        android:text="Food ID:"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editAge"
+        android:id="@+id/editFoodID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter age"
+        android:hint="Enter food ID"
         android:inputType="number" />
 
     <TextView
-        android:id="@+id/heightTitle"
+        android:id="@+id/textView89"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Height"
+        android:text="Portion:"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editHeight"
+        android:id="@+id/portionEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter Height"
+        android:hint="Enter food portions"
         android:inputType="number" />
 
     <TextView
-        android:id="@+id/weightTitle"
+        android:id="@+id/textview99"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Weight"
+        android:text="Portion Name:"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editWeight"
+        android:id="@+id/portionNameEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter Weight"
-        android:inputType="number" />
+        android:hint="Enter portion name"
+        android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/genderTitle"
+        android:id="@+id/textview90"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gender"
+        android:text="Instructions"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <RadioGroup
-        android:id="@+id/genderGroup"
+    <EditText
+        android:id="@+id/instructEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/radioMale"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Male" />
-
-        <RadioButton
-            android:id="@+id/radioFemale"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Female" />
-    </RadioGroup>
+        android:ems="10"
+        android:hint="Enter preperation instructions"
+        android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/saveProfile"
+        android:id="@+id/addRecipeButton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:onClick="saveProfile"
         android:text="Save"
+        android:onClick="addRecipe"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

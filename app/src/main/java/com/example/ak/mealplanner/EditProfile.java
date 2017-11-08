@@ -72,6 +72,7 @@ public class EditProfile extends AppCompatActivity {
         super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case android.R.id.home:
+                save();
                 finish();
                 break;
         }
@@ -80,6 +81,11 @@ public class EditProfile extends AppCompatActivity {
 
     public void saveProfile(View view) {
         // Do something in response to button
+        save();
+        finish();
+    }
+
+    private void save(){
         UserProfile profile = app.getUser();
 
         EditText x = (EditText) findViewById(R.id.editName);
@@ -108,6 +114,5 @@ public class EditProfile extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        finish();
     }
 }

@@ -11,10 +11,11 @@ import java.io.Serializable;
 
 public class UserProfile implements Serializable {
 
-    String username = "will";
+    String username;
     String name;
     int age,height,weight;
     gender gen;
+    Constraints constraints;
 
     public enum gender{MALE, FEMALE}
 
@@ -25,6 +26,7 @@ public class UserProfile implements Serializable {
         this.height = 2;
         this.weight =3;
         this.gen = gender.MALE;
+        this.constraints = new Constraints();
     }
 
     public UserProfile(String username, String name, int age, int height, int weight, gender gen){
@@ -34,6 +36,7 @@ public class UserProfile implements Serializable {
         this.height = height;
         this.weight = weight;
         this.gen = gen;
+        this.constraints = new Constraints();
     }
 
     public UserProfile(JSONObject jobject) throws JSONException {
@@ -65,6 +68,13 @@ public class UserProfile implements Serializable {
         return gen;
     }
 
+    public Constraints getConstraints() {
+        if(constraints != null) {
+            return constraints;
+        }
+        return new Constraints();
+    }
+
     public void setName(String name){
         this.name = name;
     }
@@ -83,6 +93,10 @@ public class UserProfile implements Serializable {
 
     public void setGen(gender gen){
         this.gen = gen;
+    }
+
+    public void setConstraints(Constraints constraints){
+        this.constraints = constraints;
     }
 
     public String getHeighString(){

@@ -38,9 +38,12 @@ public class FirstStartActivity extends AppCompatActivity {
         EditText text = (EditText) findViewById(R.id.editUser);
         String userName = text.getText().toString();
         text = (EditText) findViewById(R.id.editFirstName);
-
+        if(userName.equals("") || text.getText().toString().equals("")){
+            return;
+        }
         app.addUser(new UserProfile(userName,text.getText().toString() , 0,0,0,UserProfile.gender.MALE));
         Intent intent = new Intent(this, EditProfile.class);
         startActivity(intent);
+        finish();
     }
 }
