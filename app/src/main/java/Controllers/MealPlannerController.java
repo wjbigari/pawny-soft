@@ -91,7 +91,7 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
             JSONArray requestJSONArray = new JSONArray();
             for(MealItem mi : requestList) {
                 Log.i("al", mi.toString());
-                requestJSONArray.put(mi.toJSON().toString());
+                requestJSONArray.put(mi.toJson().toString());
             }
             String constraintsJSONString = requestConstraints.toJSON().toString();
             Log.i("al", constraintsJSONString);
