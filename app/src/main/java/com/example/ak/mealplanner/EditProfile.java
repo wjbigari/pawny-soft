@@ -15,6 +15,8 @@ import android.widget.TextView;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
+import Controllers.SendUserController;
+
 public class EditProfile extends AppCompatActivity {
 
     MyApplication app;
@@ -72,6 +74,7 @@ public class EditProfile extends AppCompatActivity {
         super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case android.R.id.home:
+                save();
                 finish();
                 break;
         }
@@ -80,6 +83,11 @@ public class EditProfile extends AppCompatActivity {
 
     public void saveProfile(View view) {
         // Do something in response to button
+        save();
+        finish();
+    }
+
+    private void save(){
         UserProfile profile = app.getUser();
 
         EditText x = (EditText) findViewById(R.id.editName);
@@ -104,10 +112,11 @@ public class EditProfile extends AppCompatActivity {
             objectOut.writeObject(profile);
             objectOut.close();
 
+            SendUserController sendUserController = new SendUserController(this, "updateUser", profile);
+            sendUserController.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        finish();
     }
 }

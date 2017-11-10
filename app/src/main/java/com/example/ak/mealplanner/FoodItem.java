@@ -78,12 +78,12 @@ public class FoodItem implements Serializable, MealItemContent{
     public FoodItem(JSONObject fromObject) throws JSONException {
         this.name = fromObject.getString("name");
         this.foodId = fromObject.getInt("foodId");
-        this.servingValue = fromObject.getInt("servingValue");
+        this.servingValue = fromObject.getDouble("servingValue");
         this.servingUnit = fromObject.getString("servingUnit");
-        this.calPerServing = fromObject.getInt("calPerServing");
-        this.gramsCarbPerServing = fromObject.getInt("gramsCarbPerServing");
-        this.gramsProtPerServing = fromObject.getInt("gramsProtPerServing");
-        this.gramsFatPerServing = fromObject.getInt("gramsFatPerServing");
+        this.calPerServing = fromObject.getDouble("calPerServing");
+        this.gramsCarbPerServing = fromObject.getDouble("gramsCarbPerServing");
+        this.gramsProtPerServing = fromObject.getDouble("gramsProtPerServing");
+        this.gramsFatPerServing = fromObject.getDouble("gramsFatPerServing");
         this.internalCoefficient = fromObject.getDouble("internalCoefficient");
     }
 

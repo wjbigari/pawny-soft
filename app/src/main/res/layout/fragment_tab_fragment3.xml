@@ -13,19 +13,9 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/buttonBook"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.66"
-        android:background="@color/colorPrimary"
-        android:onClick="startBook"
-        android:text="Recipe Book"
-        android:textColor="@android:color/white" />
-
-    <Button
         android:id="@+id/buttonFave"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="228dp"
         android:layout_weight="0.38"
         android:background="@color/colorPrimary"
         android:onClick="startFavorites"

@@ -5,16 +5,20 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
+import static com.example.ak.mealplanner.UserProfile.gender.FEMALE;
+import static com.example.ak.mealplanner.UserProfile.gender.MALE;
+
 /**
  * Created by ak on 11/2/17.
  */
 
 public class UserProfile implements Serializable {
 
-    String username = "will";
+    String username;
     String name;
     int age,height,weight;
     gender gen;
+    Constraints constraints;
 
     public enum gender{MALE, FEMALE}
 
@@ -25,6 +29,7 @@ public class UserProfile implements Serializable {
         this.height = 2;
         this.weight =3;
         this.gen = gender.MALE;
+        this.constraints = new Constraints();
     }
 
     public UserProfile(String username, String name, int age, int height, int weight, gender gen){
@@ -34,6 +39,7 @@ public class UserProfile implements Serializable {
         this.height = height;
         this.weight = weight;
         this.gen = gen;
+        this.constraints = new Constraints();
     }
 
     public UserProfile(JSONObject jobject) throws JSONException {
@@ -42,6 +48,14 @@ public class UserProfile implements Serializable {
         this.age = jobject.getInt("age");
         this.height = jobject.getInt("height");
         this.weight = jobject.getInt("weight");
+        switch(jobject.getString("gender").toUpperCase()){
+            case "MALE":
+                this.gen = MALE;
+                break;
+            case "FEMALE":
+                this.gen = FEMALE;
+                break;
+        }
 
     }
 
@@ -65,6 +79,13 @@ public class UserProfile implements Serializable {
         return gen;
     }
 
+    public Constraints getConstraints() {
+        if(constraints != null) {
+            return constraints;
+        }
+        return new Constraints();
+    }
+
     public void setName(String name){
         this.name = name;
     }
@@ -85,6 +106,10 @@ public class UserProfile implements Serializable {
         this.gen = gen;
     }
 
+    public void setConstraints(Constraints constraints){
+        this.constraints = constraints;
+    }
+
     public String getHeighString(){
         int feet = this.height/12;
         int inches = this.height % 12;
@@ -97,6 +122,7 @@ public class UserProfile implements Serializable {
         jobject.put("age", this.age);
         jobject.put("height", this.height);
         jobject.put("weight", this.weight);
+        jobject.put("gender", this.gen.name());
         return jobject;
     }
 }

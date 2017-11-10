@@ -1,6 +1,8 @@
 package Controllers;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.example.ak.mealplanner.Constraints;
 import com.example.ak.mealplanner.UserProfile;
@@ -26,17 +28,17 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
     private String optionString;
     private PrintWriter out;
     private BufferedReader in;
+    Context context;
     JSONObject responseObject;
     private Socket socket;
     String dstAddress ="10.0.2.2";
     int dstPort = 8083;
 
-    public SendUserController(String optionString, UserProfile user, Constraints constraints){
-
+    public SendUserController(Context context, String optionString, UserProfile user){
+        this.context = context;
         this.user = user;
         this.optionString = optionString;
-        this.constraints = constraints;
-
+        this.constraints = this.user.getConstraints();
     }
     @Override
     protected Void doInBackground(Void... voids) {
@@ -45,6 +47,7 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
             JSONObject putObject = packageObject();
             out = new PrintWriter(socket.getOutputStream());
             out.println(putObject.toString());
+            out.flush();
 
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String response = in.readLine();
@@ -64,15 +67,14 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
         JSONObject outObject = new JSONObject();
         outObject.put("option", this.optionString);
         outObject.put("constraints", this.constraints.toJSON().toString());
-        outObject.put("userProfile", this.user.toJSON());
+        outObject.put("userProfile", this.user.toJSON().toString());
         return outObject;
     }
     @Override
     protected void onPostExecute(Void result) {
         try {
             String responseText = responseObject.getString("response");
-            //TODO popup to display whether the operation was successful?
-
+            Toast.makeText(this.context, responseText, Toast.LENGTH_SHORT);
         } catch (JSONException e) {
             e.printStackTrace();
         }

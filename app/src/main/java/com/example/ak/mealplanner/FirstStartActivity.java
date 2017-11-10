@@ -1,11 +1,17 @@
 package com.example.ak.mealplanner;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+
+import Controllers.SendUserController;
 
 public class FirstStartActivity extends AppCompatActivity {
+    MyApplication app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,8 +21,7 @@ public class FirstStartActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        app = (MyApplication) getApplication();
     }
 
     @Override
@@ -28,5 +33,27 @@ public class FirstStartActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    public void nextStart(View view) {
+        // Do something in response to button
+        EditText text = (EditText) findViewById(R.id.editUser);
+        String userName = text.getText().toString();
+        text = (EditText) findViewById(R.id.editFirstName);
+        if(userName.equals("") || text.getText().toString().equals("")){
+            return;
+        }
+        app.addUser(new UserProfile(userName,text.getText().toString() , 0,0,0,UserProfile.gender.MALE));
+
+        app.addUser(new UserProfile(userName, text.getText().toString(), 0,0,0,UserProfile.gender.MALE));
+        if(userName.equals("") || text.getText().toString().equals("")){
+            return;
+        }
+        app.addUser(new UserProfile(userName,text.getText().toString() , 0,0,0,UserProfile.gender.MALE));
+        Intent intent = new Intent(this, EditProfile.class);
+        SendUserController sendUserController = new SendUserController(this, "insertUser", app.getUser() );
+        sendUserController.execute();
+        startActivity(intent);
+        finish();
     }
 }

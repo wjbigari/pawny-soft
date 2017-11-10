@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,12 +28,22 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView x;
-    ArrayList<MealItem> items = new ArrayList<MealItem>();
     MyApplication app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .getBoolean("isFirstRun", true);
+
+        if (isFirstRun) {
+            //show start activity
+            startActivity(new Intent(MainActivity.this, FirstStartActivity.class));
+            Toast.makeText(MainActivity.this, "First Run", Toast.LENGTH_LONG)
+                    .show();
+        }
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                .putBoolean("isFirstRun", false).commit();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -45,30 +56,26 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount()));
         tabLayout.setupWithViewPager(viewPager);
 
-        x = (TextView)findViewById(R.id.editName);
-
-        String [] profile = {"Will", "1", "2", "3", "Male"};
-        ArrayList<String> user = new ArrayList<String>(Arrays.asList(profile));
-
         app = (MyApplication) getApplicationContext();
-        app.loadProfile(user);
 
-        FileInputStream fileIn;
-        ObjectInputStream objectIn;
-        UserProfile userProfile = new UserProfile();
+        if(!isFirstRun) {
+            FileInputStream fileIn;
+            ObjectInputStream objectIn;
+            UserProfile userProfile = new UserProfile();
 
-        try {
-            fileIn = openFileInput("profile");
-            objectIn = new ObjectInputStream(fileIn);
+            try {
+                fileIn = openFileInput("profile");
+                objectIn = new ObjectInputStream(fileIn);
 
-            userProfile = (UserProfile) objectIn.readObject();
-            objectIn.close();
+                userProfile = (UserProfile) objectIn.readObject();
+                objectIn.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            app.addUser(userProfile);
         }
-
-        app.addUser(userProfile);
     }
 
     @Override
@@ -122,21 +129,14 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         Intent intent = new Intent(this, Results.class);
-        intent.putExtra("list", items);
         startActivity(intent);
     }
 
-    public void addItem(MealItem item){
-        items.add(item);
+    public void buildRecipe(View view) {
+        Intent intent = new Intent(this, RecipeBuildActivity.class);
+        startActivity(intent);
     }
 
-    public ArrayList<MealItem> getList(){
-        return items;
-    }
-
-    public void changeText(String s){
-        x.setText(s);
-    }
     /**
     public void sendMessage(View view) {
         Intent intent = new Intent(this, profile.class);

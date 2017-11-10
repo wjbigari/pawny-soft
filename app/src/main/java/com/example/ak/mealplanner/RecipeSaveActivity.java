@@ -1,0 +1,73 @@
+package com.example.ak.mealplanner;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+
+public class RecipeSaveActivity extends AppCompatActivity {
+    MyApplication app;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recipe_save);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        app = (MyApplication) getApplication();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
+    }
+
+    public void addRecipe(View view) {
+        EditText x = (EditText) findViewById(R.id.foodNameEdit);
+        if(x.getText().toString().equals("")){
+            return;
+        }
+        String foodName = x.getText().toString();
+        x = (EditText) findViewById(R.id.editFoodID);
+        if(x.getText().toString().equals("")){
+            return;
+        }
+        int foodID = Integer.parseInt(x.getText().toString());
+        x = (EditText) findViewById(R.id.portionEdit);
+        if(x.getText().toString().equals("")){
+            return;
+        }
+        int portion = Integer.parseInt(x.getText().toString());
+        x = (EditText) findViewById(R.id.portionNameEdit);
+        if(x.getText().toString().equals("")){
+            return;
+        }
+        String portionName = x.getText().toString();
+        x = (EditText) findViewById(R.id.instructEdit);
+        if(x.getText().toString().equals("")){
+            return;
+        }
+        String instruct = x.getText().toString();
+
+        UserRecipe recipe = new UserRecipe(foodName, foodID, app.getIngredients(), portion, portionName, instruct);
+
+        //TODO: use controller to add new Recipe to database
+        //WILL this is for you
+
+        app.clearRecipeItems();
+        finish();
+    }
+}
