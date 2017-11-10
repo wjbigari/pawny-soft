@@ -97,14 +97,7 @@ public class MealItem implements Serializable{
     }
 
     //TODO: Set up JSON serialization/deserialization functions
-    public JSONObject toJSON() throws JSONException {
-        JSONObject returnObject = new JSONObject();
-        returnObject.put("content", this.content.toJson().toString());
-        returnObject.put("meal", this.meal.name());
-        returnObject.put("isLocked", this.isLocked);
-        returnObject.put("numServings", this.numServings);
-        return returnObject;
-    }
+
     public JSONObject toJson() throws JSONException{
         JSONObject returnObject = new JSONObject();
         returnObject.put("content", this.content.toJson().toString());

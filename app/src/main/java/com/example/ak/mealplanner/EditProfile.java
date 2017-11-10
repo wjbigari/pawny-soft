@@ -112,7 +112,7 @@ public class EditProfile extends AppCompatActivity {
             objectOut.writeObject(profile);
             objectOut.close();
 
-            SendUserController sendUserController = new SendUserController(this, "updateUser", profile, app.getConstraint() );
+            SendUserController sendUserController = new SendUserController(this, "updateUser", profile);
             sendUserController.execute();
         } catch (Exception e) {
             e.printStackTrace();

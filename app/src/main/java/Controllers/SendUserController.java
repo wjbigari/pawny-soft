@@ -34,12 +34,11 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
     String dstAddress ="10.0.2.2";
     int dstPort = 8083;
 
-    public SendUserController(Context context, String optionString, UserProfile user, Constraints constraints){
+    public SendUserController(Context context, String optionString, UserProfile user){
         this.context = context;
         this.user = user;
         this.optionString = optionString;
-        this.constraints = constraints;
-
+        this.constraints = this.user.getConstraints();
     }
     @Override
     protected Void doInBackground(Void... voids) {
