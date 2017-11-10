@@ -23,6 +23,11 @@ public class UserRecipe implements Serializable, MealItemContent {
     //Part of the balancing algorithm - not for use outside the MealPlanner
     private double internalCoefficient;
 
+    @Override
+    public String toString(){
+        return "Portion: " + numPortions + " " + portionName + "\nInstruction: " + prepInstructions;
+
+    }
 
     //Constructors - any fields that are not explicitly set will be set to default values
     public UserRecipe(String foodName, int id, ArrayList<RecipeItem> ing, int portions, String portionName, String instructions){
