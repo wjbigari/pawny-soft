@@ -5,6 +5,9 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
+import static com.example.ak.mealplanner.UserProfile.gender.FEMALE;
+import static com.example.ak.mealplanner.UserProfile.gender.MALE;
+
 /**
  * Created by ak on 11/2/17.
  */
@@ -45,6 +48,14 @@ public class UserProfile implements Serializable {
         this.age = jobject.getInt("age");
         this.height = jobject.getInt("height");
         this.weight = jobject.getInt("weight");
+        switch(jobject.getString("gender").toUpperCase()){
+            case "MALE":
+                this.gen = MALE;
+                break;
+            case "FEMALE":
+                this.gen = FEMALE;
+                break;
+        }
 
     }
 
@@ -111,6 +122,7 @@ public class UserProfile implements Serializable {
         jobject.put("age", this.age);
         jobject.put("height", this.height);
         jobject.put("weight", this.weight);
+        jobject.put("gender", this.gen.name());
         return jobject;
     }
 }
