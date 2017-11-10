@@ -28,8 +28,6 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView x;
-    ArrayList<MealItem> items = new ArrayList<MealItem>();
     MyApplication app;
 
     @Override
@@ -58,13 +56,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount()));
         tabLayout.setupWithViewPager(viewPager);
 
-        x = (TextView)findViewById(R.id.editName);
-
-        String [] profile = {"Will", "1", "2", "3", "Male"};
-        ArrayList<String> user = new ArrayList<String>(Arrays.asList(profile));
-
         app = (MyApplication) getApplicationContext();
-        app.loadProfile(user);
 
         if(!isFirstRun) {
             FileInputStream fileIn;
@@ -137,21 +129,14 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         Intent intent = new Intent(this, Results.class);
-        intent.putExtra("list", items);
         startActivity(intent);
     }
 
-    public void addItem(MealItem item){
-        items.add(item);
+    public void buildRecipe(View view) {
+        Intent intent = new Intent(this, RecipeBuildActivity.class);
+        startActivity(intent);
     }
 
-    public ArrayList<MealItem> getList(){
-        return items;
-    }
-
-    public void changeText(String s){
-        x.setText(s);
-    }
     /**
     public void sendMessage(View view) {
         Intent intent = new Intent(this, profile.class);

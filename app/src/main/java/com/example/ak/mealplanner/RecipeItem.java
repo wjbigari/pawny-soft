@@ -6,9 +6,16 @@ package com.example.ak.mealplanner;
 import org.json.JSONObject;
 import org.json.JSONException;
 
-public class RecipeItem {
+import java.io.Serializable;
+
+public class RecipeItem implements Serializable{
     private FoodItem foodItem;
     private int numServings;
+
+    @Override
+    public String toString(){
+        return foodItem.toString();
+    }
 
     //This class should not use a no-arg constructor
     public RecipeItem(FoodItem food, int servings){

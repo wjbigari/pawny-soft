@@ -9,13 +9,17 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-    <Button
-        android:id="@+id/buttonGoals"
+    <ListView
+        android:id="@+id/recipeList"
         android:layout_width="match_parent"
-        android:layout_height="144dp"
-        android:layout_weight="0.17"
+        android:layout_height="510dp" />
+
+    <Button
+        android:id="@+id/buttonBuildRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
         android:background="@color/colorPrimary"
-        android:onClick="startGoals"
-        android:text="Goals"
+        android:text="Build Recipe"
+        android:onClick="buildRecipe"
         android:textColor="@android:color/white" />
 </LinearLayout>

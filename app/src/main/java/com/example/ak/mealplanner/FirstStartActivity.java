@@ -42,9 +42,14 @@ public class FirstStartActivity extends AppCompatActivity {
         text = (EditText) findViewById(R.id.editFirstName);
 
         app.addUser(new UserProfile(userName, text.getText().toString(), 0,0,0,UserProfile.gender.MALE));
+        if(userName.equals("") || text.getText().toString().equals("")){
+            return;
+        }
+        app.addUser(new UserProfile(userName,text.getText().toString() , 0,0,0,UserProfile.gender.MALE));
         Intent intent = new Intent(this, EditProfile.class);
         SendUserController sendUserController = new SendUserController(this, "insertUser", app.getUser(), app.getConstraint() );
         sendUserController.execute();
         startActivity(intent);
+        finish();
     }
 }

@@ -45,9 +45,9 @@ public class PagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return "Builder";
             case 1:
-                return "Profile";
+                return "Recipes";
             case 2:
-                return "Calendar";
+                return "Favorites";
             default:
                 return "Meal Planner";
         }

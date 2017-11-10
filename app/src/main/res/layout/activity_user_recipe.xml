@@ -18,10 +18,4 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <ExpandableListView
-        android:id="@+id/lvExp"
-        android:layout_width="match_parent"
-        android:groupIndicator="@null"
-        android:layout_height="match_parent" />
-
 </LinearLayout>

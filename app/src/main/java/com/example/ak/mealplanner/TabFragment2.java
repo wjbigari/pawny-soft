@@ -1,14 +1,21 @@
 package com.example.ak.mealplanner;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 
 /**
@@ -30,6 +37,8 @@ public class TabFragment2 extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private ArrayAdapter<UserRecipe> listAdapter;
 
     public TabFragment2() {
         // Required empty public constructor
@@ -57,6 +66,37 @@ public class TabFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_tab_fragment2, container, false);
+
+        final ListView mainListView =  rootView.findViewById(R.id.recipeList);
+
+        ArrayList<UserRecipe> foodList = new ArrayList<UserRecipe>();
+
+        // Create ArrayAdapter
+        listAdapter  = new ArrayAdapter<UserRecipe>(getContext(), R.layout.listrow, foodList);
+
+
+
+        listAdapter.sort(new Comparator<UserRecipe>() {
+            @Override
+            public int compare(UserRecipe o1, UserRecipe o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+        listAdapter.notifyDataSetChanged();
+
+        // Set the ArrayAdapter as the ListView's adapter.
+        mainListView.setAdapter(listAdapter);
+
+        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                UserRecipe x = (UserRecipe) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getActivity(), UserRecipeActivity.class);
+                intent.putExtra("userRecipe", x);
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }
