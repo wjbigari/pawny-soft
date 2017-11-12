@@ -1,12 +1,12 @@
 package Controllers;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
+import android.widget.Toast;
 
 import com.example.ak.mealplanner.UserRecipe;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,68 +15,64 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 /**
- * Created by wbigari on 11/9/17.
+ * Created by wbigari on 11/11/17.
  */
 
-public class GetUserRecipesController  extends AsyncTask<Void, Void, Void> {
-    private ArrayAdapter listAdapter;
-    private String username;
+public class SendUserRecipeController extends AsyncTask<Void,Void,Void> {
+    private UserRecipe userRecipe;
     private JSONObject requestObject;
     private JSONObject responseObject;
+    private String username;
     private String dstAddress = "10.0.2.2";
     private int dstPort = 8083;
     private Socket socket;
+    Context context;
 
-    public GetUserRecipesController(ArrayAdapter listAdapter, String username) {
+    public SendUserRecipeController(UserRecipe userRecipe, Context context, String username){
+        this.userRecipe = userRecipe;
+        this.context = context;
         this.username = username;
-        this.listAdapter = listAdapter;
-
     }
 
     @Override
     protected Void doInBackground(Void... voids) {
         try {
-            Socket socket = new Socket(dstAddress, dstPort);
-            PackageJSON();
+            socket = new Socket(dstAddress, dstPort);
             PrintWriter writer = new PrintWriter(socket.getOutputStream());
-            writer.println(requestObject.toString());
+            packageJSON();
+            writer.println(this.requestObject);
 
             BufferedReader inputStream = new BufferedReader(new InputStreamReader(
                     socket.getInputStream()));
             String responseAsString = inputStream.readLine().toString();
             responseObject = new JSONObject(responseAsString);
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
         return null;
     }
 
-    private void PackageJSON() throws JSONException {
+    private void packageJSON() throws JSONException {
         requestObject = new JSONObject();
-        requestObject.put("option", "getRecipes");
-        requestObject.put("username", this.username);
-
+        requestObject.put("option", "addRecipe");
+        requestObject.put("username", username);
+        requestObject.put("recipe", userRecipe.toJson().toString());
     }
+
     @Override
     protected void onPostExecute(Void result) {
-        listAdapter.clear();
         try {
-            JSONArray jsonArray = new JSONArray(responseObject.getString("recipeList"));
-            for (int i = 0; i < jsonArray.length(); i++) {
-                listAdapter.add(new UserRecipe(new JSONObject(jsonArray.getString(i))));
-            }
+            String responseText = responseObject.getString("response");
+            Toast.makeText(this.context, responseText, Toast.LENGTH_SHORT);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         super.onPostExecute(result);
     }
 }
-

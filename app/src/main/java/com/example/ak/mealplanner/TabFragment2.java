@@ -17,6 +17,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import Controllers.GetUserRecipesController;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,7 +75,9 @@ public class TabFragment2 extends Fragment {
 
         // Create ArrayAdapter
         listAdapter  = new ArrayAdapter<UserRecipe>(getContext(), R.layout.listrow, foodList);
-
+        String username = "willb";
+        GetUserRecipesController gurc = new GetUserRecipesController(listAdapter, username );
+        gurc.execute();
 
 
         listAdapter.sort(new Comparator<UserRecipe>() {
@@ -97,8 +101,6 @@ public class TabFragment2 extends Fragment {
                 startActivity(intent);
             }
         });
-
-        //TODO: Will add user recipe controller
 
         return rootView;
     }
