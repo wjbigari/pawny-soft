@@ -44,9 +44,7 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... arg0) {
-
         Socket socket = null;
-
         try {
             socket = new Socket(dstAddress, dstPort);
             PrintWriter writer = new PrintWriter(socket.getOutputStream());

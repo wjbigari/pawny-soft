@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import Controllers.SendUserRecipeController;
+
 public class RecipeSaveActivity extends AppCompatActivity {
     MyApplication app;
 
@@ -64,8 +66,8 @@ public class RecipeSaveActivity extends AppCompatActivity {
 
         UserRecipe recipe = new UserRecipe(foodName, foodID, app.getIngredients(), portion, portionName, instruct);
 
-        //TODO: use controller to add new Recipe to database
-        //WILL this is for you
+        SendUserRecipeController surc = new SendUserRecipeController(recipe,this, app.getUser().getUsername());
+        surc.execute();
 
         app.clearRecipeItems();
         finish();
