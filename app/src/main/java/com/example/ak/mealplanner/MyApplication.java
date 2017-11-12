@@ -135,6 +135,12 @@ public class MyApplication extends Application {
         }
     }
 
+    public void hasRecipeItem(RecipeItem item){
+        if(recipes != null){
+
+        }
+    }
+
     public boolean hasIngredients(){
         if(recipes != null){
             if(recipes.size() == 0){
