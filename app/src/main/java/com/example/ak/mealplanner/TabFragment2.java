@@ -72,11 +72,10 @@ public class TabFragment2 extends Fragment {
         final ListView mainListView =  rootView.findViewById(R.id.recipeList);
 
         ArrayList<UserRecipe> foodList = new ArrayList<UserRecipe>();
-
+        MyApplication app = (MyApplication) getActivity().getApplication();
         // Create ArrayAdapter
         listAdapter  = new ArrayAdapter<UserRecipe>(getContext(), R.layout.listrow, foodList);
-        String username = "willb";
-        GetUserRecipesController gurc = new GetUserRecipesController(listAdapter, username );
+        GetUserRecipesController gurc = new GetUserRecipesController(listAdapter, app.getUser().getUsername() );
         gurc.execute();
 
 

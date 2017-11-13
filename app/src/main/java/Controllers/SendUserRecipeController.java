@@ -43,6 +43,7 @@ public class SendUserRecipeController extends AsyncTask<Void,Void,Void> {
             PrintWriter writer = new PrintWriter(socket.getOutputStream());
             packageJSON();
             writer.println(this.requestObject);
+            writer.flush();
 
             BufferedReader inputStream = new BufferedReader(new InputStreamReader(
                     socket.getInputStream()));

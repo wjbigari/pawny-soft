@@ -56,7 +56,7 @@ public class UserRecipe implements Serializable, MealItemContent {
     }
 
     public UserRecipe(JSONObject in) throws JSONException{
-        this.name = in.optString("name");
+        this.name = in.optString("uname");
         this.foodId = in.optInt("foodId");
         JSONArray ingIn = new JSONArray(in.optString("ingredients"));
         for(int i = 0; i < ingIn.length(); i++){
@@ -191,7 +191,7 @@ public class UserRecipe implements Serializable, MealItemContent {
 
     public JSONObject toJson() throws JSONException{
         JSONObject out = new JSONObject();
-        out.put("name", this.name);
+        out.put("uname", this.name);
         out.put("foodId", this.foodId);
         JSONArray ing = new JSONArray();
         for(RecipeItem item : this.ingredients){
