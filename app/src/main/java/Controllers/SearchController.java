@@ -19,7 +19,7 @@ import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.ak.mealplanner.FoodItem;
+import com.example.ak.mealplanner.Models.FoodItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,6 +1,5 @@
 package com.example.ak.mealplanner;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +10,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.ak.mealplanner.Models.FoodItem;
+import com.example.ak.mealplanner.Models.MealItem;
 
 import java.util.ArrayList;
 

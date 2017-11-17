@@ -1,4 +1,4 @@
-package com.example.ak.mealplanner;
+package com.example.ak.mealplanner.Models;
 
 /**
  * Created by wbigari on 10/26/17.

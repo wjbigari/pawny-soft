@@ -4,13 +4,12 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.TextView;
+
+import com.example.ak.mealplanner.Models.UserProfile;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;

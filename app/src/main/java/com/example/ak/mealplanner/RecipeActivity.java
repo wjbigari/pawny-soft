@@ -7,11 +7,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.example.ak.mealplanner.Models.FoodItem;
+import com.example.ak.mealplanner.Models.RecipeItem;
 
 public class RecipeActivity extends AppCompatActivity {
 

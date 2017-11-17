@@ -4,9 +4,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.example.ak.mealplanner.Constraints;
-import com.example.ak.mealplanner.FoodItem;
-import com.example.ak.mealplanner.MealItem;
+import com.example.ak.mealplanner.Models.Constraints;
+import com.example.ak.mealplanner.Models.MealItem;
 import com.example.ak.mealplanner.MealPlannerRec;
 
 import org.json.JSONArray;
@@ -14,19 +13,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 
 import java.io.PrintWriter;
 import java.net.Socket;
 
 import java.net.UnknownHostException;
-import java.nio.Buffer;
 import java.util.ArrayList;
 
 /**

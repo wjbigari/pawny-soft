@@ -2,9 +2,8 @@ package Controllers;
 
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 
-import com.example.ak.mealplanner.UserRecipe;
+import com.example.ak.mealplanner.Models.UserRecipe;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +32,6 @@ public class GetUserRecipesController  extends AsyncTask<Void, Void, Void> {
     public GetUserRecipesController(ArrayAdapter listAdapter, String username) {
         this.username = username;
         this.listAdapter = listAdapter;
-
     }
 
     @Override
@@ -76,6 +74,7 @@ public class GetUserRecipesController  extends AsyncTask<Void, Void, Void> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        listAdapter.notifyDataSetChanged();
         super.onPostExecute(result);
     }
 }
