@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.ak.mealplanner.Models.Constraints;
+import com.example.ak.mealplanner.Models.UserProfile;
+
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 

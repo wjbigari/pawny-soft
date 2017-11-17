@@ -4,15 +4,14 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.example.ak.mealplanner.Constraints;
-import com.example.ak.mealplanner.UserProfile;
+import com.example.ak.mealplanner.Models.Constraints;
+import com.example.ak.mealplanner.Models.UserProfile;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;

@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.ak.mealplanner.Models.UserProfile;
+
 import Controllers.SendUserController;
 
 public class FirstStartActivity extends AppCompatActivity {

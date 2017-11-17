@@ -1,12 +1,17 @@
 package com.example.ak.mealplanner;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+
+import com.example.ak.mealplanner.Models.RecipeItem;
+import com.example.ak.mealplanner.Models.UserRecipe;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import Controllers.SendUserRecipeController;
 
@@ -43,11 +48,6 @@ public class RecipeSaveActivity extends AppCompatActivity {
             return;
         }
         String foodName = x.getText().toString();
-        x = (EditText) findViewById(R.id.editFoodID);
-        if(x.getText().toString().equals("")){
-            return;
-        }
-        int foodID = Integer.parseInt(x.getText().toString());
         x = (EditText) findViewById(R.id.portionEdit);
         if(x.getText().toString().equals("")){
             return;
@@ -64,12 +64,15 @@ public class RecipeSaveActivity extends AppCompatActivity {
         }
         String instruct = x.getText().toString();
 
-        UserRecipe recipe = new UserRecipe(foodName, foodID, app.getIngredients(), portion, portionName, instruct);
+        ArrayList<RecipeItem> copyList = new ArrayList<>();
+        copyList.addAll(app.getIngredients());
+        UserRecipe recipe = new UserRecipe(foodName, -42, copyList, portion, portionName, instruct);
 
         SendUserRecipeController surc = new SendUserRecipeController(recipe,this, app.getUser().getUsername());
         surc.execute();
 
-        app.clearRecipeItems();
+        app.clearRecipeItems();;
         finish();
     }
+
 }

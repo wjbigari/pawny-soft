@@ -1,4 +1,6 @@
-package com.example.ak.mealplanner;
+package com.example.ak.mealplanner.Models;
+
+import com.example.ak.mealplanner.MealItemContent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -185,7 +187,10 @@ public class UserRecipe implements Serializable, MealItemContent {
                 match = true;
             }
         }
-        if(!match) ingredients.add(new RecipeItem(food, numServ));
+        if(!match){
+            ingredients.add(new RecipeItem(food, numServ));
+
+        }
     }
 
 
@@ -213,4 +218,5 @@ public class UserRecipe implements Serializable, MealItemContent {
                 && other.getIngredients().containsAll(this.ingredients)
                 && this.numPortions == other.getNumPortions();
     }
+
 }

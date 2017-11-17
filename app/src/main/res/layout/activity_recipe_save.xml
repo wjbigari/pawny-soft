@@ -35,22 +35,6 @@
         android:hint="Enter food name"
         android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/textview100"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Food ID:"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/editFoodID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter food ID"
-        android:inputType="number" />
 
     <TextView
         android:id="@+id/textView89"

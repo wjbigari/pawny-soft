@@ -1,11 +1,13 @@
-package com.example.ak.mealplanner;
+package com.example.ak.mealplanner.Models;
+
+import com.example.ak.mealplanner.MealItemContent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class FoodItem implements Serializable, MealItemContent{
+public class FoodItem implements Serializable, MealItemContent {
     //Values used for identifying the food item
     private String name;
     private int foodId;

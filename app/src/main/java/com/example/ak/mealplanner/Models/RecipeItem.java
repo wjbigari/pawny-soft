@@ -1,8 +1,10 @@
-package com.example.ak.mealplanner;
+package com.example.ak.mealplanner.Models;
 
 /**
  * Created by Nick on 10/30/2017.
  */
+import com.example.ak.mealplanner.Models.FoodItem;
+
 import org.json.JSONObject;
 import org.json.JSONException;
 

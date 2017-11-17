@@ -14,15 +14,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import com.example.ak.mealplanner.Models.FoodItem;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 
 import Controllers.SearchController;
-
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 
 /**

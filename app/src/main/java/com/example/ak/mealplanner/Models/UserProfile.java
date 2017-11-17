@@ -1,12 +1,12 @@
-package com.example.ak.mealplanner;
+package com.example.ak.mealplanner.Models;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
 
-import static com.example.ak.mealplanner.UserProfile.gender.FEMALE;
-import static com.example.ak.mealplanner.UserProfile.gender.MALE;
+import static com.example.ak.mealplanner.Models.UserProfile.gender.FEMALE;
+import static com.example.ak.mealplanner.Models.UserProfile.gender.MALE;
 
 /**
  * Created by ak on 11/2/17.
