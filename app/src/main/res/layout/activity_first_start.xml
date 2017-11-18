@@ -55,10 +55,19 @@
     <Button
         android:id="@+id/buttonNext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="@color/colorPrimary"
         android:onClick="nextStart"
-        android:text="Next"
+        android:text="Register"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Login"
+        android:onClick="login"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

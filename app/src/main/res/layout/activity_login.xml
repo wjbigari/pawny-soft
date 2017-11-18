@@ -19,59 +19,47 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <TextView
-        android:id="@+id/recipeName"
+        android:id="@+id/textUserLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Username"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/recipeInfo"
+    <EditText
+        android:id="@+id/editUserLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        android:ems="10"
+        android:hint="Enter username"
+        android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ingredients"
+        android:text="Password"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
-    <ListView
-        android:id="@+id/userrecipeList"
-        android:layout_width="match_parent"
-        android:layout_height="291dp" />
-
-    <Button
-        android:id="@+id/addRecipeItems"
+    <EditText
+        android:id="@+id/editPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="Add Ingredients"
-        android:onClick="modifyRecipeIngredients"
-        android:textColor="@android:color/white" />
+        android:ems="10"
+        android:hint="Enter password"
+        android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/recipeDelete"
+        android:id="@+id/loginButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="@color/colorPrimary"
-        android:onClick="deleteUserRecipe"
-        android:text="Delete"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/updateRecipe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="Update Recipe"
-        android:onClick="updateUserRecipe"
+        android:onClick="loadProfile"
+        android:text="Login"
         android:textColor="@android:color/white" />
 
 </LinearLayout>
+

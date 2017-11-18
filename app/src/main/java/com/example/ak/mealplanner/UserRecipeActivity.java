@@ -47,7 +47,7 @@ public class UserRecipeActivity extends AppCompatActivity {
 
         text = (TextView) findViewById(R.id.recipeInfo);
 
-        text.setText(recipe.toString());
+        text.setText("Serving size: " + recipe.getServingSize() + "\nPortion: " + recipe.getNumPortions() + "\nInstructions: " + recipe.getPrepInstructions());
 
         final ListView mainListView = findViewById(R.id.userrecipeList);
 
@@ -99,9 +99,13 @@ public class UserRecipeActivity extends AppCompatActivity {
     }
 
     public void updateUserRecipe(View view){
-        ModifyUserRecipesController murc = new ModifyUserRecipesController(app.getUserRecipe(), app.getUser().getUsername());
-        murc.execute();
-        app.removeUserRecipe();
+        Intent intent = new Intent(this, RecipeSaveActivity.class);
+        startActivity(intent);
         finish();
+    }
+
+    public void modifyRecipeIngredients(View view){
+        Intent intent = new Intent(this, RecipeBuildActivity.class);
+        startActivity(intent);
     }
 }
