@@ -18,6 +18,7 @@ import com.example.ak.mealplanner.Models.RecipeItem;
 import com.example.ak.mealplanner.Models.UserRecipe;
 
 import Controllers.DeleteRecipeItemController;
+import Controllers.GetUserRecipesController;
 import Controllers.ModifyUserRecipesController;
 
 public class UserRecipeActivity extends AppCompatActivity {
@@ -89,6 +90,20 @@ public class UserRecipeActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        listAdapter.clear();
+        listAdapter.addAll(app.getUserRecipe().getIngredients());
+        listAdapter.sort(new Comparator<RecipeItem>() {
+            @Override
+            public int compare(RecipeItem o1, RecipeItem o2) {
+                return o1.getFoodItem().getName().compareTo(o2.getFoodItem().getName());
+            }
+        });
+        listAdapter.notifyDataSetChanged();
     }
 
     public void deleteUserRecipe(View view){

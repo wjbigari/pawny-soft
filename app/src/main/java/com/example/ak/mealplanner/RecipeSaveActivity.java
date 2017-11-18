@@ -36,7 +36,7 @@ public class RecipeSaveActivity extends AppCompatActivity {
             x.setText(app.getUserRecipe().getName());
 
             x = (EditText) findViewById(R.id.portionEdit);
-            x.setText(app.getUserRecipe().getNumPortions());
+            x.setText(Integer.toString(app.getUserRecipe().getNumPortions()));
 
             x = (EditText) findViewById(R.id.portionNameEdit);
             x.setText(app.getUserRecipe().getServingUnit());
