@@ -99,7 +99,7 @@ public class UserRecipeActivity extends AppCompatActivity {
     }
 
     public void updateUserRecipe(View view){
-        ModifyUserRecipesController murc = new ModifyUserRecipesController(app.getUserRecipe());
+        ModifyUserRecipesController murc = new ModifyUserRecipesController(app.getUserRecipe(), app.getUser().getUsername());
         murc.execute();
         app.removeUserRecipe();
         finish();
