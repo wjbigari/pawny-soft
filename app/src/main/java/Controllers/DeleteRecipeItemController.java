@@ -2,6 +2,8 @@ package Controllers;
 
 import android.os.AsyncTask;
 
+import com.example.ak.mealplanner.Models.MealItem;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,8 +33,8 @@ public class DeleteRecipeItemController extends AsyncTask<Void,Void,Void> {
 
     private void packageJson()throws JSONException{
         this.requestObject = new JSONObject();
-        requestObject.put("option", "deleteRecipeItem");
-        requestObject.put("recipeItemId", this.recipeItemId);
+        requestObject.put("option", "deleteRecipe");
+        requestObject.put("recipeId", this.recipeItemId);
 
     }
     @Override
