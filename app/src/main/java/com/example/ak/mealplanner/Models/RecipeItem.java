@@ -25,7 +25,11 @@ public class RecipeItem implements Serializable{
         this.numServings = servings;
     }
     public RecipeItem(JSONObject in){
-        this.foodItem = new FoodItem(in.optString("foodItem"));
+        try {
+            this.foodItem = new FoodItem(new JSONObject(in.optString("foodItem")));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         this.numServings = in.optInt("numServings");
     }
 

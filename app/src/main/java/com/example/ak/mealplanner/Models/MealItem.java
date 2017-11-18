@@ -47,15 +47,15 @@ public class MealItem implements Serializable{
         this.numServings = servings;
     }
     public MealItem(JSONObject fromObject) throws JSONException {
-        JSONObject mealContent = new JSONObject(fromObject.optString("content"));
-//        if(mealContent.getString("ingredients").equals("")){
-            this.content = new FoodItem(mealContent);
-//        }else{
-//            this.content = new UserRecipe(mealContent);
-//        }
-        this.isLocked = fromObject.getBoolean("isLocked");
-        this.numServings = fromObject.getInt("numServings");
-        String mealString = fromObject.getString("meal");
+        JSONObject contentObject = new JSONObject(fromObject.getString("content"));
+        if(contentObject.optInt("numPortions") < 1){
+            this.content = new FoodItem(contentObject);
+        }else{
+            this.content = new UserRecipe(contentObject);
+        }
+        this.isLocked = fromObject.optBoolean("isLocked");
+        this.numServings = fromObject.optInt("numServings");
+        String mealString = fromObject.optString("meal");
         switch(mealString.toUpperCase()){
             case "BREAKFAST":
                 this.meal = BREAKFAST;
@@ -67,7 +67,6 @@ public class MealItem implements Serializable{
                 this.meal = DINNER;
                 break;
         }
-
     }
     public MealItem() {
         // TODO Auto-generated constructor stub

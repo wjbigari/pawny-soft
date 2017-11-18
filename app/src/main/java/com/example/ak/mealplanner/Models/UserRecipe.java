@@ -25,12 +25,20 @@ public class UserRecipe implements Serializable, MealItemContent {
     //Part of the balancing algorithm - not for use outside the MealPlanner
     private double internalCoefficient;
 
+    @Override
+    public String toString(){
+        return "Portion: " + numPortions + " " + portionName + "\nInstruction: " + prepInstructions;
+
+    }
 
     //Constructors - any fields that are not explicitly set will be set to default values
     public UserRecipe(String foodName, int id, ArrayList<RecipeItem> ing, int portions, String portionName, String instructions){
         this.name = foodName;
         this.foodId = id;
-        this.ingredients = ing;
+        this.ingredients = new ArrayList<RecipeItem>();
+        for(RecipeItem ri: ing){
+            addRecipeItem(ri);
+        }
         this.numPortions = portions;
         this.portionName = portionName;
         this.prepInstructions = instructions;
@@ -61,6 +69,7 @@ public class UserRecipe implements Serializable, MealItemContent {
         this.name = in.optString("uname");
         this.foodId = in.optInt("foodId");
         JSONArray ingIn = new JSONArray(in.optString("ingredients"));
+        this.ingredients = new ArrayList<RecipeItem>();
         for(int i = 0; i < ingIn.length(); i++){
             if(ingIn.get(i) instanceof String){
                 String ing = (String)ingIn.get(i);
@@ -178,6 +187,19 @@ public class UserRecipe implements Serializable, MealItemContent {
     public long getCalsFatPerServing(){return Math.round(this.getGramsFatPerServing() * 9);}
     public String getServingSize(){return this.getServingValue() + " " + this.getServingUnit();}
 
+    public void addRecipeItem(RecipeItem recipeItem){
+        boolean match = false;
+        for(RecipeItem item : ingredients){
+            if(item.getFoodItem().getFoodId() == (recipeItem.getFoodItem().getFoodId())) {
+                item.setNumServings(item.getNumServings() + recipeItem.getNumServings());
+                match = true;
+            }
+        }
+        if(!match){
+            ingredients.add(recipeItem);
+
+        }
+    }
     //Recipe-specific functions
     public void addRecipeItem(FoodItem food, int numServ){
         boolean match = false;

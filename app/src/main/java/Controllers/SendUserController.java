@@ -23,7 +23,6 @@ import java.net.UnknownHostException;
 
 public class SendUserController extends AsyncTask<Void, Void, Void> {
     private UserProfile user;
-    private Constraints constraints;
     private String optionString;
     private PrintWriter out;
     private BufferedReader in;
@@ -37,7 +36,6 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
         this.context = context;
         this.user = user;
         this.optionString = optionString;
-        this.constraints = this.user.getConstraints();
     }
     @Override
     protected Void doInBackground(Void... voids) {
@@ -65,7 +63,6 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
     private JSONObject packageObject() throws JSONException {
         JSONObject outObject = new JSONObject();
         outObject.put("option", this.optionString);
-        outObject.put("constraints", this.constraints.toJSON().toString());
         outObject.put("userProfile", this.user.toJSON().toString());
         return outObject;
     }
