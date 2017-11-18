@@ -39,7 +39,7 @@ public class TabFragment2 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private MyApplication app;
     private OnFragmentInteractionListener mListener;
 
     private ArrayAdapter<UserRecipe> listAdapter;
@@ -47,7 +47,12 @@ public class TabFragment2 extends Fragment {
     public TabFragment2() {
         // Required empty public constructor
     }
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        GetUserRecipesController gurc = new GetUserRecipesController(listAdapter,app.getUser().getUsername());
+        gurc.execute();
+    }
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -73,7 +78,7 @@ public class TabFragment2 extends Fragment {
 
         final ListView mainListView =  rootView.findViewById(R.id.recipeList);
         ArrayList<UserRecipe> foodList = new ArrayList<UserRecipe>();
-        final MyApplication app = (MyApplication) getActivity().getApplication();
+        app = (MyApplication) getActivity().getApplication();
         // Create ArrayAdapter
         listAdapter  = new ArrayAdapter<UserRecipe>(getContext(), R.layout.listrow, foodList);
         GetUserRecipesController gurc = new GetUserRecipesController(listAdapter, app.getUser().getUsername() );

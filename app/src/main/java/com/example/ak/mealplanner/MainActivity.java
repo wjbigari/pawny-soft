@@ -16,9 +16,12 @@ import com.example.ak.mealplanner.Models.UserProfile;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
+import Controllers.GetUserRecipesController;
+
 public class MainActivity extends AppCompatActivity {
 
     MyApplication app;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
