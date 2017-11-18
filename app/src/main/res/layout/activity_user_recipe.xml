@@ -45,15 +45,24 @@
     <ListView
         android:id="@+id/userrecipeList"
         android:layout_width="match_parent"
-        android:layout_height="358dp" />
+        android:layout_height="291dp" />
+
+    <Button
+        android:id="@+id/addRecipeItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Add Ingredients"
+        android:onClick="modifyRecipeIngredients"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/recipeDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:text="Delete"
         android:onClick="deleteUserRecipe"
+        android:text="Delete"
         android:textColor="@android:color/white" />
 
     <Button

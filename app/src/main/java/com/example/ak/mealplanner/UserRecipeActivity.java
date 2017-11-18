@@ -99,9 +99,13 @@ public class UserRecipeActivity extends AppCompatActivity {
     }
 
     public void updateUserRecipe(View view){
-        ModifyUserRecipesController murc = new ModifyUserRecipesController(app.getUserRecipe());
-        murc.execute();
-        app.removeUserRecipe();
+        Intent intent = new Intent(this, RecipeSaveActivity.class);
+        startActivity(intent);
         finish();
+    }
+
+    public void modifyRecipeIngredients(View view){
+        Intent intent = new Intent(this, RecipeBuildActivity.class);
+        startActivity(intent);
     }
 }

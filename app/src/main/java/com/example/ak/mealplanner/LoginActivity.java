@@ -40,5 +40,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void loadProfile(View view){
         //TODO Will: use controller to load user profile
+        finish();
     }
 }
