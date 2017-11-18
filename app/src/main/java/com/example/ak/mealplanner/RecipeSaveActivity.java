@@ -36,7 +36,7 @@ public class RecipeSaveActivity extends AppCompatActivity {
             x.setText(app.getUserRecipe().getName());
 
             x = (EditText) findViewById(R.id.portionEdit);
-            x.setText(app.getUserRecipe().getNumPortions());
+            x.setText(Integer.toString(app.getUserRecipe().getNumPortions()));
 
             x = (EditText) findViewById(R.id.portionNameEdit);
             x.setText(app.getUserRecipe().getServingUnit());
@@ -85,21 +85,24 @@ public class RecipeSaveActivity extends AppCompatActivity {
             app.getUserRecipe().setServingUnit(portionName);
             app.getUserRecipe().setPrepInstructions(instruct);
 
-            ModifyUserRecipesController murc = new ModifyUserRecipesController(app.getUserRecipe());
+            ModifyUserRecipesController murc = new ModifyUserRecipesController(app.getUserRecipe(), app.getUser().getUsername());
             murc.execute();
             app.removeUserRecipe();
             finish();
+        }else{
+            ArrayList<RecipeItem> copyList = new ArrayList<>();
+            copyList.addAll(app.getIngredients());
+            UserRecipe recipe = new UserRecipe(foodName, -42, copyList, portion, portionName, instruct);
+
+            SendUserRecipeController surc = new SendUserRecipeController(recipe,this, app.getUser().getUsername());
+            surc.execute();
+
+            app.clearRecipeItems();
+            finish();
         }
 
-        ArrayList<RecipeItem> copyList = new ArrayList<>();
-        copyList.addAll(app.getIngredients());
-        UserRecipe recipe = new UserRecipe(foodName, -42, copyList, portion, portionName, instruct);
 
-        SendUserRecipeController surc = new SendUserRecipeController(recipe,this, app.getUser().getUsername());
-        surc.execute();
 
-        app.clearRecipeItems();;
-        finish();
     }
 
 }

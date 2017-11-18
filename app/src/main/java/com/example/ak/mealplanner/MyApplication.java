@@ -22,6 +22,7 @@ public class MyApplication extends Application {
     private ArrayList<RecipeItem> recipes;
     private UserProfile user;
     private UserRecipe recipe;
+    private boolean isLoggedIn = false;
 
     public void addBreakfast(MealItem item){
         if(breakfast == null){
@@ -71,6 +72,14 @@ public class MyApplication extends Application {
         breakfast = null;
         lunch = null;
         dinner = null;
+    }
+    public void setUserProfile(UserProfile profile){
+        this.user = profile;
+        this.isLoggedIn = true;
+    }
+
+    public boolean isLoggedIn(){
+        return this.isLoggedIn;
     }
 
     public boolean isEmpty(){
