@@ -72,11 +72,16 @@ public class RecipeActivity extends AppCompatActivity {
             return;
         }
         if(app.hasUserRecipe()){
+            boolean updated = false;
             for(RecipeItem item : app.getUserRecipe().getIngredients()){
                 if(item.getFoodItem().getFoodId() == foodItem.getFoodId()){
                     item.setNumServings(Integer.parseInt(servings.getText().toString()));
+                    updated = true;
                     break;
                 }
+            }
+            if(!updated) {
+                app.getUserRecipe().addRecipeItem(new RecipeItem(foodItem, Integer.parseInt(servings.getText().toString())));
             }
         }
         else {
