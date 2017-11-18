@@ -4,9 +4,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import com.example.ak.mealplanner.MealItem.Meal.*;
+import com.example.ak.mealplanner.Models.MealItem;
 
 public class MealPlannerRec {
     private ArrayList<MealItem> breakfastItems;

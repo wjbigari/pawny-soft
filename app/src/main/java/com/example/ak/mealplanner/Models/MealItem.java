@@ -1,4 +1,6 @@
-package com.example.ak.mealplanner;
+package com.example.ak.mealplanner.Models;
+
+import com.example.ak.mealplanner.MealItemContent;
 
 import org.json.JSONException;
 
@@ -6,11 +8,10 @@ import org.json.JSONException;
  * Created by wbigari on 10/26/17.
  */
 
-import static com.example.ak.mealplanner.MealItem.Meal.BREAKFAST;
-import static com.example.ak.mealplanner.MealItem.Meal.LUNCH;
-import static com.example.ak.mealplanner.MealItem.Meal.DINNER;
+import static com.example.ak.mealplanner.Models.MealItem.Meal.BREAKFAST;
+import static com.example.ak.mealplanner.Models.MealItem.Meal.LUNCH;
+import static com.example.ak.mealplanner.Models.MealItem.Meal.DINNER;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;

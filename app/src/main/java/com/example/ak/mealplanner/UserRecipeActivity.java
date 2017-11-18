@@ -14,6 +14,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import com.example.ak.mealplanner.Models.UserRecipe;
+
 public class UserRecipeActivity extends AppCompatActivity {
     UserRecipe recipe;
 

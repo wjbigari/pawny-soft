@@ -2,10 +2,10 @@ package Controllers;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import com.example.ak.mealplanner.UserRecipe;
+import com.example.ak.mealplanner.Models.UserRecipe;
+import com.example.ak.mealplanner.MyApplication;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,12 +43,12 @@ public class SendUserRecipeController extends AsyncTask<Void,Void,Void> {
             PrintWriter writer = new PrintWriter(socket.getOutputStream());
             packageJSON();
             writer.println(this.requestObject);
+            writer.flush();
 
             BufferedReader inputStream = new BufferedReader(new InputStreamReader(
                     socket.getInputStream()));
             String responseAsString = inputStream.readLine().toString();
             responseObject = new JSONObject(responseAsString);
-
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -73,6 +73,7 @@ public class SendUserRecipeController extends AsyncTask<Void,Void,Void> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        //app.clearRecipes
         super.onPostExecute(result);
     }
 }
