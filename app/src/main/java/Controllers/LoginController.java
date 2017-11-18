@@ -1,8 +1,10 @@
 package Controllers;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
-import com.example.ak.mealplanner.Models.UserRecipe;
+import com.example.ak.mealplanner.Models.UserProfile;
+import com.example.ak.mealplanner.MyApplication;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,22 +17,22 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
- * Created by wbigari on 11/17/17.
+ * Created by wbigari on 11/18/17.
  */
 
-public class ModifyUserRecipesController extends AsyncTask<Void, Void,Void> {
+public class LoginController extends AsyncTask<Void, Void,Void> {
     private JSONObject requestObject;
     private JSONObject responseObject;
     private String dstAddress = "10.0.2.2";
     private int dstPort = 8083;
     private Socket socket;
-    private PrintWriter out;
-    private BufferedReader in;
-    private UserRecipe userRecipe;
     private String username;
-    public ModifyUserRecipesController(UserRecipe userRecipe, String username ){
-        this.userRecipe = userRecipe;
+    private String password;
+    private MyApplication app;
+    public LoginController(String username, String password, MyApplication app) {
         this.username = username;
+        this.password = password;
+        this.app = app;
     }
     @Override
     protected Void doInBackground(Void... voids) {
@@ -55,10 +57,25 @@ public class ModifyUserRecipesController extends AsyncTask<Void, Void,Void> {
         return null;
     }
 
-    public void packageJson() throws JSONException{
-        requestObject = new JSONObject();
-        requestObject.put("option", "modifyRecipe");
-        requestObject.put("username", this.username);
-        requestObject.put("userRecipe", userRecipe.toJson().toString());
+    private void packageJson() throws JSONException {
+        this.requestObject = new JSONObject();
+        this.requestObject.put("username", this.username);
+        this.requestObject.put("password", this.password);
     }
+
+    @Override
+    protected void onPostExecute(Void result) {
+        try {
+            if(responseObject.has("userProfile")){
+                UserProfile userProfile =new UserProfile( new JSONObject(responseObject.getString("userProfile")));
+                app.setUserProfile(userProfile);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        super.onPostExecute(result);
+    }
+
 }
