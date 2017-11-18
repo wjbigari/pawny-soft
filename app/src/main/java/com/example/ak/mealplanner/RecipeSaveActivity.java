@@ -13,6 +13,7 @@ import com.example.ak.mealplanner.Models.UserRecipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import Controllers.ModifyUserRecipesController;
 import Controllers.SendUserRecipeController;
 
 public class RecipeSaveActivity extends AppCompatActivity {
@@ -29,6 +30,20 @@ public class RecipeSaveActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         app = (MyApplication) getApplication();
+
+        if(app.hasUserRecipe()){
+            EditText x = (EditText) findViewById(R.id.foodNameEdit);
+            x.setText(app.getUserRecipe().getName());
+
+            x = (EditText) findViewById(R.id.portionEdit);
+            x.setText(app.getUserRecipe().getNumPortions());
+
+            x = (EditText) findViewById(R.id.portionNameEdit);
+            x.setText(app.getUserRecipe().getServingUnit());
+
+            x = (EditText) findViewById(R.id.instructEdit);
+            x.setText(app.getUserRecipe().getPrepInstructions());
+        }
     }
 
     @Override
@@ -63,6 +78,18 @@ public class RecipeSaveActivity extends AppCompatActivity {
             return;
         }
         String instruct = x.getText().toString();
+
+        if(app.hasUserRecipe()){
+            app.getUserRecipe().setName(foodName);
+            app.getUserRecipe().setNumPortions(portion);
+            app.getUserRecipe().setServingUnit(portionName);
+            app.getUserRecipe().setPrepInstructions(instruct);
+
+            ModifyUserRecipesController murc = new ModifyUserRecipesController(app.getUserRecipe());
+            murc.execute();
+            app.removeUserRecipe();
+            finish();
+        }
 
         ArrayList<RecipeItem> copyList = new ArrayList<>();
         copyList.addAll(app.getIngredients());
