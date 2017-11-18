@@ -73,7 +73,7 @@ public class RecipeActivity extends AppCompatActivity {
         }
         if(app.hasUserRecipe()){
             for(RecipeItem item : app.getUserRecipe().getIngredients()){
-                if(item.getFoodItem().equals(foodItem)){
+                if(item.getFoodItem().getFoodId() == foodItem.getFoodId()){
                     item.setNumServings(Integer.parseInt(servings.getText().toString()));
                     break;
                 }
@@ -88,7 +88,7 @@ public class RecipeActivity extends AppCompatActivity {
     public void deleteRecipeItem(View view){
         RecipeItem remove = null;
         for(RecipeItem item : app.getUserRecipe().getIngredients()){
-            if(item.getFoodItem().equals(foodItem)){
+            if(item.getFoodItem().getFoodId() == foodItem.getFoodId()){
                 remove = item;
                 break;
             }
