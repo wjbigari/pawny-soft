@@ -5,4 +5,5 @@
     android:layout_height="fill_parent"
     android:padding="10dp"
     android:scrollbars="vertical"
+    android:textColor="@android:color/black"
     android:textSize="16sp"></TextView>

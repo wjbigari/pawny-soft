@@ -27,7 +27,7 @@ public class UserRecipe implements Serializable, MealItemContent {
 
     @Override
     public String toString(){
-        return "Portion: " + numPortions + " " + portionName + "\nInstruction: " + prepInstructions;
+        return name;
 
     }
 

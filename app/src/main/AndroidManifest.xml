@@ -75,8 +75,8 @@
             android:name=".RecipeBuildActivity"
             android:label="Recipe Builder"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".RecipeActivity"
             android:label="Recipe Item"
@@ -91,6 +91,11 @@
             android:name=".UserRecipeActivity"
             android:label="Recipe"
             android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="Login"
+            android:parentActivityName=".FirstStartActivity"
             android:theme="@style/AppTheme"/>
     </application>
 
