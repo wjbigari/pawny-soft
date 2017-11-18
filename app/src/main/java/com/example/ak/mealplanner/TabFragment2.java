@@ -1,5 +1,6 @@
 package com.example.ak.mealplanner;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.ak.mealplanner.Models.UserRecipe;
 
@@ -32,6 +35,7 @@ public class TabFragment2 extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -59,8 +63,6 @@ public class TabFragment2 extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
-
-
         return fragment;
     }
 
@@ -71,7 +73,7 @@ public class TabFragment2 extends Fragment {
 
         final ListView mainListView =  rootView.findViewById(R.id.recipeList);
         ArrayList<UserRecipe> foodList = new ArrayList<UserRecipe>();
-        MyApplication app = (MyApplication) getActivity().getApplication();
+        final MyApplication app = (MyApplication) getActivity().getApplication();
         // Create ArrayAdapter
         listAdapter  = new ArrayAdapter<UserRecipe>(getContext(), R.layout.listrow, foodList);
         GetUserRecipesController gurc = new GetUserRecipesController(listAdapter, app.getUser().getUsername() );
@@ -96,10 +98,10 @@ public class TabFragment2 extends Fragment {
                 UserRecipe x = (UserRecipe) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getActivity(), UserRecipeActivity.class);
                 intent.putExtra("userRecipe", x);
+                app.setUserRecipe(x);
                 startActivity(intent);
             }
         });
-
 
         return rootView;
     }

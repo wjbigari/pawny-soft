@@ -18,4 +18,42 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+    <TextView
+        android:id="@+id/recipeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/recipeInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/userrecipeList"
+        android:layout_width="match_parent"
+        android:layout_height="358dp" />
+
+    <Button
+        android:id="@+id/recipeDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Delete"
+        android:onClick="deleteUserRecipe"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/updateRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Update Recipe"
+        android:onClick="updateUserRecipe"
+        android:textColor="@android:color/white" />
+
 </LinearLayout>
