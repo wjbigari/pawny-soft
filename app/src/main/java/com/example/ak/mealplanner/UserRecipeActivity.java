@@ -17,6 +17,9 @@ import java.util.Comparator;
 import com.example.ak.mealplanner.Models.RecipeItem;
 import com.example.ak.mealplanner.Models.UserRecipe;
 
+import Controllers.DeleteRecipeItemController;
+import Controllers.ModifyUserRecipesController;
+
 public class UserRecipeActivity extends AppCompatActivity {
     UserRecipe recipe;
 
@@ -89,13 +92,15 @@ public class UserRecipeActivity extends AppCompatActivity {
     }
 
     public void deleteUserRecipe(View view){
-        //TODO: Will use the controller to delete the entire user recipe from the database
+        DeleteRecipeItemController dric = new DeleteRecipeItemController(app.getUserRecipe().getFoodId());
+        dric.execute();
         app.removeUserRecipe();
         finish();
     }
 
     public void updateUserRecipe(View view){
-        //TODO: Will use the controller to update the user recipe on the database
+        ModifyUserRecipesController murc = new ModifyUserRecipesController(app.getUserRecipe());
+        murc.execute();
         app.removeUserRecipe();
         finish();
     }

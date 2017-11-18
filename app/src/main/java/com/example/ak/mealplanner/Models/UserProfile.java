@@ -130,3 +130,4 @@ public class UserProfile implements Serializable {
         return jobject;
     }
 }
+
