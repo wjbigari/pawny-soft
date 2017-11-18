@@ -60,6 +60,7 @@ public class Goals extends AppCompatActivity {
         }
         app.addConstraint(new Constraints(Integer.parseInt(calMin.getText().toString()), Integer.parseInt(calMax.getText().toString()), Integer.parseInt(carbMin.getText().toString()), Integer.parseInt(carbMax.getText().toString()), Integer.parseInt(protMin.getText().toString()), Integer.parseInt(protMax.getText().toString()), Integer.parseInt(fatMin.getText().toString()), Integer.parseInt(fatMax.getText().toString())));
         save();
+        //TODO: Will use the controller to update the constraints
         finish();
     }
 
