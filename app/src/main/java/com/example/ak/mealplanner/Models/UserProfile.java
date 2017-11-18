@@ -28,7 +28,7 @@ public class UserProfile implements Serializable {
         this.age = 1;
         this.height = 2;
         this.weight =3;
-        this.gen = gender.MALE;
+        this.gen = MALE;
         this.constraints = new Constraints();
     }
 
@@ -56,14 +56,16 @@ public class UserProfile implements Serializable {
                 this.gen = FEMALE;
                 break;
         }
+        this.constraints = new Constraints(new JSONObject(jobject.getString("constraints")));
 
     }
-    public String getUsername(){ return username;}
 
     public String getName(){
         return name;
     }
-
+    public String getUsername(){
+        return this.username;
+    }
     public String getAge(){
         return Integer.toString(age);
     }
@@ -124,6 +126,7 @@ public class UserProfile implements Serializable {
         jobject.put("height", this.height);
         jobject.put("weight", this.weight);
         jobject.put("gender", this.gen.name());
+        jobject.put("constraints", this.constraints.toJSON().toString());
         return jobject;
     }
 }
