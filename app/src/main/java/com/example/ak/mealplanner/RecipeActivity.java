@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -43,6 +44,16 @@ public class RecipeActivity extends AppCompatActivity {
 
         servings = (EditText) findViewById(R.id.editServing);
 
+        Button deleteButton = (Button) findViewById(R.id.deleteRecipe);
+        Button saveButton = (Button) findViewById(R.id.saveRecipeItem);
+
+        if(app.hasUserRecipe()){
+            deleteButton.setEnabled(true);
+        }
+        else{
+            deleteButton.setEnabled(false);
+        }
+
     }
 
     @Override
@@ -60,7 +71,32 @@ public class RecipeActivity extends AppCompatActivity {
         if(servings.getText().toString().equals("")){
             return;
         }
-        app.addRecipeItem(new RecipeItem(foodItem, Integer.parseInt(servings.getText().toString())));
+        if(app.hasUserRecipe()){
+            for(RecipeItem item : app.getUserRecipe().getIngredients()){
+                if(item.getFoodItem().equals(foodItem)){
+                    item.setNumServings(Integer.parseInt(servings.getText().toString()));
+                    break;
+                }
+            }
+        }
+        else {
+            app.addRecipeItem(new RecipeItem(foodItem, Integer.parseInt(servings.getText().toString())));
+        }
+        finish();
+    }
+
+    public void deleteRecipeItem(View view){
+        RecipeItem remove = null;
+        for(RecipeItem item : app.getUserRecipe().getIngredients()){
+            if(item.getFoodItem().equals(foodItem)){
+                remove = item;
+                break;
+            }
+        }
+        if(remove == null){
+            return;
+        }
+        app.getUserRecipe().getIngredients().remove(remove);
         finish();
     }
 }

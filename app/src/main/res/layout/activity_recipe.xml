@@ -56,16 +56,17 @@
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:text="Remove"
+            android:onClick="deleteRecipeItem"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/saveRecipeItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:text="Add Item"
         android:onClick="saveItem"
+        android:text="Add Item"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

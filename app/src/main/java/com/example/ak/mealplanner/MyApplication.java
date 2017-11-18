@@ -6,6 +6,7 @@ import com.example.ak.mealplanner.Models.Constraints;
 import com.example.ak.mealplanner.Models.MealItem;
 import com.example.ak.mealplanner.Models.RecipeItem;
 import com.example.ak.mealplanner.Models.UserProfile;
+import com.example.ak.mealplanner.Models.UserRecipe;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,8 @@ public class MyApplication extends Application {
     private ArrayList<MealItem> lunch;
     private ArrayList<MealItem> dinner;
     private ArrayList<RecipeItem> recipes;
-    UserProfile user;
+    private UserProfile user;
+    private UserRecipe recipe;
 
     public void addBreakfast(MealItem item){
         if(breakfast == null){
@@ -160,5 +162,24 @@ public class MyApplication extends Application {
             return recipes;
         }
         return new ArrayList<RecipeItem>();
+    }
+
+    public void setUserRecipe(UserRecipe recipe){
+        this.recipe = recipe;
+    }
+
+    public void removeUserRecipe(){
+        this.recipe = null;
+    }
+
+    public UserRecipe getUserRecipe(){
+        if(recipe != null){
+            return recipe;
+        }
+        return null;
+    }
+
+    public boolean hasUserRecipe(){
+        return recipe != null;
     }
 }
