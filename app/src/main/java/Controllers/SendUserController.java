@@ -31,11 +31,13 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
     private Socket socket;
     String dstAddress ="10.0.2.2";
     int dstPort = 8083;
+    private String password;
 
-    public SendUserController(Context context, String optionString, UserProfile user){
+    public SendUserController(Context context, String optionString, UserProfile user, String password){
         this.context = context;
         this.user = user;
         this.optionString = optionString;
+        this.password = password;
     }
     @Override
     protected Void doInBackground(Void... voids) {
@@ -63,6 +65,7 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
     private JSONObject packageObject() throws JSONException {
         JSONObject outObject = new JSONObject();
         outObject.put("option", this.optionString);
+        outObject.put("password", this.password);
         outObject.put("userProfile", this.user.toJSON().toString());
         return outObject;
     }
