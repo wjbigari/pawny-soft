@@ -119,10 +119,21 @@ android:orientation="vertical">
     <Button
         android:id="@+id/saveProfile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
         android:background="@color/colorPrimary"
         android:onClick="saveProfile"
         android:text="Save"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/buttonEditLoad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Load Profile"
+        android:onClick="loadEditUser"
+        android:layout_margin="2dp"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

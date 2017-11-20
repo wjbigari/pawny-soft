@@ -2,10 +2,12 @@ package Controllers;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.ak.mealplanner.LoginActivity;
+import com.example.ak.mealplanner.MainActivity;
 import com.example.ak.mealplanner.Models.UserProfile;
 import com.example.ak.mealplanner.MyApplication;
 
@@ -78,7 +80,7 @@ public class LoginController extends AsyncTask<Void, Void,Void> {
         try {
             if(responseObject.has("userProfile")){
                 UserProfile userProfile =new UserProfile( new JSONObject(responseObject.getString("userProfile")));
-                app.setUserProfile(userProfile);
+                app.addUser(userProfile);
                 FileOutputStream fileOut;
                 ObjectOutputStream objectOut;
                 try {
@@ -90,6 +92,9 @@ public class LoginController extends AsyncTask<Void, Void,Void> {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                loginActivity.getSharedPreferences("login", Context.MODE_PRIVATE).edit().putBoolean("LOGIN", true).apply();
+                Intent intent = new Intent(loginActivity, MainActivity.class);
+                loginActivity.startActivity(intent);
                 loginActivity.finish();
             }
 

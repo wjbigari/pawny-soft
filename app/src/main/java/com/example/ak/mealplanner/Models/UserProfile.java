@@ -16,6 +16,7 @@ public class UserProfile implements Serializable {
 
     String username;
     String name;
+    String password;
     int age,height,weight;
     gender gen;
     Constraints constraints;
@@ -32,13 +33,14 @@ public class UserProfile implements Serializable {
         this.constraints = new Constraints();
     }
 
-    public UserProfile(String username, String name, int age, int height, int weight, gender gen){
+    public UserProfile(String username, String name, String password, int age, int height, int weight, gender gen){
         this.username = username;
         this.name = name;
         this.age = age;
         this.height = height;
         this.weight = weight;
         this.gen = gen;
+        this.password = password;
         this.constraints = new Constraints();
     }
 

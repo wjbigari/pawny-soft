@@ -1,6 +1,8 @@
 package com.example.ak.mealplanner;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -17,12 +19,15 @@ public class LoginActivity extends AppCompatActivity {
     EditText password;
     Button login;
     MyApplication app;
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         app = (MyApplication)getApplication();
         setContentView(R.layout.activity_login);
+
+        pref = getSharedPreferences("login", Context.MODE_PRIVATE);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -38,6 +43,10 @@ public class LoginActivity extends AppCompatActivity {
         String uname, pass;
         uname = username.getText().toString();
         pass = password.getText().toString();
+
+        if(uname.equals("") || pass.equals("")){
+            return;
+        }
 
         LoginController lc = new LoginController(uname,pass,app, this);
         lc.execute();
@@ -55,8 +64,6 @@ public class LoginActivity extends AppCompatActivity {
     }
     @Override
     public void finish(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
         super.finish();
     }
 

@@ -1,6 +1,8 @@
 package com.example.ak.mealplanner;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -21,22 +23,10 @@ import Controllers.GetUserRecipesController;
 public class MainActivity extends AppCompatActivity {
 
     MyApplication app;
-
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
-                .getBoolean("isFirstRun", true);
-
-        if (isFirstRun) {
-            //show start activity
-            startActivity(new Intent(MainActivity.this, FirstStartActivity.class));
-            Toast.makeText(MainActivity.this, "First Run", Toast.LENGTH_LONG)
-                    .show();
-        }
-        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
-                .putBoolean("isFirstRun", false).commit();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -51,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         app = (MyApplication) getApplicationContext();
 
-        if(!isFirstRun) {
+        pref = getSharedPreferences("login", Context.MODE_PRIVATE);
+
+        if(pref.getBoolean("LOGIN", false)) {
             FileInputStream fileIn;
             ObjectInputStream objectIn;
             UserProfile userProfile = new UserProfile();

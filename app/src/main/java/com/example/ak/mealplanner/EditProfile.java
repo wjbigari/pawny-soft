@@ -1,6 +1,7 @@
 package com.example.ak.mealplanner;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -83,7 +84,14 @@ public class EditProfile extends AppCompatActivity {
     public void saveProfile(View view) {
         // Do something in response to button
         save();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         finish();
+    }
+
+    public void loadEditUser(View view){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     private void save(){
