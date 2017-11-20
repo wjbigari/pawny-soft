@@ -65,14 +65,16 @@ public class GetUserRecipesController  extends AsyncTask<Void, Void, Void> {
     }
     @Override
     protected void onPostExecute(Void result) {
-        listAdapter.clear();
-        try {
-            JSONArray jsonArray = new JSONArray(responseObject.getString("recipeList"));
-            for (int i = 0; i < jsonArray.length(); i++) {
-                listAdapter.add(new UserRecipe(new JSONObject(jsonArray.getString(i))));
+        if(responseObject.has("recipeList")) {
+            listAdapter.clear();
+            try {
+                JSONArray jsonArray = new JSONArray(responseObject.getString("recipeList"));
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    listAdapter.add(new UserRecipe(new JSONObject(jsonArray.getString(i))));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
         listAdapter.notifyDataSetChanged();
         super.onPostExecute(result);
