@@ -22,6 +22,8 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by wbigari on 11/18/17.
@@ -68,6 +70,18 @@ public class LoginController extends AsyncTask<Void, Void,Void> {
     }
 
     private void packageJson() throws JSONException {
+        /**
+        MessageDigest md = null;
+        //get a message digest
+        try{
+            md = MessageDigest.getInstance("MD5");
+        }
+        catch (NoSuchAlgorithmException x){
+            Log.i("adarsh", "md5 error");
+        }
+        //hash the password
+        byte [] pass = md.digest(password.getBytes());
+        */
         this.requestObject = new JSONObject();
         this.requestObject.put("option", "login");
         this.requestObject.put("username", this.username);

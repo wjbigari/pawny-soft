@@ -58,7 +58,7 @@ public class FirstStartActivity extends AppCompatActivity {
         if(userName.equals("") || name.equals("") || text.getText().toString().equals("")){
             return;
         }
-        app.addUser(new UserProfile(userName, name,text.getText().toString(), 0,0,0,UserProfile.gender.MALE));
+        app.addUser(new UserProfile(userName, name, 0,0,0,UserProfile.gender.MALE));
         SendUserController sendUserController = new SendUserController(this, "insertUser", app.getUser() );
         sendUserController.execute();
         pref.edit().putBoolean("LOGIN", true).apply();
