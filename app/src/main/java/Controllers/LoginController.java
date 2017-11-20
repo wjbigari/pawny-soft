@@ -1,8 +1,11 @@
 package Controllers;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.ak.mealplanner.LoginActivity;
 import com.example.ak.mealplanner.Models.UserProfile;
 import com.example.ak.mealplanner.MyApplication;
 
@@ -10,8 +13,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -28,11 +33,14 @@ public class LoginController extends AsyncTask<Void, Void,Void> {
     private Socket socket;
     private String username;
     private String password;
+    Activity loginActivity;
     private MyApplication app;
-    public LoginController(String username, String password, MyApplication app) {
+
+    public LoginController(String username, String password, MyApplication app, Activity activity) {
         this.username = username;
         this.password = password;
         this.app = app;
+        this.loginActivity = (LoginActivity) activity;
     }
     @Override
     protected Void doInBackground(Void... voids) {
@@ -59,23 +67,36 @@ public class LoginController extends AsyncTask<Void, Void,Void> {
 
     private void packageJson() throws JSONException {
         this.requestObject = new JSONObject();
+        this.requestObject.put("option", "login");
         this.requestObject.put("username", this.username);
         this.requestObject.put("password", this.password);
     }
 
     @Override
     protected void onPostExecute(Void result) {
+        super.onPostExecute(result);
         try {
             if(responseObject.has("userProfile")){
                 UserProfile userProfile =new UserProfile( new JSONObject(responseObject.getString("userProfile")));
                 app.setUserProfile(userProfile);
+                FileOutputStream fileOut;
+                ObjectOutputStream objectOut;
+                try {
+                    fileOut = loginActivity.openFileOutput("profile", Context.MODE_PRIVATE);
+                    objectOut = new ObjectOutputStream(fileOut);
+
+                    objectOut.writeObject(userProfile);
+                    objectOut.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                loginActivity.finish();
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        super.onPostExecute(result);
     }
 
 }

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import com.example.ak.mealplanner.Models.MealItem;
 import com.example.ak.mealplanner.Models.RecipeItem;
 import com.example.ak.mealplanner.Models.UserRecipe;
 
@@ -122,5 +123,17 @@ public class UserRecipeActivity extends AppCompatActivity {
     public void modifyRecipeIngredients(View view){
         Intent intent = new Intent(this, RecipeBuildActivity.class);
         startActivity(intent);
+    }
+
+    public void addRecipeBreakfast(View view){
+        app.addBreakfast(new MealItem(recipe, false, MealItem.Meal.BREAKFAST));
+    }
+
+    public void addRecipeLunch(View view){
+        app.addLunch(new MealItem(recipe, false, MealItem.Meal.LUNCH));
+    }
+
+    public void addRecipeDinner(View view){
+        app.addDinner(new MealItem(recipe, false, MealItem.Meal.DINNER));
     }
 }
