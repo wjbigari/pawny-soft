@@ -53,31 +53,34 @@
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
+        android:layout_margin="2dp"
+        android:layout_weight="0.16"
         android:background="@color/colorPrimary"
-        android:text="Add to Breakfast"
-        android:textColor="@android:color/white"
         android:onClick="addBreakFast"
-        android:layout_weight="0.16" />
+        android:text="Add to Breakfast"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="13dp"
+        android:layout_margin="2dp"
+        android:layout_weight="0.23"
         android:background="@color/colorPrimary"
-        android:text="Add to Lunch"
-        android:textColor="@android:color/white"
         android:onClick="addLunch"
-        android:layout_weight="0.23" />
+        android:text="Add to Lunch"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="37dp"
+        android:layout_margin="2dp"
+        android:layout_weight="0.12"
         android:background="@color/colorPrimary"
-        android:text="Add To Dinner"
-        android:textColor="@android:color/white"
         android:onClick="addDinner"
-        android:layout_weight="0.12" />
+        android:text="Add To Dinner"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

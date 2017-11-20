@@ -27,9 +27,10 @@ public class ModifyUserRecipesController extends AsyncTask<Void, Void,Void> {
     private PrintWriter out;
     private BufferedReader in;
     private UserRecipe userRecipe;
-
-    public ModifyUserRecipesController(UserRecipe userRecipe ){
+    private String username;
+    public ModifyUserRecipesController(UserRecipe userRecipe, String username ){
         this.userRecipe = userRecipe;
+        this.username = username;
     }
     @Override
     protected Void doInBackground(Void... voids) {
@@ -57,6 +58,7 @@ public class ModifyUserRecipesController extends AsyncTask<Void, Void,Void> {
     public void packageJson() throws JSONException{
         requestObject = new JSONObject();
         requestObject.put("option", "modifyRecipe");
+        requestObject.put("username", this.username);
         requestObject.put("userRecipe", userRecipe.toJson().toString());
     }
 }

@@ -4,6 +4,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import static com.example.ak.mealplanner.Models.UserProfile.gender.FEMALE;
 import static com.example.ak.mealplanner.Models.UserProfile.gender.MALE;

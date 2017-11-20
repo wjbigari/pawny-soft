@@ -18,11 +18,7 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".profile"
@@ -70,7 +66,13 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".FirstStartActivity"
-            android:parentActivityName=".MainActivity" />
+            android:label="MealPlanner">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".RecipeBuildActivity"
             android:label="Recipe Builder"
@@ -96,7 +98,8 @@
             android:name=".LoginActivity"
             android:label="Login"
             android:parentActivityName=".FirstStartActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

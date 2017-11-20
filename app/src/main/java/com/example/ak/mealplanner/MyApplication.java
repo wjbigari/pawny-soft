@@ -72,6 +72,10 @@ public class MyApplication extends Application {
         lunch = null;
         dinner = null;
     }
+    public void setUserProfile(UserProfile profile){
+        this.user = profile;
+    }
+
 
     public boolean isEmpty(){
         return items == null || items.size() == 0;

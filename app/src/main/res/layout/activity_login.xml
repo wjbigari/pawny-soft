@@ -50,15 +50,15 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter password"
-        android:inputType="textPersonName" />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/colorPrimary"
-        android:onClick="loadProfile"
         android:text="Login"
+        android:onClick="loadProfile"
         android:textColor="@android:color/white" />
 
 </LinearLayout>
