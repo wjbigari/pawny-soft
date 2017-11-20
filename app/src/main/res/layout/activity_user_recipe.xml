@@ -89,7 +89,7 @@
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:onClick="addRecipeBreakfast"
-            android:layout_margin="7dp"
+            android:layout_margin="2dp"
             android:text="Breakfast"
             android:textColor="@android:color/white" />
 
@@ -101,7 +101,7 @@
             android:backgroundTint="@color/colorPrimary"
             android:background="@color/colorPrimary"
             android:onClick="addRecipeLunch"
-            android:layout_margin="7dp"
+            android:layout_margin="2dp"
             android:text="Lunch"
             android:textColor="@android:color/white" />
 
@@ -109,7 +109,7 @@
             android:id="@+id/recipeDinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
+            android:layout_margin="2dp"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:backgroundTint="@color/colorPrimary"
