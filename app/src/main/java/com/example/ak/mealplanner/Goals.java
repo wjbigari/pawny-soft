@@ -42,14 +42,14 @@ public class Goals extends AppCompatActivity {
         fatMin = (EditText)findViewById(R.id.fatMin);
         fatMax = (EditText)findViewById(R.id.fatMax);
 
-        calMin.setText(Double.toString(app.getConstraint().getMinCals()));
-        calMax.setText(Double.toString(app.getConstraint().getMaxCals()));
-        carbMin.setText(Double.toString(app.getConstraint().getMinCarbs()));
-        carbMax.setText(Double.toString(app.getConstraint().getMaxCarbs()));
-        protMin.setText(Double.toString(app.getConstraint().getMinProt()));
-        protMax.setText(Double.toString(app.getConstraint().getMaxProt()));
-        fatMin.setText(Double.toString(app.getConstraint().getMinFat()));
-        fatMax.setText(Double.toString(app.getConstraint().getMaxFat()));
+        calMin.setText(Integer.toString(app.getConstraint().getMinCals()));
+        calMax.setText(Integer.toString(app.getConstraint().getMaxCals()));
+        carbMin.setText(Integer.toString(app.getConstraint().getMinCarbs()));
+        carbMax.setText(Integer.toString(app.getConstraint().getMaxCarbs()));
+        protMin.setText(Integer.toString(app.getConstraint().getMinProt()));
+        protMax.setText(Integer.toString(app.getConstraint().getMaxProt()));
+        fatMin.setText(Integer.toString(app.getConstraint().getMinFat()));
+        fatMax.setText(Integer.toString(app.getConstraint().getMaxFat()));
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

@@ -136,7 +136,9 @@ public class UserRecipe implements Serializable, MealItemContent {
     }
 
     public ArrayList<RecipeItem> getIngredients(){
-        return this.ingredients;
+        if(ingredients!= null){
+            return this.ingredients;
+        }else return new ArrayList<RecipeItem>();
     }
 
     public int getNumPortions(){

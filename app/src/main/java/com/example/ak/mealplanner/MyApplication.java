@@ -141,7 +141,9 @@ public class MyApplication extends Application {
     }
 
     public void clearRecipeItems(){
-        recipes = new ArrayList<RecipeItem>();
+        if(recipes != null) {
+            recipes.clear();
+        }
     }
 
     public void hasRecipeItem(RecipeItem item){
