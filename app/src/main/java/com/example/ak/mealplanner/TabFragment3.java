@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 
 
 /**
@@ -56,6 +57,15 @@ public class TabFragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab_fragment3, container, false);
+        CalendarView calendar = (CalendarView) rootView.findViewById(R.id.calendarView);
+
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                startActivity(new Intent(getActivity(), MealHistoryActivity.class));
+            }
+        });
         return rootView;
     }
 

@@ -38,6 +38,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_margin="5dp"
         android:orientation="horizontal">
 
         <EditText
@@ -69,6 +70,7 @@
         android:background="@color/colorPrimary"
         android:onClick="deleteRecipeItem"
         android:text="Remove"
+        android:layout_margin="5dp"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

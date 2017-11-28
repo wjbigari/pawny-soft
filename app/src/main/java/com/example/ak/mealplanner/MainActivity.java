@@ -90,12 +90,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void startBook(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, RecipeBook.class);
-        startActivity(intent);
-    }
-
     public void startFavorites(View view) {
         // Do something in response to button
         Intent intent = new Intent(this, Favorites.class);

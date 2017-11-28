@@ -39,8 +39,7 @@
         android:layout_height="wrap_content"
         android:text="Ingredients"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textSize="24sp" />
 
     <ListView
         android:id="@+id/userrecipeList"

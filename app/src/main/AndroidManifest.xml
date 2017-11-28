@@ -17,18 +17,11 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden">
-
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".profile"
             android:label="About"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".RecipeBook"
-            android:label="@string/title_activity_recipe_book"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme" />
         <activity
             android:name=".Favorites"
             android:label="Favorites"
@@ -37,11 +30,6 @@
         <activity
             android:name=".EditProfile"
             android:label="Profile"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".EditGender"
-            android:label="Edit"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme" />
         <activity
@@ -98,8 +86,13 @@
             android:name=".LoginActivity"
             android:label="Login"
             android:parentActivityName=".FirstStartActivity"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".MealHistoryActivity"
+            android:label="Meal"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme"
+        />
     </application>
 
 </manifest>

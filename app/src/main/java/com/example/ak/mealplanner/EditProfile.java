@@ -39,11 +39,17 @@ public class EditProfile extends AppCompatActivity {
         EditText x = (EditText) findViewById(R.id.editName);
         x.setText(user.getName());
         x = (EditText) findViewById(R.id.editAge);
-        x.setText(user.getAge());
+        if(Integer.parseInt(user.getAge()) > 0) {
+            x.setText(user.getAge());
+        }
         x = (EditText) findViewById(R.id.editHeight);
-        x.setText(user.getHeight());
+        if(Integer.parseInt(user.getHeight()) > 0) {
+            x.setText(user.getHeight());
+        }
         x = (EditText) findViewById(R.id.editWeight);
-        x.setText(user.getWeight());
+        if(Integer.parseInt(user.getWeight()) > 0) {
+            x.setText(user.getWeight());
+        }
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.genderGroup);
         if(user.getGen() == UserProfile.gender.MALE) {
@@ -98,17 +104,21 @@ public class EditProfile extends AppCompatActivity {
         UserProfile profile = app.getUser();
 
         EditText x = (EditText) findViewById(R.id.editName);
-        profile.setName(x.getText().toString());
-
+        if(!x.getText().toString().equals("")) {
+            profile.setName(x.getText().toString());
+        }
         x = (EditText) findViewById(R.id.editAge);
-        profile.setAge(Integer.parseInt(x.getText().toString()));
-
+        if(!x.getText().toString().equals("")) {
+            profile.setAge(Integer.parseInt(x.getText().toString()));
+        }
         x = (EditText) findViewById(R.id.editHeight);
-        profile.setHeight(Integer.parseInt(x.getText().toString()));
-
+        if(!x.getText().toString().equals("")) {
+            profile.setHeight(Integer.parseInt(x.getText().toString()));
+        }
         x = (EditText) findViewById(R.id.editWeight);
-        profile.setWeight(Integer.parseInt(x.getText().toString()));
-
+        if(!x.getText().toString().equals("")) {
+            profile.setWeight(Integer.parseInt(x.getText().toString()));
+        }
         FileOutputStream fileOut;
         ObjectOutputStream objectOut;
 

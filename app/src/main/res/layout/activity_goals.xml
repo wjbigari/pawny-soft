@@ -23,13 +23,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Calories"
+        android:layout_margin="5dp"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:orientation="horizontal">
 
         <EditText
@@ -57,13 +58,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Protein"
+        android:layout_margin="5dp"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:orientation="horizontal">
 
         <EditText
@@ -90,13 +92,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Carbohydrates"
+        android:layout_margin="5dp"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:orientation="horizontal">
 
         <EditText
@@ -124,13 +127,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Fat"
+        android:layout_margin="5dp"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:orientation="horizontal">
 
         <EditText
@@ -159,6 +163,7 @@
         android:background="@color/colorPrimary"
         android:onClick="saveGoals"
         android:text="Save"
+        android:layout_margin="5dp"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

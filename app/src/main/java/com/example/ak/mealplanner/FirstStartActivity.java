@@ -52,13 +52,11 @@ public class FirstStartActivity extends AppCompatActivity {
         // Do something in response to button
         EditText text = (EditText) findViewById(R.id.editUser);
         String userName = text.getText().toString();
-        text = (EditText) findViewById(R.id.editFirstName);
-        String name = text.getText().toString();
         text = (EditText) findViewById(R.id.editNewPassword);
-        if(userName.equals("") || name.equals("") || text.getText().toString().equals("")){
+        if(userName.equals("")  || text.getText().toString().equals("")){
             return;
         }
-        app.addUser(new UserProfile(userName, name, 0,0,0,UserProfile.gender.MALE));
+        app.addUser(new UserProfile(userName, "", 0,0,0,UserProfile.gender.MALE));
         SendUserController sendUserController = new SendUserController(this, "insertUser", app.getUser(), text.getText().toString());
         sendUserController.execute();
         pref.edit().putBoolean("LOGIN", true).apply();

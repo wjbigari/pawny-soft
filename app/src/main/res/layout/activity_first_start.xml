@@ -18,65 +18,32 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <TextView
-        android:id="@+id/textUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
     <EditText
         android:id="@+id/editUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter username"
+        android:hint="Username"
+        android:layout_margin="10dp"
         android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/text567"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editNewPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter Password"
+        android:hint="Password"
+        android:layout_margin="10dp"
         android:inputType="textPassword" />
-
-    <TextView
-        android:id="@+id/textFirstName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/editFirstName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter name"
-        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/buttonNext"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:background="@color/colorPrimary"
         android:onClick="nextStart"
         android:text="Sign Up"
-        android:layout_margin="2dp"
         android:textColor="@android:color/white" />
 
     <Button
@@ -86,7 +53,7 @@
         android:background="@color/colorPrimary"
         android:text="Login"
         android:onClick="login"
-        android:layout_margin="2dp"
+        android:layout_margin="20dp"
         android:textColor="@android:color/white" />
 
 </LinearLayout>
