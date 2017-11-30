@@ -49,7 +49,7 @@ public class UserRecipeActivity extends AppCompatActivity {
 
         text = (TextView) findViewById(R.id.recipeInfo);
 
-        text.setText("Serving size: " + recipe.getServingSize() + "\nPortion: " + recipe.getNumPortions() + "\nInstructions: " + recipe.getPrepInstructions());
+        text.setText("Serving size: " + recipe.getServingSize() + "\nPortion: " + recipe.getNumPortions() + "\nInstructions: " + recipe.getPrepInstructions() + "\nCalories: " + recipe.getCalPerServing());
 
         final ListView mainListView = findViewById(R.id.userrecipeList);
 

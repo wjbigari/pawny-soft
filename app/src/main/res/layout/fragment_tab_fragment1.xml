@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:orientation="horizontal">
 
         <EditText
@@ -28,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/colorPrimary"
+            android:background="@android:color/holo_red_light"
             android:onClick="startGoals"
             android:text="Goals"
             android:textColor="@android:color/white" />
@@ -37,14 +38,16 @@
     <ListView
         android:id="@+id/list_main"
         android:layout_width="match_parent"
-        android:layout_height="452dp"
+        android:layout_height="440dp"
+        android:layout_margin="5dp"
         android:layout_weight="1.08" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:layout_height="61dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/holo_red_light"
         android:onClick="buildMeals"
         android:text="Build Meal"
         android:textColor="@android:color/white" />

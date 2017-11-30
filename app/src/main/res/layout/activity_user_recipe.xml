@@ -24,12 +24,14 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:textSize="24sp"
+        android:layout_margin="5dp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/recipeInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
@@ -38,40 +40,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ingredients"
+        android:layout_margin="5dp"
         android:textColor="@android:color/black"
         android:textSize="24sp" />
 
     <ListView
         android:id="@+id/userrecipeList"
         android:layout_width="match_parent"
-        android:layout_height="233dp" />
+        android:layout_height="192dp"
+        android:layout_margin="5dp" />
 
     <Button
         android:id="@+id/addRecipeItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="Add Ingredients"
-        android:onClick="modifyRecipeIngredients"
         android:layout_margin="2dp"
+        android:background="@android:color/holo_red_light"
+        android:onClick="modifyRecipeIngredients"
+        android:text="Add Ingredients"
         android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/recipeDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:onClick="deleteUserRecipe"
         android:layout_margin="2dp"
+        android:background="@android:color/holo_red_light"
+        android:onClick="deleteUserRecipe"
         android:text="Delete"
         android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/updateRecipe"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="42dp"
         android:layout_margin="2dp"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/holo_red_light"
         android:onClick="updateUserRecipe"
         android:text="Update Recipe"
         android:textColor="@android:color/white" />
@@ -85,10 +89,10 @@
             android:id="@+id/recipeBreakfast"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:onClick="addRecipeBreakfast"
             android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_red_light"
+            android:onClick="addRecipeBreakfast"
             android:text="Breakfast"
             android:textColor="@android:color/white" />
 
@@ -96,11 +100,10 @@
             android:id="@+id/recipeLunch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/colorPrimary"
-            android:background="@color/colorPrimary"
-            android:onClick="addRecipeLunch"
             android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_red_light"
+            android:onClick="addRecipeLunch"
             android:text="Lunch"
             android:textColor="@android:color/white" />
 
@@ -110,8 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"
+            android:background="@android:color/holo_red_light"
             android:onClick="addRecipeDinner"
             android:text="Dinner"
             android:textColor="@android:color/white" />

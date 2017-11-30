@@ -30,6 +30,7 @@ public class SendUserController extends AsyncTask<Void, Void, Void> {
     JSONObject responseObject;
     private Socket socket;
     String dstAddress ="10.0.2.2";
+    //private String dstAddress = "174.103.187.190";
     int dstPort = 8083;
     private String password;
 

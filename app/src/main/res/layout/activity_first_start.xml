@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/holo_red_light"
         android:onClick="nextStart"
         android:text="Sign Up"
         android:textColor="@android:color/white" />
@@ -50,10 +50,10 @@
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="Login"
-        android:onClick="login"
         android:layout_margin="20dp"
+        android:background="@android:color/holo_red_light"
+        android:onClick="login"
+        android:text="Login"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

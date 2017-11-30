@@ -13,16 +13,18 @@
     <ListView
         android:id="@+id/recipeList"
         android:layout_width="match_parent"
-        android:layout_height="510dp">
+        android:layout_height="474dp"
+        android:layout_margin="5dp">
 
     </ListView>
 
     <Button
         android:id="@+id/buttonBuildRecipe"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@color/colorPrimary"
-        android:text="Build Recipe"
+        android:layout_height="61dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/holo_red_light"
         android:onClick="buildRecipe"
+        android:text="Build Recipe"
         android:textColor="@android:color/white" />
 </LinearLayout>

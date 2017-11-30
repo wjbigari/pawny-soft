@@ -160,10 +160,10 @@
         android:id="@+id/button8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:layout_margin="5dp"
+        android:background="@android:color/holo_red_light"
         android:onClick="saveGoals"
         android:text="Save"
-        android:layout_margin="5dp"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

@@ -23,8 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -32,8 +31,7 @@
         android:layout_height="349dp"
         android:layout_weight="0.51"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="italic" />
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/colorPrimary"
+            android:background="@android:color/holo_red_light"
             android:onClick="saveItem"
             android:text="Add Item"
             android:textColor="@android:color/white" />
@@ -66,11 +64,11 @@
         android:id="@+id/deleteRecipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/holo_red_light"
         android:onClick="deleteRecipeItem"
         android:text="Remove"
-        android:layout_margin="5dp"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

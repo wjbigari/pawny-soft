@@ -33,6 +33,7 @@ public class LoginController extends AsyncTask<Void, Void,Void> {
     private JSONObject requestObject;
     private JSONObject responseObject;
     private String dstAddress = "10.0.2.2";
+    //private String dstAddress = "174.103.187.190";
     private int dstPort = 8083;
     private Socket socket;
     private String username;

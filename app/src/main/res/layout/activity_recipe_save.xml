@@ -91,10 +91,10 @@
         android:id="@+id/addRecipeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="Save"
-        android:onClick="addRecipe"
         android:layout_margin="10dp"
+        android:background="@android:color/holo_red_light"
+        android:onClick="addRecipe"
+        android:text="Save"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

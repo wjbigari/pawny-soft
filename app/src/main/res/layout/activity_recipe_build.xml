@@ -23,13 +23,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_margin="5dp"
         android:hint="Search foods..."
         android:inputType="textPersonName" />
 
     <ListView
         android:id="@+id/listFood"
         android:layout_width="match_parent"
-        android:layout_height="428dp">
+        android:layout_height="388dp"
+        android:layout_margin="5dp">
 
     </ListView>
 
@@ -37,9 +39,10 @@
         android:id="@+id/button11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="Save Recipe"
+        android:layout_margin="5dp"
+        android:background="@android:color/holo_red_light"
         android:onClick="saveRecipe"
+        android:text="Save Recipe"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

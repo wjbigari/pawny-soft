@@ -40,6 +40,8 @@ public class Favorites extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        app = (MyApplication) getApplication();
+
         final ListView mainListView = findViewById(R.id.favoritesList);
 
         // Create and populate a List of food names
@@ -48,6 +50,7 @@ public class Favorites extends AppCompatActivity {
         // Create ArrayAdapter
         listAdapter  = new ArrayAdapter<MealItem>(this, R.layout.listrow, foodList);
 
+        //TODO Will- use the controller to get the favorite meals
 
         // Set the ArrayAdapter as the ListView's adapter.
         mainListView.setAdapter(listAdapter);
@@ -60,8 +63,6 @@ public class Favorites extends AppCompatActivity {
 
             }
         });
-
-        app = (MyApplication) getApplication();
     }
 
     @Override

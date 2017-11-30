@@ -187,4 +187,6 @@ public class MyApplication extends Application {
     public boolean hasUserRecipe(){
         return recipe != null;
     }
+
+
 }

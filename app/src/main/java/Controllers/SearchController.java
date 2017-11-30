@@ -27,7 +27,8 @@ import org.json.JSONObject;
 
 public class SearchController extends AsyncTask<Void, Void, Void> {
 
-    String dstAddress = "localhost";
+    String dstAddress = "10.0.2.2";
+    //private String dstAddress = "174.103.187.190";
     int dstPort;
     String response = "" ;
     TextView textResponse;
@@ -36,7 +37,6 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
     ArrayAdapter<FoodItem> arrayAdapter;
 
     public SearchController(String addr,ArrayAdapter<FoodItem> mealItemArrayAdapter) {
-        dstAddress ="10.0.2.2";
         dstPort = 8083;
         searchString = addr;
         this.arrayAdapter = mealItemArrayAdapter;

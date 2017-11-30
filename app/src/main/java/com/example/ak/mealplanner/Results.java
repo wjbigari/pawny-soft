@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -42,5 +43,9 @@ public class Results extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    public void addToFavorite(View view){
+        //TODO Will- use the controller to add the meal to faavorites
     }
 }

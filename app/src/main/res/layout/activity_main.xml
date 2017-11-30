@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/holo_red_dark"
         android:elevation="6dp"
         android:minHeight="?attr/actionBarSize"
         app:tabSelectedTextColor="@android:color/white">

@@ -8,7 +8,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
+import android.widget.ListView;
+
+import com.example.ak.mealplanner.Models.MealItem;
+import com.example.ak.mealplanner.Models.UserRecipe;
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.EventsContainer;
+import com.github.sundeepk.compactcalendarview.domain.Event;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+
+import Controllers.GetUserRecipesController;
 
 
 /**
@@ -28,6 +42,11 @@ public class TabFragment3 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private MyApplication app;
+
+    private ArrayAdapter<MealItem> listAdapter;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -57,15 +76,26 @@ public class TabFragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab_fragment3, container, false);
-        CalendarView calendar = (CalendarView) rootView.findViewById(R.id.calendarView);
 
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        final ListView mainListView =  rootView.findViewById(R.id.listMealHistory);
+        ArrayList<MealItem> mealList = new ArrayList<MealItem>();
+        app = (MyApplication) getActivity().getApplication();
+        // Create ArrayAdapter
+        listAdapter  = new ArrayAdapter<MealItem>(getContext(), R.layout.listrow, mealList);
 
+        //TODO Will - use the controller to add meal history items to the list
+
+        // Set the ArrayAdapter as the ListView's adapter.
+        mainListView.setAdapter(listAdapter);
+
+        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                startActivity(new Intent(getActivity(), MealHistoryActivity.class));
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
             }
         });
+
         return rootView;
     }
 
