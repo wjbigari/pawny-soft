@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,16 @@ import com.github.sundeepk.compactcalendarview.EventsContainer;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
 
+import Controllers.GetMealHistoryController;
 import Controllers.GetUserRecipesController;
+import Controllers.SendMealPlannerRecController;
+
+import static android.content.ContentValues.TAG;
 
 
 /**
@@ -39,13 +47,14 @@ public class TabFragment3 extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private CompactCalendarView calendarView;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private MyApplication app;
 
-    private ArrayAdapter<MealItem> listAdapter;
+    private ArrayAdapter<MealPlannerRec> listAdapter;
 
 
     private OnFragmentInteractionListener mListener;
@@ -71,31 +80,38 @@ public class TabFragment3 extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        //TODO Will - use the controller to add meal history items to the list
+        GetMealHistoryController ghmc = new GetMealHistoryController(app.getUser().getUsername(), calendarView, this);
+        ghmc.execute();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab_fragment3, container, false);
 
-        final ListView mainListView =  rootView.findViewById(R.id.listMealHistory);
-        ArrayList<MealItem> mealList = new ArrayList<MealItem>();
-        app = (MyApplication) getActivity().getApplication();
-        // Create ArrayAdapter
-        listAdapter  = new ArrayAdapter<MealItem>(getContext(), R.layout.listrow, mealList);
-
-        //TODO Will - use the controller to add meal history items to the list
-
-        // Set the ArrayAdapter as the ListView's adapter.
-        mainListView.setAdapter(listAdapter);
-
-        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
+        calendarView =  rootView.findViewById(R.id.Calendar);
+        calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            public void onDayClick(Date dateClicked) {
+                List<Event> events = calendarView.getEvents(dateClicked);
+                Log.i("adarsh", "Day was clicked: " + dateClicked + " with events " + events);
+            }
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                Log.i("adarsh", "Month was scrolled to: " + firstDayOfNewMonth);
             }
         });
+        ArrayList<MealPlannerRec> mealList = new ArrayList<>();
+        app = (MyApplication) getActivity().getApplication();
+        // Create ArrayAdapter
+        //TODO Will - use the controller to add meal history items to the list
+        GetMealHistoryController ghmc = new GetMealHistoryController(app.getUser().getUsername(), calendarView, this);
+        ghmc.execute();
 
+        // Set the ArrayAdapter as the ListView's adapter.
         return rootView;
     }
 
@@ -112,7 +128,10 @@ public class TabFragment3 extends Fragment {
         mListener = null;
     }
 
-
+    public void addEvent(Event event){
+        Log.i("adarsh", event.getData().toString());
+        calendarView.addEvent(event, false);
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

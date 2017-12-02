@@ -37,7 +37,7 @@
         android:layout_margin="5dp"
         android:background="@android:color/holo_red_light"
         android:onClick="addToFavorite"
-        android:text="Favorite"
+        android:text="Accept"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

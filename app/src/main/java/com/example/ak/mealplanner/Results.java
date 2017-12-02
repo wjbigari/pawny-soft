@@ -10,11 +10,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import Controllers.MealPlannerController;
+import Controllers.SendMealPlannerRecController;
 
 public class Results extends AppCompatActivity {
     MyApplication app;
+    MealPlannerRec mpr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +29,14 @@ public class Results extends AppCompatActivity {
         app = (MyApplication) getApplicationContext();
         Log.i("adarsh", app.getList().toString());
         TextView text = (TextView) findViewById(R.id.resultview);
-        MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), text);
+        MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), text,mpr, this);
         mpc.execute();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+    public void setMpr(MealPlannerRec mpr){
+        this.mpr = mpr;
     }
 
     @Override
@@ -47,5 +53,12 @@ public class Results extends AppCompatActivity {
 
     public void addToFavorite(View view){
         //TODO Will- use the controller to add the meal to faavorites
+        try{
+            SendMealPlannerRecController smprc = new SendMealPlannerRecController(app.getUser().getUsername(),mpr, Calendar.getInstance());
+            smprc.execute();
+        }catch(Exception e){
+
+        }
+
     }
 }

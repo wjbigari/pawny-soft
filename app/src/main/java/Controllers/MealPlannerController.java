@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.example.ak.mealplanner.Models.Constraints;
 import com.example.ak.mealplanner.Models.MealItem;
 import com.example.ak.mealplanner.MealPlannerRec;
+import com.example.ak.mealplanner.Results;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,8 +37,11 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
     private ArrayList<MealItem> responseList;
     private TextView textResponse;
     MealPlannerRec mealPlannerRec;
+    Results results;
 
-    public MealPlannerController(Constraints c, ArrayList<MealItem> rl, TextView response){
+
+    public MealPlannerController(Constraints c, ArrayList<MealItem> rl, TextView response, MealPlannerRec rec, Results results){
+        this.results = results;
         this.requestList = rl;
         this.requestConstraints = c;
         this.textResponse = response;
@@ -66,6 +70,7 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
             JSONObject mealRecJSON = new JSONObject(jsonresponse);
             Log.i("al",mealRecJSON.toString(2));
             mealPlannerRec = new MealPlannerRec(mealRecJSON);
+            results.setMpr(mealPlannerRec);
             Log.i("al", "HEY THIS IS THE MEAL PLAN " + mealPlannerRec.toString());
         } catch (UnknownHostException e) {
             e.printStackTrace();
@@ -98,7 +103,8 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
     }
     @Override
     protected void onPostExecute(Void result) {
-        textResponse.setText(mealPlannerRec.toString());
         super.onPostExecute(result);
+
+        textResponse.setText(mealPlannerRec.toString());
     }
 }
