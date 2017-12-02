@@ -18,7 +18,7 @@ public class UserProfile implements Serializable {
 
     String username;
     String name;
-    int age,height,weight;
+    int age,height,weight; //age in years; height in inches; weight in pounds for calculator functions
     gender gen;
     Constraints constraints;
 
@@ -130,6 +130,34 @@ public class UserProfile implements Serializable {
         jobject.put("gender", this.gen.name());
         jobject.put("constraints", this.constraints.toJSON().toString());
         return jobject;
+    }
+    
+    //Verifies that the user's weight is within acceptable bounds (positive and less-or-equal to 1500 lbs)
+    public boolean isValidWeight(){
+    	return this.weight > 0 && this.weight <= 1500;
+    }
+    
+    //Verifies that the user's age is within acceptable bounds (greater-or-equal to 0 and less-or-equal to 150 years)
+    public boolean isValidAge(){
+    	return this.age >= 0 && this.age <= 150;
+    }
+    
+    //Verifies that the user's height is within acceptable bounds (positive and less-or-equal to 10 feet tall)
+    public boolean isValidHeight(){
+    	return this.height > 0 && this.height <= 120;
+    }
+    
+    //Returns the user's current BMI based on available height and weight
+    public double getBMI(){
+    	if(!isValidWeight() || !isValidHeight()) return 0.0;
+    	return this.weight / Math.pow(this.height, 2) * 703;
+    }
+    
+    //Returns the user's resting metabolic rate, modified to show total energy expenditure (TEE) for sedentary activity
+    public int getRMR(){
+    	if(!isValidWeight() || !isValidHeight() || !isValidAge()) return 0;
+    	int genderMod = (the.gen == MALE) ? 5 : -161;
+    	return (int)Math.floor(((4.53 * this.weight) + (15.875 * this.height) - (4.92 * this.age) + genderMod) * 1.3);
     }
 }
 
