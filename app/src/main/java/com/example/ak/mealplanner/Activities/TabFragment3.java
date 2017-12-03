@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.example.ak.mealplanner.Controllers.GetMealHistoryController;
 import com.example.ak.mealplanner.Models.MealPlannerRec;
 import com.example.ak.mealplanner.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
@@ -72,8 +73,8 @@ public class TabFragment3 extends Fragment {
     public void onResume(){
         super.onResume();
         //TODO Will - use the controller to add meal history items to the list
-        //GetMealHistoryController ghmc = new GetMealHistoryController(app.getUser().getUsername(), calendarView, this);
-        //ghmc.execute();
+        GetMealHistoryController ghmc = new GetMealHistoryController(app.getUser().getUsername(), calendarView, this);
+        ghmc.execute();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,8 +97,8 @@ public class TabFragment3 extends Fragment {
         app = (MyApplication) getActivity().getApplication();
         // Create ArrayAdapter
         //TODO Will - use the controller to add meal history items to the list
-        //GetMealHistoryController ghmc = new GetMealHistoryController(app.getUser().getUsername(), calendarView, this);
-        //ghmc.execute();
+        GetMealHistoryController ghmc = new GetMealHistoryController(app.getUser().getUsername(), calendarView, this);
+        ghmc.execute();
 
         // Set the ArrayAdapter as the ListView's adapter.
         return rootView;

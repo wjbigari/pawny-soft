@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.ak.mealplanner.Controllers.SendMealPlannerRecController;
 import com.example.ak.mealplanner.Models.MealPlannerRec;
 import com.example.ak.mealplanner.R;
 
@@ -53,11 +54,20 @@ public class Results extends AppCompatActivity {
 
     public void addToFavorite(View view){
         //TODO Will- use the controller to add the meal to faavorites
-
+        if(mpr != null) {
+            SendMealPlannerRecController smprc = new SendMealPlannerRecController(app.getUser().getUsername(), mpr, null);
+            smprc.execute();
+            finish();
+        }
+        else{
+            return;
+        }
     }
 
     public void redoBuild(View view){
-        text = (TextView) findViewById(R.id.resultview);
+        if(mpr == null){
+            return;
+        }
         MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), text,mpr, this);
         mpc.execute();
     }
