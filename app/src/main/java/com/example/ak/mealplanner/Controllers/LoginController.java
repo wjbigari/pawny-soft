@@ -96,7 +96,7 @@ public class LoginController extends AsyncTask<Void, Void,Void> {
                 FileOutputStream fileOut;
                 ObjectOutputStream objectOut;
                 try {
-                    fileOut = loginActivity.openFileOutput("profile", Context.MODE_PRIVATE);
+                    fileOut = loginActivity.openFileOutput("AboutActivity", Context.MODE_PRIVATE);
                     objectOut = new ObjectOutputStream(fileOut);
 
                     objectOut.writeObject(userProfile);

@@ -1,4 +1,4 @@
-package com.example.ak.mealplanner.Activities;
+package com.example.ak.mealplanner.Adapters;
 
 import android.content.Intent;
 import android.os.Build;
@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.ak.mealplanner.Activities.MainActivity;
+import com.example.ak.mealplanner.Activities.MyApplication;
+import com.example.ak.mealplanner.Activities.UserRecipeActivity;
 import com.example.ak.mealplanner.Models.UserRecipe;
 import com.example.ak.mealplanner.R;
 

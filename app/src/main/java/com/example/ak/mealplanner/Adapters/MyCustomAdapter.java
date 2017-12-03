@@ -1,4 +1,4 @@
-package com.example.ak.mealplanner.Activities;
+package com.example.ak.mealplanner.Adapters;
 
 /**
  * Created by ak on 10/26/17.

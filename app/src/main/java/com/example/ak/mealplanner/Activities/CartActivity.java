@@ -16,10 +16,11 @@ import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.Toast;
 
+import com.example.ak.mealplanner.Adapters.ExpandableListAdapter;
 import com.example.ak.mealplanner.Models.MealItem;
 import com.example.ak.mealplanner.R;
 
-public class Cart extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity {
 
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;

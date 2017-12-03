@@ -19,21 +19,21 @@
             android:label="CAMP"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activities.profile"
+            android:name=".Activities.AboutActivity"
             android:label="About"
             android:parentActivityName=".Activities.MainActivity" />
         <activity
-            android:name=".Activities.Favorites"
+            android:name=".Activities.FavoritesActivity"
             android:label="Favorites"
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activities.EditProfile"
+            android:name=".Activities.EditProfileActivity"
             android:label="Profile"
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activities.Goals"
+            android:name=".Activities.GoalsActivity"
             android:label="Goals"
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
@@ -43,12 +43,12 @@
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activities.Results"
+            android:name=".Activities.ResultsActivity"
             android:label="Recommendation"
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activities.Cart"
+            android:name=".Activities.CartActivity"
             android:label="Cart"
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />

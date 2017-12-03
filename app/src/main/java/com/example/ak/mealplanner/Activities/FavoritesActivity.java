@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import com.example.ak.mealplanner.Controllers.SearchController;
 
-public class Favorites extends AppCompatActivity {
+public class FavoritesActivity extends AppCompatActivity {
     private SearchController searchController;
 
     private ArrayAdapter<MealItem> listAdapter;

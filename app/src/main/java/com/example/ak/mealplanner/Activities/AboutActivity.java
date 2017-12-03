@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import com.example.ak.mealplanner.R;
 
-public class profile extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

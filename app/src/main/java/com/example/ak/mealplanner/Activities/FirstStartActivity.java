@@ -61,7 +61,7 @@ public class FirstStartActivity extends AppCompatActivity {
         SendUserController sendUserController = new SendUserController(this, "insertUser", app.getUser(), text.getText().toString());
         sendUserController.execute();
         pref.edit().putBoolean("LOGIN", true).apply();
-        Intent intent = new Intent(this, EditProfile.class);
+        Intent intent = new Intent(this, EditProfileActivity.class);
         startActivity(intent);
         finish();
     }

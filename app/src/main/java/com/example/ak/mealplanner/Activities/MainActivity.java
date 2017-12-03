@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             UserProfile userProfile = new UserProfile();
 
             try {
-                fileIn = openFileInput("profile");
+                fileIn = openFileInput("AboutActivity");
                 objectIn = new ObjectInputStream(fileIn);
 
                 userProfile = (UserProfile) objectIn.readObject();
@@ -71,17 +71,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, profile.class);
+            Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
             return true;
         }
         else if(id == R.id.action_cart){
-            Intent intent = new Intent(this, Cart.class);
+            Intent intent = new Intent(this, CartActivity.class);
             startActivity(intent);
             return true;
         }
         else if(id == R.id.action_user){
-            Intent intent = new Intent(this, EditProfile.class);
+            Intent intent = new Intent(this, EditProfileActivity.class);
             startActivity(intent);
             return true;
         }
@@ -90,13 +90,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void startFavorites(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, Favorites.class);
+        Intent intent = new Intent(this, FavoritesActivity.class);
         startActivity(intent);
     }
 
     public void startGoals(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, Goals.class);
+        Intent intent = new Intent(this, GoalsActivity.class);
         startActivity(intent);
     }
 
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         if(app.isEmpty()){
             return;
         }
-        Intent intent = new Intent(this, Results.class);
+        Intent intent = new Intent(this, ResultsActivity.class);
         startActivity(intent);
     }
 
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
     public void sendMessage(View view) {
-        Intent intent = new Intent(this, profile.class);
+        Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 

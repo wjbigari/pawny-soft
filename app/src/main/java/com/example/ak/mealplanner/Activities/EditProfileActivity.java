@@ -18,7 +18,7 @@ import java.io.ObjectOutputStream;
 
 import com.example.ak.mealplanner.Controllers.SendUserController;
 
-public class EditProfile extends AppCompatActivity {
+public class EditProfileActivity extends AppCompatActivity {
 
     MyApplication app;
     UserProfile user;
@@ -124,7 +124,7 @@ public class EditProfile extends AppCompatActivity {
         ObjectOutputStream objectOut;
 
         try {
-            fileOut = openFileOutput("profile", Context.MODE_PRIVATE);
+            fileOut = openFileOutput("AboutActivity", Context.MODE_PRIVATE);
             objectOut = new ObjectOutputStream(fileOut);
 
             objectOut.writeObject(profile);

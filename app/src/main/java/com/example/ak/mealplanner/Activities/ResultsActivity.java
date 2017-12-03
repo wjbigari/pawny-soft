@@ -15,7 +15,7 @@ import com.example.ak.mealplanner.R;
 import com.example.ak.mealplanner.Controllers.MealPlannerController;
 
 
-public class Results extends AppCompatActivity {
+public class ResultsActivity extends AppCompatActivity {
     MyApplication app;
     MealPlannerRec mpr;
     TextView text;

@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.example.ak.mealplanner.Models.Constraints;
 import com.example.ak.mealplanner.Models.MealItem;
 import com.example.ak.mealplanner.Models.MealPlannerRec;
-import com.example.ak.mealplanner.Activities.Results;
+import com.example.ak.mealplanner.Activities.ResultsActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,10 +37,10 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
     private ArrayList<MealItem> responseList;
     private TextView textResponse;
     MealPlannerRec mealPlannerRec;
-    Results results;
+    ResultsActivity results;
 
 
-    public MealPlannerController(Constraints c, ArrayList<MealItem> rl, TextView response, MealPlannerRec rec, Results results){
+    public MealPlannerController(Constraints c, ArrayList<MealItem> rl, TextView response, MealPlannerRec rec, ResultsActivity results){
         this.results = results;
         this.requestList = rl;
         this.requestConstraints = c;

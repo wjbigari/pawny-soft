@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ak.mealplanner.Adapters.RVAdapter;
 import com.example.ak.mealplanner.Models.UserRecipe;
 import com.example.ak.mealplanner.R;
 
@@ -22,12 +23,12 @@ import com.example.ak.mealplanner.Controllers.GetUserRecipesController;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TabFragment2.OnFragmentInteractionListener} interface
+ * {@link RecipeFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TabFragment2#newInstance} factory method to
+ * Use the {@link RecipeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TabFragment2 extends Fragment {
+public class RecipeFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -43,7 +44,7 @@ public class TabFragment2 extends Fragment {
 
     private RecyclerView rv;
 
-    public TabFragment2() {
+    public RecipeFragment() {
         // Required empty public constructor
     }
     @Override
@@ -58,11 +59,11 @@ public class TabFragment2 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TabFragment2.
+     * @return A new instance of fragment RecipeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TabFragment2 newInstance(String param1, String param2) {
-        TabFragment2 fragment = new TabFragment2();
+    public static RecipeFragment newInstance(String param1, String param2) {
+        RecipeFragment fragment = new RecipeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

@@ -1,7 +1,5 @@
 package com.example.ak.mealplanner.Models;
 
-import com.example.ak.mealplanner.Activities.MealItemContent;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import org.json.JSONArray;

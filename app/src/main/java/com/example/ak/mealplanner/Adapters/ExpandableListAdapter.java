@@ -1,4 +1,4 @@
-package com.example.ak.mealplanner.Activities;
+package com.example.ak.mealplanner.Adapters;
 
 import java.util.HashMap;
 import java.util.List;

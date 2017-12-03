@@ -18,7 +18,7 @@ import java.io.ObjectOutputStream;
 
 import com.example.ak.mealplanner.Controllers.UpdateGoalsController;
 
-public class Goals extends AppCompatActivity {
+public class GoalsActivity extends AppCompatActivity {
     MyApplication app;
     EditText calMin, calMax;
     EditText carbMin, carbMax;
@@ -87,7 +87,7 @@ public class Goals extends AppCompatActivity {
         ObjectOutputStream objectOut;
 
         try {
-            fileOut = openFileOutput("profile", Context.MODE_PRIVATE);
+            fileOut = openFileOutput("AboutActivity", Context.MODE_PRIVATE);
             objectOut = new ObjectOutputStream(fileOut);
 
             objectOut.writeObject(profile);

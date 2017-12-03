@@ -23,13 +23,13 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return new TabFragment1();
+                return new BuilderFragment();
             case 1:
-                return new TabFragment2();
+                return new RecipeFragment();
             case 2:
-                return new TabFragment3();
+                return new HistoryFragment();
             default:
-                return new TabFragment1();
+                return new BuilderFragment();
         }
     }
 

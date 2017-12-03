@@ -5,8 +5,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
+import com.example.ak.mealplanner.Activities.HistoryFragment;
 import com.example.ak.mealplanner.Models.MealPlannerRec;
-import com.example.ak.mealplanner.Activities.TabFragment3;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
@@ -35,7 +35,7 @@ public class GetMealHistoryController extends AsyncTask<Void,Void,Void> {
     private String username;
     private ArrayAdapter listAdapter;
     private CompactCalendarView calendarView = null;
-    private TabFragment3 thiscontext;
+    private HistoryFragment thiscontext;
     public GetMealHistoryController(String username, Calendar cal, ArrayAdapter listAdapter){
         this.username = username;
         if(cal!=null){
@@ -45,7 +45,7 @@ public class GetMealHistoryController extends AsyncTask<Void,Void,Void> {
         }
         this.listAdapter = listAdapter;
     }
-    public GetMealHistoryController(String username, CompactCalendarView cv, TabFragment3 thisContext){
+    public GetMealHistoryController(String username, CompactCalendarView cv, HistoryFragment thisContext){
         this.username = username;
         this.calendarView = cv;
         Date date = calendarView.getFirstDayOfCurrentMonth();

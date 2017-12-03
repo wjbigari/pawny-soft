@@ -3,7 +3,7 @@ package com.example.ak.mealplanner.Controllers;
 import android.os.AsyncTask;
 
 import com.example.ak.mealplanner.Models.UserRecipe;
-import com.example.ak.mealplanner.Activities.RVAdapter;
+import com.example.ak.mealplanner.Adapters.RVAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
