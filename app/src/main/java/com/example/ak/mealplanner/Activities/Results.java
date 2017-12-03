@@ -16,6 +16,7 @@ import com.example.ak.mealplanner.Controllers.MealPlannerController;
 public class Results extends AppCompatActivity {
     MyApplication app;
     MealPlannerRec mpr;
+    TextView text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,7 @@ public class Results extends AppCompatActivity {
 
         app = (MyApplication) getApplicationContext();
         Log.i("adarsh", app.getList().toString());
-        TextView text = (TextView) findViewById(R.id.resultview);
+        text = (TextView) findViewById(R.id.resultview);
         MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), text,mpr, this);
         mpc.execute();
 
@@ -52,6 +53,11 @@ public class Results extends AppCompatActivity {
     public void addToFavorite(View view){
         //TODO Will- use the controller to add the meal to faavorites
 
+    }
 
+    public void redoBuild(View view){
+        text = (TextView) findViewById(R.id.resultview);
+        MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), text,mpr, this);
+        mpc.execute();
     }
 }
