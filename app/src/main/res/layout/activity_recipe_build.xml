@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ak.mealplanner.Favorites"
+    tools:context="com.example.ak.mealplanner.Activities.Favorites"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -30,7 +30,7 @@
     <ListView
         android:id="@+id/listFood"
         android:layout_width="match_parent"
-        android:layout_height="388dp"
+        android:layout_height="464dp"
         android:layout_margin="5dp">
 
     </ListView>
@@ -38,7 +38,7 @@
     <Button
         android:id="@+id/button11"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="61dp"
         android:layout_margin="5dp"
         android:background="@android:color/holo_red_light"
         android:onClick="saveRecipe"

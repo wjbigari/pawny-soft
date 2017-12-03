@@ -3,28 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ak.mealplanner.TabFragment2"
+    tools:context="com.example.ak.mealplanner.Activities.TabFragment2"
     android:orientation="vertical"
     android:weightSum="1">
 
     <!-- TODO: Update blank fragment layout -->
 
 
-    <ListView
-        android:id="@+id/recipeList"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="474dp"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp" >
 
-    </ListView>
+    </android.support.v7.widget.RecyclerView>
 
     <Button
         android:id="@+id/buttonBuildRecipe"
         android:layout_width="match_parent"
         android:layout_height="61dp"
         android:layout_margin="5dp"
+        android:layout_weight="0.38"
         android:background="@android:color/holo_red_light"
         android:onClick="buildRecipe"
         android:text="Build Recipe"
         android:textColor="@android:color/white" />
+
 </LinearLayout>

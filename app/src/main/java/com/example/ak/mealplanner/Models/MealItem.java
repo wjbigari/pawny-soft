@@ -1,6 +1,6 @@
 package com.example.ak.mealplanner.Models;
 
-import com.example.ak.mealplanner.MealItemContent;
+import com.example.ak.mealplanner.Activities.MealItemContent;
 
 import org.json.JSONException;
 

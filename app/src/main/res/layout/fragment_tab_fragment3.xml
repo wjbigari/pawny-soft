@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ak.mealplanner.TabFragment3"
+    tools:context="com.example.ak.mealplanner.Activities.TabFragment3"
     android:orientation="vertical"
     android:weightSum="1">
     <!-- TODO: Update blank fragment layout -->
@@ -12,17 +12,16 @@
         android:id="@+id/Calendar"
         android:layout_width="match_parent"
         android:layout_height="474dp"
-        android:layout_margin="5dp"
-        android:layout_weight="0.38" />
+        android:layout_margin="5dp" />
 
     <Button
         android:id="@+id/buttonFave"
         android:layout_width="match_parent"
         android:layout_height="61dp"
         android:layout_margin="5dp"
-        android:layout_weight="0.38"
         android:background="@android:color/holo_red_light"
         android:onClick="startFavorites"
         android:text="Favorites"
+        android:layout_weight="0.38"
         android:textColor="@android:color/white" />
 </LinearLayout>

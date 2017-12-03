@@ -1,6 +1,6 @@
 package com.example.ak.mealplanner.Models;
 
-import com.example.ak.mealplanner.MealItemContent;
+import com.example.ak.mealplanner.Activities.MealItemContent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class UserRecipe implements Serializable, MealItemContent {
 
     @Override
     public String toString(){
-        return name;
+        return "\nPortion: " + numPortions + " " + portionName + "\nCalories: " + getCalPerServing() + "\nCarbs :" + getGramsCarbPerServing() + " grams" + "\nProtein: " + getGramsProtPerServing() + " grams" + "\nFat: " + getGramsFatPerServing() + " grams";
 
     }
 
