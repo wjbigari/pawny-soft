@@ -43,14 +43,6 @@ public class UserRecipeActivity extends AppCompatActivity {
 
         recipe = (UserRecipe) intent.getSerializableExtra("userRecipe");
 
-        TextView text = (TextView) findViewById(R.id.recipeName);
-
-        text.setText(recipe.getName());
-
-        text = (TextView) findViewById(R.id.recipeInfo);
-
-        text.setText("Serving size: " + recipe.getServingSize() + "\nPortion: " + recipe.getNumPortions() + "\nInstructions: " + recipe.getPrepInstructions() + "\nCalories: " + recipe.getCalPerServing());
-
         final ListView mainListView = findViewById(R.id.userrecipeList);
 
         // Create ArrayAdapter
