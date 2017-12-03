@@ -10,7 +10,6 @@ import org.json.JSONException;
  * Created by wbigari on 10/26/17.
  */
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
