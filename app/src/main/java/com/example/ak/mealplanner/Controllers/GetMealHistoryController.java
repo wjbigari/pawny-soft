@@ -1,15 +1,12 @@
-package Controllers;
+package com.example.ak.mealplanner.Controllers;
 
-import android.app.usage.UsageEvents;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.CalendarView;
-import android.widget.ListAdapter;
 
-import com.example.ak.mealplanner.MealPlannerRec;
-import com.example.ak.mealplanner.TabFragment3;
+import com.example.ak.mealplanner.Models.MealPlannerRec;
+import com.example.ak.mealplanner.Activities.TabFragment3;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 

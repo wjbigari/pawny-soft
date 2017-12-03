@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.example.ak.mealplanner.Models.MealPlannerRec;
 import com.example.ak.mealplanner.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-//import com.example.ak.mealplanner.Controllers.GetMealHistoryController;
+//import com.example.ak.mealplanner.com.example.ak.mealplanner.Controllers.GetMealHistoryController;
 
 
 /**

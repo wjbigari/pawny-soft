@@ -1,4 +1,4 @@
-package com.example.ak.mealplanner.Activities;
+package com.example.ak.mealplanner.Models;
 
 import org.json.JSONObject;
 import java.util.ArrayList;

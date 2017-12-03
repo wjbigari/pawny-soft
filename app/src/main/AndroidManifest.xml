@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:name="com.example.ak.mealplanner.Activities.MyApplication"
+        android:name=".Activities.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,45 +15,45 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.ak.mealplanner.Activities.MainActivity"
+            android:name=".Activities.MainActivity"
             android:label="CAMP"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.profile"
+            android:name=".Activities.profile"
             android:label="About"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.MainActivity" />
+            android:parentActivityName=".Activities.MainActivity" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.Favorites"
+            android:name=".Activities.Favorites"
             android:label="Favorites"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.MainActivity"
+            android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.EditProfile"
+            android:name=".Activities.EditProfile"
             android:label="Profile"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.MainActivity"
+            android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.Goals"
+            android:name=".Activities.Goals"
             android:label="Goals"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.MainActivity"
+            android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.FoodActivity"
+            android:name=".Activities.FoodActivity"
             android:label="Item"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.MainActivity"
+            android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.Results"
+            android:name=".Activities.Results"
             android:label="Recommendation"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.MainActivity"
+            android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.Cart"
+            android:name=".Activities.Cart"
             android:label="Cart"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.MainActivity"
+            android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.FirstStartActivity"
+            android:name=".Activities.FirstStartActivity"
             android:label="CAMP">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -62,31 +62,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.ak.mealplanner.Activities.RecipeBuildActivity"
+            android:name=".Activities.RecipeBuildActivity"
             android:label="Recipe Builder"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.MainActivity"
+            android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.RecipeActivity"
+            android:name=".Activities.RecipeActivity"
             android:label="Recipe Item"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.RecipeBuildActivity"
+            android:parentActivityName=".Activities.RecipeBuildActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.RecipeSaveActivity"
+            android:name=".Activities.RecipeSaveActivity"
             android:label="Save Recipe"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.RecipeBuildActivity"
+            android:parentActivityName=".Activities.RecipeBuildActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.UserRecipeActivity"
+            android:name=".Activities.UserRecipeActivity"
             android:label="Recipe"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.MainActivity"
+            android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.ak.mealplanner.Activities.LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:label="Login"
-            android:parentActivityName="com.example.ak.mealplanner.Activities.FirstStartActivity"
-            android:theme="@style/AppTheme"/>
+            android:parentActivityName=".Activities.FirstStartActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activities.RatioActivity"></activity>
     </application>
 
 </manifest>

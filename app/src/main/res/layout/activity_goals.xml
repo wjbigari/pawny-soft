@@ -163,6 +163,7 @@
         android:layout_margin="5dp"
         android:background="@android:color/holo_red_light"
         android:text="Ratios"
+        android:onClick="ratioStart"
         android:textColor="@android:color/white" />
 
     <Button

@@ -9,7 +9,7 @@ import org.json.JSONException;
 
 import java.io.Serializable;
 
-public class RecipeItem implements Serializable{
+public class  RecipeItem implements Serializable{
     private FoodItem foodItem;
     private int numServings;
 

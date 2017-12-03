@@ -1,8 +1,8 @@
-package Controllers;
+package com.example.ak.mealplanner.Controllers;
 
 import android.os.AsyncTask;
 
-import com.example.ak.mealplanner.MealPlannerRec;
+import com.example.ak.mealplanner.Models.MealPlannerRec;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,8 +14,6 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 /**
  * Created by wbigari on 12/2/17.

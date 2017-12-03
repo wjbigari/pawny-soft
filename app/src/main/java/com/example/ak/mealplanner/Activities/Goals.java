@@ -1,6 +1,7 @@
 package com.example.ak.mealplanner.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -96,5 +97,9 @@ public class Goals extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void ratioStart(View view){
+        startActivity(new Intent(this, RatioActivity.class));
     }
 }

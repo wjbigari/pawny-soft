@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.example.ak.mealplanner.Models.Constraints;
 import com.example.ak.mealplanner.Models.MealItem;
-import com.example.ak.mealplanner.Activities.MealPlannerRec;
+import com.example.ak.mealplanner.Models.MealPlannerRec;
 import com.example.ak.mealplanner.Activities.Results;
 
 import org.json.JSONArray;

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ak.mealplanner.Activities.Favorites"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <TextView
+        android:id="@+id/textview809"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calories"
+        android:textColor="@android:color/black"
+        android:layout_margin="5dp"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/calRatio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_margin="5dp"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Carbohydrates"
+        android:textColor="@android:color/black"
+        android:layout_margin="5dp"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/carbRatio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_margin="5dp"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Protein"
+        android:textColor="@android:color/black"
+        android:layout_margin="5dp"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/protRatio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_margin="5dp"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fat"
+        android:textColor="@android:color/black"
+        android:layout_margin="5dp"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/fatRatio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_margin="5dp"
+        android:inputType="number" />
+
+</LinearLayout>

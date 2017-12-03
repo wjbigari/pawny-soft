@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.ak.mealplanner.Models.MealPlannerRec;
 import com.example.ak.mealplanner.R;
 
 import com.example.ak.mealplanner.Controllers.MealPlannerController;
