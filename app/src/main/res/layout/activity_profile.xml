@@ -37,7 +37,7 @@
         android:layout_weight="0.02"
         android:text="Paul Perepel | Adarsh Kurian | Will Bigari | Nick Bialk | Yash Mishra"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/holo_red_light"
         android:textSize="18sp" />
 
     <ImageView
