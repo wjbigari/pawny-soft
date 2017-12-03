@@ -3,8 +3,12 @@ package com.example.ak.mealplanner;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +46,9 @@ public class TabFragment2 extends Fragment {
     private MyApplication app;
     private OnFragmentInteractionListener mListener;
 
-    private ArrayAdapter<UserRecipe> listAdapter;
+    private RVAdapter adapter;
+
+    private RecyclerView rv;
 
     public TabFragment2() {
         // Required empty public constructor
@@ -50,7 +56,7 @@ public class TabFragment2 extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
-        GetUserRecipesController gurc = new GetUserRecipesController(listAdapter,app.getUser().getUsername());
+        GetUserRecipesController gurc = new GetUserRecipesController(adapter,app.getUser().getUsername());
         gurc.execute();
     }
     /**
@@ -71,11 +77,34 @@ public class TabFragment2 extends Fragment {
         return fragment;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_tab_fragment2, container, false);
 
+        ArrayList<UserRecipe> recipes = new ArrayList<UserRecipe>();
+
+        rv=(RecyclerView) rootView.findViewById(R.id.rv);
+
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
+
+        app = (MyApplication) getActivity().getApplication();
+
+        adapter = new RVAdapter(recipes, (MainActivity) getActivity());
+        GetUserRecipesController gurc = new GetUserRecipesController(adapter, app.getUser().getUsername() );
+        gurc.execute();
+
+        adapter.sort();
+        adapter.notifyDataSetChanged();
+
+        rv.setAdapter(adapter);
+
+
+
+        /**
         final ListView mainListView =  rootView.findViewById(R.id.recipeList);
         ArrayList<UserRecipe> foodList = new ArrayList<UserRecipe>();
         app = (MyApplication) getActivity().getApplication();
@@ -108,6 +137,7 @@ public class TabFragment2 extends Fragment {
             }
         });
 
+         */
         return rootView;
     }
 

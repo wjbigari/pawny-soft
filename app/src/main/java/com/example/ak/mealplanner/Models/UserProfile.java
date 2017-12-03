@@ -156,7 +156,7 @@ public class UserProfile implements Serializable {
     //Returns the user's resting metabolic rate, modified to show total energy expenditure (TEE) for sedentary activity
     public int getRMR(){
     	if(!isValidWeight() || !isValidHeight() || !isValidAge()) return 0;
-    	int genderMod = (the.gen == MALE) ? 5 : -161;
+    	int genderMod = (this.gen == MALE) ? 5 : -161;
     	return (int)Math.floor(((4.53 * this.weight) + (15.875 * this.height) - (4.92 * this.age) + genderMod) * 1.3);
     }
 }

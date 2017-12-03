@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import Controllers.MealPlannerController;
-import Controllers.SendMealPlannerRecController;
+
 
 public class Results extends AppCompatActivity {
     MyApplication app;
@@ -53,12 +53,7 @@ public class Results extends AppCompatActivity {
 
     public void addToFavorite(View view){
         //TODO Will- use the controller to add the meal to faavorites
-        try{
-            SendMealPlannerRecController smprc = new SendMealPlannerRecController(app.getUser().getUsername(),mpr, Calendar.getInstance());
-            smprc.execute();
-        }catch(Exception e){
 
-        }
 
     }
 }

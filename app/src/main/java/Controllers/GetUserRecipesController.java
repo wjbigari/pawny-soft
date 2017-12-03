@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 
 import com.example.ak.mealplanner.Models.UserRecipe;
+import com.example.ak.mealplanner.RVAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,7 +22,7 @@ import java.net.UnknownHostException;
  */
 
 public class GetUserRecipesController  extends AsyncTask<Void, Void, Void> {
-    private ArrayAdapter listAdapter;
+    private RVAdapter listAdapter;
     private String username;
     private JSONObject requestObject;
     private JSONObject responseObject;
@@ -30,7 +31,7 @@ public class GetUserRecipesController  extends AsyncTask<Void, Void, Void> {
     private int dstPort = 8083;
     private Socket socket;
 
-    public GetUserRecipesController(ArrayAdapter listAdapter, String username) {
+    public GetUserRecipesController(RVAdapter listAdapter, String username) {
         this.username = username;
         this.listAdapter = listAdapter;
     }
