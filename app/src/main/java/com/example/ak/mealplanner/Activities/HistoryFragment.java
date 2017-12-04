@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.example.ak.mealplanner.Controllers.GetMealHistoryController;
 import com.example.ak.mealplanner.Models.MealPlannerRec;
@@ -15,7 +16,9 @@ import com.example.ak.mealplanner.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -35,11 +38,13 @@ public class HistoryFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    TextView monthYear;
     private CompactCalendarView calendarView;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    HistoryFragment thisfrag;
+    private View rootView;
 
     private MyApplication app;
 
@@ -76,29 +81,59 @@ public class HistoryFragment extends Fragment {
         GetMealHistoryController ghmc = new GetMealHistoryController(app.getUser().getUsername(), calendarView, this);
         ghmc.execute();
     }
+    public void clearCalendar(){
+        calendarView.removeAllEvents();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_tab_fragment3, container, false);
-
+        rootView = inflater.inflate(R.layout.fragment_tab_fragment3, container, false);
+        thisfrag = this;
+        monthYear = rootView.findViewById(R.id.monthyear);
         calendarView =  rootView.findViewById(R.id.Calendar);
+        Date date = calendarView.getFirstDayOfCurrentMonth();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+
+        monthYear.setText(new SimpleDateFormat("MMM/YYYY").format(cal.getTime()));
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
                 List<Event> events = calendarView.getEvents(dateClicked);
                 Log.i("adarsh", "Day was clicked: " + dateClicked + " with events " + events);
+                if(events.size() > 1){
+                    //TODO create a new intermediary fragment/activity with a list of the data attached to the events
+                }else if (events.size() == 1){
+
+                    //TODO create a new fragment/activity to view the History Item at events[0]
+                }
             }
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 Log.i("adarsh", "Month was scrolled to: " + firstDayOfNewMonth);
+                Date date = calendarView.getFirstDayOfCurrentMonth();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                monthYear.setText(new SimpleDateFormat("MMM/YYYY").format(cal.getTime()));
+                try{
+                    GetMealHistoryController ghmc = new GetMealHistoryController(app.getUser().getUsername(), calendarView, thisfrag);
+                    ghmc.execute();
+                }catch(Exception e ){
+                    Log.i("controller", e.getStackTrace().toString());
+                }
+
             }
         });
         ArrayList<MealPlannerRec> mealList = new ArrayList<>();
         app = (MyApplication) getActivity().getApplication();
         // Create ArrayAdapter
         //TODO Will - use the controller to add meal history items to the list
-        GetMealHistoryController ghmc = new GetMealHistoryController(app.getUser().getUsername(), calendarView, this);
-        ghmc.execute();
+        try{
+            GetMealHistoryController ghmc = new GetMealHistoryController(app.getUser().getUsername(), calendarView, thisfrag);
+            ghmc.execute();
+        }catch(Exception e ){
+            Log.i("controller", e.getStackTrace().toString());
+        }
 
         // Set the ArrayAdapter as the ListView's adapter.
         return rootView;

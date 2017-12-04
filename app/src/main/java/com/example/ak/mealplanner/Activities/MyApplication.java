@@ -22,7 +22,20 @@ public class MyApplication extends Application {
     private ArrayList<RecipeItem> recipes;
     private UserProfile user;
     private UserRecipe recipe;
+    private static String dstAddress = "10.0.2.2";
+    //private String dstAddress = "174.103.187.190";
+    private static int DBdstPort = 8083;
+    private static int MPdstPort = 8080;
 
+    public int getMealPlannerPort(){
+        return MPdstPort;
+    }
+    public int getDatabasePort(){
+        return DBdstPort;
+    }
+    public String dstAddress(){
+        return dstAddress;
+    }
     public void addBreakfast(MealItem item){
         if(breakfast == null){
             breakfast = new ArrayList<MealItem>();

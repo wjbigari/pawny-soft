@@ -69,7 +69,6 @@ public class RecipeBuildActivity extends AppCompatActivity {
                 Intent intent = new Intent(RecipeBuildActivity.this, RecipeActivity.class);
                 intent.putExtra("foodItem", x);
                 startActivity(intent);
-
             }
         });
 

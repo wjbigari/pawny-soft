@@ -91,6 +91,7 @@ public class GetMealHistoryController extends AsyncTask<Void,Void,Void> {
         try {
             MealPlannerRec mpr = new MealPlannerRec();
             MealPlannerRec mptemp;
+            thiscontext.clearCalendar();
             JSONObject mealListObject = new JSONObject(responseObject.getString("mealList"));
             int daysInMonth= cal.getActualMaximum(Calendar.DAY_OF_MONTH);
             for(int i = 1; i<= daysInMonth; i++){

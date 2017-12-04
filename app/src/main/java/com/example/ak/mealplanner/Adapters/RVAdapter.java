@@ -30,7 +30,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.RecipeViewHolder> 
         UserRecipe recipe;
         final MainActivity activity;
 
-        RecipeViewHolder(View itemView, final MainActivity activity) {
+        public RecipeViewHolder(View itemView, final MainActivity activity) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cv);
             title = (TextView)itemView.findViewById(R.id.recipeCardName);
@@ -55,7 +55,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.RecipeViewHolder> 
 
     private List<UserRecipe> recipes;
 
-    RVAdapter(List<UserRecipe> recipes, MainActivity activity){
+    public RVAdapter(List<UserRecipe> recipes, MainActivity activity){
         this.recipes = recipes;
         this.activity = activity;
     }
