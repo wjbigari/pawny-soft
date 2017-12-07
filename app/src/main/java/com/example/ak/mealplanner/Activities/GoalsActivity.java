@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.ak.mealplanner.Models.Constraints;
 import com.example.ak.mealplanner.Models.UserProfile;
@@ -60,6 +61,10 @@ public class GoalsActivity extends AppCompatActivity {
     public void saveGoals(View view){
         if(calMin.getText().toString().equals("") || calMax.getText().toString().equals("") || carbMin.getText().toString().equals("") || carbMax.getText().toString().equals("") || protMin.getText().toString().equals("") || protMax.getText().toString().equals("") || fatMin.getText().toString().equals("") || fatMax.getText().toString().equals("")){
             finish();
+            return;
+        }
+        if(Integer.parseInt(calMin.getText().toString()) >= Integer.parseInt(calMax.getText().toString()) || Integer.parseInt(carbMin.getText().toString()) >= Integer.parseInt(carbMax.getText().toString()) || Integer.parseInt(protMin.getText().toString()) >= Integer.parseInt(protMax.getText().toString()) || Integer.parseInt(fatMin.getText().toString()) >= Integer.parseInt(fatMax.getText().toString())){
+            Toast.makeText(this, "Invalid values", Toast.LENGTH_SHORT).show();
             return;
         }
         app.addConstraint(new Constraints(Integer.parseInt(calMin.getText().toString()), Integer.parseInt(calMax.getText().toString()), Integer.parseInt(carbMin.getText().toString()), Integer.parseInt(carbMax.getText().toString()), Integer.parseInt(protMin.getText().toString()), Integer.parseInt(protMax.getText().toString()), Integer.parseInt(fatMin.getText().toString()), Integer.parseInt(fatMax.getText().toString())));

@@ -101,7 +101,7 @@ public class GetMealHistoryController extends AsyncTask<Void,Void,Void> {
                         cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), i);
                         Log.i("adarsh", cal.get(Calendar.YEAR)+ " :"+ cal.get(Calendar.MONTH) +":"+i);
                         Event event = new Event(Color.RED,cal.getTimeInMillis(),mptemp);
-                        thiscontext.addEvent(event);
+                        calendarView.addEvent(event);
                     }
                 }
             }

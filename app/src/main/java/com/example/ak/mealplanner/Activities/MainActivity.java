@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.ak.mealplanner.Controllers.SendUserController;
 import com.example.ak.mealplanner.Models.UserProfile;
 import com.example.ak.mealplanner.R;
 
@@ -82,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(id == R.id.action_user){
             Intent intent = new Intent(this, EditProfileActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if(id == R.id.action_favorite){
+            Intent intent = new Intent(this, FavoritesActivity.class);
             startActivity(intent);
             return true;
         }

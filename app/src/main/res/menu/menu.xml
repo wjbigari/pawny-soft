@@ -10,6 +10,12 @@
         android:title="User"
         app:showAsAction="always" />
     <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/favorite_filled"
+        android:orderInCategory="100"
+        android:title="Favorite"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_cart"
         android:icon="@drawable/cart2"
         android:orderInCategory="100"
