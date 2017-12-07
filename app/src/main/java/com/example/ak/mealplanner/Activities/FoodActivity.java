@@ -4,13 +4,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.ak.mealplanner.Controllers.InsertIntoFavoritesController;
 import com.example.ak.mealplanner.Models.FoodItem;
 import com.example.ak.mealplanner.Models.MealItem;
 import com.example.ak.mealplanner.R;
@@ -20,6 +24,7 @@ import java.util.ArrayList;
 public class FoodActivity extends AppCompatActivity {
     ArrayList<MealItem> items;
     FoodItem foodItem;
+    Toast toast;
     MyApplication app;
     CheckBox checkBox;
     boolean locked = false;
@@ -65,7 +70,11 @@ public class FoodActivity extends AppCompatActivity {
 
 
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.fooditem_menu, menu);
+        return true;
+    }
     public void addBreakFast(View view) {
         // Do something in response to button
         if(servings.getText().toString().equals("")){
@@ -102,11 +111,22 @@ public class FoodActivity extends AppCompatActivity {
         super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case android.R.id.home:
-
                 finish();
+                break;
+            case R.id.action_favorite:
+                sendFavorite();
                 break;
         }
         return true;
+    }
+
+    private void sendFavorite() {
+        Toast toast = Toast.makeText(getApplicationContext(), "",
+                Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 0);
+        InsertIntoFavoritesController favc = new InsertIntoFavoritesController(foodItem, app.getUser().getUsername(), toast);
+        favc.execute();
+
     }
 
 

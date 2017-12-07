@@ -1,13 +1,15 @@
 package com.example.ak.mealplanner.Models;
 
 import org.json.JSONObject;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import com.example.ak.mealplanner.Models.MealItem;
 
-public class MealPlannerRec {
+public class MealPlannerRec implements Serializable{
     private ArrayList<MealItem> breakfastItems;
     private ArrayList<MealItem> lunchItems;
     private ArrayList<MealItem> dinnerItems;
@@ -142,6 +144,15 @@ public class MealPlannerRec {
         result += "\n";
         result += "Daily Summary:\n";
         result += "**************\n";
+        result += "Total Calories - " + this.totalCals + "\n";
+        result += "Total Carbs - " + this.totalCarbs + "\n";
+        result += "Total Protein - " + this.totalProt + "\n";
+        result += "Total Fat - " + this.totalFat + "\n";
+        return result;
+    }
+
+    public String contstraintsString(){
+        String result = "";
         result += "Total Calories - " + this.totalCals + "\n";
         result += "Total Carbs - " + this.totalCarbs + "\n";
         result += "Total Protein - " + this.totalProt + "\n";

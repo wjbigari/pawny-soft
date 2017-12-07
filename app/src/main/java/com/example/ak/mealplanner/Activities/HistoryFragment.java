@@ -1,5 +1,6 @@
 package com.example.ak.mealplanner.Activities;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -100,8 +101,12 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onDayClick(Date dateClicked) {
                 List<Event> events = calendarView.getEvents(dateClicked);
-                Log.i("adarsh", "Day was clicked: " + dateClicked + " with events " + events);
-                if(events.size() > 1){
+                Log.i("will", "Day was clicked: " + dateClicked + " with events " + events);
+                if(events.size() >= 1){
+                    Intent intent = new Intent(thisfrag.getContext(), mealHistoryItemView.class);
+                    MealPlannerRec mpr = (MealPlannerRec)events.get(0).getData();
+                    intent.putExtra("mealplan", mpr);
+                    startActivity(intent);
                     //TODO create a new intermediary fragment/activity with a list of the data attached to the events
                 }else if (events.size() == 1){
 
@@ -110,7 +115,7 @@ public class HistoryFragment extends Fragment {
             }
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                Log.i("adarsh", "Month was scrolled to: " + firstDayOfNewMonth);
+                Log.i("will", "Month was scrolled to: " + firstDayOfNewMonth);
                 Date date = calendarView.getFirstDayOfCurrentMonth();
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(date);

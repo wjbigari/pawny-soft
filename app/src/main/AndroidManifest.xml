@@ -78,6 +78,11 @@
             android:parentActivityName=".Activities.RecipeBuildActivity"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".Activities.mealHistoryItemView"
+            android:label="Meal History"
+            android:parentActivityName=".Activities.RecipeBuildActivity"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".Activities.UserRecipeActivity"
             android:label="Recipe"
             android:parentActivityName=".Activities.MainActivity"
