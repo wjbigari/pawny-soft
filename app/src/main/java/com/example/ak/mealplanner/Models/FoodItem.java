@@ -19,6 +19,7 @@ public class FoodItem implements Serializable, MealItemContent {
     private double gramsFatPerServing;
     //Part of the balancing algorithm - not for use outside the MealPlanner
     private double internalCoefficient;
+    public boolean favorite = false;
 
     @Override
     public String toString(){
@@ -85,6 +86,7 @@ public class FoodItem implements Serializable, MealItemContent {
         this.gramsProtPerServing = fromObject.getDouble("gramsProtPerServing");
         this.gramsFatPerServing = fromObject.getDouble("gramsFatPerServing");
         this.internalCoefficient = fromObject.getDouble("internalCoefficient");
+        this.favorite = fromObject.getBoolean("favorite");
     }
 
     //Getters
@@ -123,6 +125,7 @@ public class FoodItem implements Serializable, MealItemContent {
     public double getInternalCoefficient() {
         return internalCoefficient;
     }
+    public void setFavorite(){favorite = true;}
 
     //Setters
     public void setInternalCoefficient(Double d)
@@ -180,6 +183,7 @@ public class FoodItem implements Serializable, MealItemContent {
         returnObject.put("gramsFatPerServing", this.gramsFatPerServing);
         returnObject.put("gramsProtPerServing", this.gramsProtPerServing);
         returnObject.put("internalCoefficient", this.internalCoefficient);
+        returnObject.put("favorite", this.favorite);
         return returnObject;
     }
 
@@ -194,6 +198,7 @@ public class FoodItem implements Serializable, MealItemContent {
         returnObject.put("gramsFatPerServing", this.gramsFatPerServing);
         returnObject.put("gramsProtPerServing", this.gramsProtPerServing);
         returnObject.put("internalCoefficient", this.internalCoefficient);
+        returnObject.put("favorite", this.favorite);
         return returnObject;
     }
 
