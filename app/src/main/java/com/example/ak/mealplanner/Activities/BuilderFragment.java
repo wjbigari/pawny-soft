@@ -47,6 +47,7 @@ public class BuilderFragment extends Fragment {
     private ArrayAdapter<FoodItem> listAdapter;
 
     private OnFragmentInteractionListener mListener;
+    MyApplication app;
 
     public BuilderFragment() {
         // Required empty public constructor
@@ -76,7 +77,7 @@ public class BuilderFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_tab_fragment1, container, false);
 
         final ListView mainListView =  rootView.findViewById(R.id.list_main);
-
+        app = (MyApplication)getActivity().getApplication();
         // Create and populate a List of food names
         ArrayList<FoodItem> foodList = new ArrayList<FoodItem>();
 
@@ -135,7 +136,7 @@ public class BuilderFragment extends Fragment {
                 if(searchController!= null && searchController.getStatus()== AsyncTask.Status.RUNNING){
                     searchController.cancel(true);
                 }
-                searchController = new SearchController(cs.toString(), listAdapter);
+                searchController = new SearchController(cs.toString(), listAdapter, app.getUser().getUsername());
 
                 searchController.execute();
 

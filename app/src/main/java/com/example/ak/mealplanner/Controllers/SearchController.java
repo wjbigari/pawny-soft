@@ -34,10 +34,12 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
     String searchString;
     ArrayList<FoodItem> foodList;
     ArrayAdapter<FoodItem> arrayAdapter;
+    private String username;
 
-    public SearchController(String addr,ArrayAdapter<FoodItem> mealItemArrayAdapter) {
+    public SearchController(String addr,ArrayAdapter<FoodItem> mealItemArrayAdapter, String username) {
         searchString = addr;
         this.arrayAdapter = mealItemArrayAdapter;
+        this.username = username;
     }
 
     @Override
@@ -50,7 +52,7 @@ public class SearchController extends AsyncTask<Void, Void, Void> {
             JSONObject requestObject = new JSONObject();
             requestObject.put("option", "search");
             requestObject.put("search", searchString);
-
+            requestObject.put("username", username);
             writer.println(requestObject.toString());
             writer.flush();
 

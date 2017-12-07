@@ -83,7 +83,7 @@ public class RecipeBuildActivity extends AppCompatActivity {
                 if(searchController!= null && searchController.getStatus()== AsyncTask.Status.RUNNING){
                     searchController.cancel(true);
                 }
-                searchController = new SearchController(cs.toString(), listAdapter);
+                searchController = new SearchController(cs.toString(), listAdapter, app.getUser().getUsername());
 
                 searchController.execute();
 
