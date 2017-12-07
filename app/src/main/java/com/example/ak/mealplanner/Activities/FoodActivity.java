@@ -29,6 +29,7 @@ public class FoodActivity extends AppCompatActivity {
     CheckBox checkBox;
     boolean locked = false;
     EditText servings;
+    MenuItem menuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,10 +124,11 @@ public class FoodActivity extends AppCompatActivity {
     private void sendFavorite() {
         Toast toast = Toast.makeText(getApplicationContext(), "",
                 Toast.LENGTH_SHORT);
+        menuItem = (MenuItem)findViewById(R.id.action_favorite);
+        menuItem.setIcon(R.drawable.favorite_filled);
         toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 0);
         InsertIntoFavoritesController favc = new InsertIntoFavoritesController(foodItem, app.getUser().getUsername(), toast);
         favc.execute();
-
     }
 
 
