@@ -53,7 +53,6 @@ public class ResultsActivity extends AppCompatActivity {
     }
 
     public void addToFavorite(View view){
-        //TODO Will- use the controller to add the meal to faavorites
         if(mpr != null) {
             SendMealPlannerRecController smprc = new SendMealPlannerRecController(app.getUser().getUsername(), mpr, null);
             smprc.execute();

@@ -92,7 +92,11 @@
             android:label="Login"
             android:parentActivityName=".Activities.FirstStartActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Activities.RatioActivity"></activity>
+        <activity
+            android:name=".Activities.RatioActivity"
+            android:label="Ratios"
+            android:parentActivityName=".Activities.GoalsActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
