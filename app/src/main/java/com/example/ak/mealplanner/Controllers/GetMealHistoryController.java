@@ -27,9 +27,8 @@ import java.util.Date;
  */
 
 public class GetMealHistoryController extends AsyncTask<Void,Void,Void> {
-    private String dstAddress = "10.0.2.2";
-    //private String dstAddress = "174.103.187.190";
-    private int dstPort = 8083;
+    private String dstAddress = GlobalInfo.IP;
+    private int dstPort = GlobalInfo.OPTION_PORT;
     private JSONObject responseObject, requestObject;
     private Calendar cal;
     private String username;

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_favorite"
+        android:id="@+id/action_favorite_food"
         android:icon="@drawable/favorite"
         android:orderInCategory="100"
         android:title="User"

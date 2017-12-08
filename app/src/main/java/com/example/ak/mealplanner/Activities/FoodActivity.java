@@ -3,6 +3,7 @@ package com.example.ak.mealplanner.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.ActionMenuItemView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ak.mealplanner.Controllers.DeleteFavoriteController;
 import com.example.ak.mealplanner.Controllers.InsertIntoFavoritesController;
 import com.example.ak.mealplanner.Models.FoodItem;
 import com.example.ak.mealplanner.Models.MealItem;
@@ -29,7 +31,9 @@ public class FoodActivity extends AppCompatActivity {
     CheckBox checkBox;
     boolean locked = false;
     EditText servings;
-    MenuItem menuItem;
+    ActionMenuItemView menuItem;
+    Menu menu;
+    boolean favorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class FoodActivity extends AppCompatActivity {
         x = (TextView)findViewById(R.id.textView6);
         String details = "Serving Size: " + foodItem.getServingSize() + "\nCalories: " + foodItem.getCalPerServing() + "\nCarbohydrates: " + foodItem.getGramsCarbPerServing() + " grams" + "\nProtein: " + foodItem.getGramsProtPerServing() + " grams" + "\nFat: " + foodItem.getGramsFatPerServing() + " grams";
         x.setText(details);
+        this.favorite = foodItem.favorite;
 
         checkBox = (CheckBox) findViewById(R.id.checkBox);
 
@@ -73,7 +78,11 @@ public class FoodActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
         getMenuInflater().inflate(R.menu.fooditem_menu, menu);
+        if(foodItem.favorite){
+            menu.getItem(R.id.action_favorite_food).setIcon(R.drawable.favorite_filled);
+        }
         return true;
     }
     public void addBreakFast(View view) {
@@ -114,21 +123,41 @@ public class FoodActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 break;
-            case R.id.action_favorite:
-                sendFavorite();
+            case R.id.action_favorite_food:
+                if(!favorite){
+                    sendFavorite(item);
+                }else{
+                    sendDelete(item);
+                }
+
+
                 break;
         }
         return true;
     }
 
-    private void sendFavorite() {
+    private void sendFavorite(MenuItem item) {
         Toast toast = Toast.makeText(getApplicationContext(), "",
                 Toast.LENGTH_SHORT);
-        menuItem = (MenuItem)findViewById(R.id.action_favorite);
-        menuItem.setIcon(R.drawable.favorite_filled);
         toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 0);
-        InsertIntoFavoritesController favc = new InsertIntoFavoritesController(foodItem, app.getUser().getUsername(), toast);
-        favc.execute();
+        try{
+            InsertIntoFavoritesController favc = new InsertIntoFavoritesController(foodItem, app.getUser().getUsername(), toast);
+            favc.execute();
+        }catch(Exception e){
+
+        }
+
+    }
+    private void sendDelete(MenuItem menuItem){
+        Toast toast = Toast.makeText(getApplicationContext(), "",
+                Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 0);
+        try{
+            DeleteFavoriteController dfc = new DeleteFavoriteController(app.getUser().getUsername(),foodItem.getFoodId(), menuItem);
+            dfc.execute();
+        }catch(Exception e){
+
+        }
     }
 
 
