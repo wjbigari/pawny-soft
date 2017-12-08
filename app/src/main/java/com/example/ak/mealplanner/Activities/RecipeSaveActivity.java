@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.ak.mealplanner.Models.RecipeItem;
 import com.example.ak.mealplanner.Models.UserRecipe;
@@ -57,24 +58,32 @@ public class RecipeSaveActivity extends AppCompatActivity {
         return true;
     }
 
+    private void errorMessage(){
+        Toast.makeText(this, "No Empty Text Fields Allowed", Toast.LENGTH_SHORT).show();
+    }
+
     public void addRecipe(View view) {
         EditText x = (EditText) findViewById(R.id.foodNameEdit);
         if(x.getText().toString().equals("")){
+            errorMessage();
             return;
         }
         String foodName = x.getText().toString();
         x = (EditText) findViewById(R.id.portionEdit);
         if(x.getText().toString().equals("")){
+            errorMessage();
             return;
         }
         int portion = Integer.parseInt(x.getText().toString());
         x = (EditText) findViewById(R.id.portionNameEdit);
         if(x.getText().toString().equals("")){
+            errorMessage();
             return;
         }
         String portionName = x.getText().toString();
         x = (EditText) findViewById(R.id.instructEdit);
         if(x.getText().toString().equals("")){
+            errorMessage();
             return;
         }
         String instruct = x.getText().toString();
