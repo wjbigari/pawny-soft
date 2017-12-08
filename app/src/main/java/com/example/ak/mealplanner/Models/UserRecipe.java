@@ -163,6 +163,7 @@ public class UserRecipe implements Serializable, MealItemContent {
     public void setServingValue(double servingValue) {
         this.numPortions = (int)Math.round(servingValue);
     }
+    public String getPortionName(){return this.portionName;}
 
     public void setServingUnit(String servingUnit) {
         this.portionName = servingUnit;

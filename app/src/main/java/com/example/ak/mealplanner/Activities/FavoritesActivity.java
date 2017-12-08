@@ -70,7 +70,16 @@ public class FavoritesActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        try{
+            GetFavoritesController gfc = new GetFavoritesController(app.getUser().getUsername(),listAdapter);
+            gfc.execute();
+        }catch(Exception e){
 
+        }
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
