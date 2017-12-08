@@ -133,4 +133,10 @@ public class CartActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    public void clearCart(View view){
+        app.clearItems();
+        listAdapter.notifyDataSetChanged();
+        this.recreate();
+    }
 }

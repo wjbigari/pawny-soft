@@ -21,7 +21,18 @@
     <ExpandableListView
         android:id="@+id/lvExp"
         android:layout_width="match_parent"
-        android:groupIndicator="@null"
-        android:layout_height="match_parent" />
+        android:layout_height="415dp"
+        android:layout_margin="5dp"
+        android:groupIndicator="@null" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_margin="20dp"
+        android:background="@android:color/holo_red_light"
+        android:text="Clear"
+        android:onClick="clearCart"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>
