@@ -1,5 +1,6 @@
 package com.example.ak.mealplanner.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.ak.mealplanner.Controllers.GetFavoritesController;
+import com.example.ak.mealplanner.Models.FoodItem;
 import com.example.ak.mealplanner.Models.MealItem;
 import com.example.ak.mealplanner.R;
 
@@ -20,7 +22,7 @@ import com.example.ak.mealplanner.Controllers.SearchController;
 public class FavoritesActivity extends AppCompatActivity {
     private SearchController searchController;
 
-    private ArrayAdapter<MealItem> listAdapter;
+    private ArrayAdapter<FoodItem> listAdapter;
 
     MyApplication app;
 
@@ -40,10 +42,10 @@ public class FavoritesActivity extends AppCompatActivity {
         final ListView mainListView = findViewById(R.id.favoritesList);
 
         // Create and populate a List of food names
-        ArrayList<MealItem> foodList = new ArrayList<MealItem>();
+        ArrayList<FoodItem> foodList = new ArrayList<FoodItem>();
 
         // Create ArrayAdapter
-        listAdapter  = new ArrayAdapter<MealItem>(this, R.layout.listrow, foodList);
+        listAdapter  = new ArrayAdapter<FoodItem>(this, R.layout.listrow, foodList);
 
         //TODO Will- use the controller to get the favorite meals
         try{
@@ -60,7 +62,10 @@ public class FavoritesActivity extends AppCompatActivity {
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                FoodItem x = (FoodItem) parent.getItemAtPosition(position);
+                Intent intent = new Intent(FavoritesActivity.this, FoodActivity.class);
+                intent.putExtra("foodItem", x);
+                startActivity(intent);
 
             }
         });
