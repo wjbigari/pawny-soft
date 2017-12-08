@@ -1,6 +1,7 @@
 package com.example.ak.mealplanner.Activities;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.ActionMenuItemView;
@@ -31,7 +32,7 @@ public class FoodActivity extends AppCompatActivity {
     CheckBox checkBox;
     boolean locked = false;
     EditText servings;
-    ActionMenuItemView menuItem;
+    MenuItem menuItem;
     Menu menu;
     boolean favorite;
 
@@ -80,9 +81,15 @@ public class FoodActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
         getMenuInflater().inflate(R.menu.fooditem_menu, menu);
-        if(foodItem.favorite){
-            menu.getItem(R.id.action_favorite_food).setIcon(R.drawable.favorite_filled);
+//        if(foodItem != null && foodItem.favorite){
+//            menu.getItem.setIcon(R.drawable.favorite_filled);
+//        }
+        if(favorite) {
+            menu.getItem(0).setIcon(R.drawable.favorite_filled);
+        }else{
+            menu.getItem(0).setIcon(R.drawable.favorite);
         }
+
         return true;
     }
     public void addBreakFast(View view) {
@@ -124,6 +131,7 @@ public class FoodActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.action_favorite_food:
+                menuItem = item;
                 if(!favorite){
                     sendFavorite(item);
                 }else{
@@ -135,13 +143,24 @@ public class FoodActivity extends AppCompatActivity {
         }
         return true;
     }
+    public void setFavorite(boolean bool){
+        favorite = bool;
+        foodItem.favorite = bool;
+        if(menuItem != null){
+            if(bool){
+                menuItem.setIcon(getDrawable(R.drawable.favorite_filled));
+            }else{
+                menuItem.setIcon(getDrawable(R.drawable.favorite));
+            }
+        }
 
+    }
     private void sendFavorite(MenuItem item) {
         Toast toast = Toast.makeText(getApplicationContext(), "",
                 Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 0);
         try{
-            InsertIntoFavoritesController favc = new InsertIntoFavoritesController(foodItem, app.getUser().getUsername(), toast);
+            InsertIntoFavoritesController favc = new InsertIntoFavoritesController(foodItem, app.getUser().getUsername(), this);
             favc.execute();
         }catch(Exception e){
 
@@ -153,7 +172,7 @@ public class FoodActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 0);
         try{
-            DeleteFavoriteController dfc = new DeleteFavoriteController(app.getUser().getUsername(),foodItem.getFoodId(), menuItem);
+            DeleteFavoriteController dfc = new DeleteFavoriteController(app.getUser().getUsername(),foodItem.getFoodId(), this);
             dfc.execute();
         }catch(Exception e){
 

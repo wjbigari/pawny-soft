@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.ak.mealplanner.Controllers.GetUserRecipesController;
 import com.example.ak.mealplanner.Models.FoodItem;
 import com.example.ak.mealplanner.R;
 
@@ -43,6 +44,7 @@ public class BuilderFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private SearchController searchController;
+    private EditText inputSearch;
 
     private ArrayAdapter<FoodItem> listAdapter;
 
@@ -125,7 +127,7 @@ public class BuilderFragment extends Fragment {
             }
         });
 
-        EditText inputSearch = (EditText) rootView.findViewById(R.id.inputSearch);
+        inputSearch = (EditText) rootView.findViewById(R.id.inputSearch);
 
         inputSearch.addTextChangedListener(new TextWatcher() {
 
@@ -167,6 +169,17 @@ public class BuilderFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(searchController!= null && searchController.getStatus()== AsyncTask.Status.RUNNING){
+            searchController.cancel(true);
+        }
+        searchController = new SearchController(inputSearch.getText().toString(), listAdapter, app.getUser().getUsername());
+
+        searchController.execute();
+
+    }
     @Override
     public void onDetach() {
         super.onDetach();

@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.ak.mealplanner.Controllers.GetFavoritesController;
 import com.example.ak.mealplanner.Models.MealItem;
 import com.example.ak.mealplanner.R;
 
@@ -45,6 +46,12 @@ public class FavoritesActivity extends AppCompatActivity {
         listAdapter  = new ArrayAdapter<MealItem>(this, R.layout.listrow, foodList);
 
         //TODO Will- use the controller to get the favorite meals
+        try{
+            GetFavoritesController gfc = new GetFavoritesController(app.getUser().getUsername(),listAdapter);
+            gfc.execute();
+        }catch(Exception e){
+
+        }
 
         // Set the ArrayAdapter as the ListView's adapter.
         mainListView.setAdapter(listAdapter);

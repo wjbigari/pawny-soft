@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.ak.mealplanner.Activities.FoodActivity;
 import com.example.ak.mealplanner.R;
 
 import org.json.JSONException;
@@ -27,11 +28,12 @@ public class DeleteFavoriteController extends AsyncTask<Void,Void,Void>{
     private JSONObject requestObject,responseObject;
     private String dstAddress = GlobalInfo.IP;
     private int dstPort = GlobalInfo.OPTION_PORT;
+    private FoodActivity fa;
 
-    public DeleteFavoriteController(String username, int foodId,MenuItem menuItem){
+    public DeleteFavoriteController(String username, int foodId,FoodActivity fa){
         this.username = username;
         this.foodId = foodId;
-        this.menuItem = menuItem;
+        this.fa = fa;
     }
     @Override
     protected Void doInBackground(Void... voids) {
@@ -70,7 +72,7 @@ public class DeleteFavoriteController extends AsyncTask<Void,Void,Void>{
         super.onPostExecute(result);
         try {
             if(responseObject.getBoolean("success")){
-                menuItem.setIcon(R.drawable.favorite);
+                fa.setFavorite(false);
             }
         } catch (JSONException e) {
             e.printStackTrace();
