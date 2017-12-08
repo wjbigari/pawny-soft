@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.ak.mealplanner.Controllers.SendUserController;
+import com.example.ak.mealplanner.Adapters.PagerAdapter;
 import com.example.ak.mealplanner.Models.UserProfile;
 import com.example.ak.mealplanner.R;
 

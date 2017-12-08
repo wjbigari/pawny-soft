@@ -1,8 +1,12 @@
-package com.example.ak.mealplanner.Activities;
+package com.example.ak.mealplanner.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.ak.mealplanner.Activities.BuilderFragment;
+import com.example.ak.mealplanner.Activities.HistoryFragment;
+import com.example.ak.mealplanner.Activities.RecipeFragment;
 
 /**
  * Created by ak on 10/14/17.
