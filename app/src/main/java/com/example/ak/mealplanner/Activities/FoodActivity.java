@@ -94,6 +94,10 @@ public class FoodActivity extends AppCompatActivity {
     }
     public void addBreakFast(View view) {
         // Do something in response to button
+        if(app.getCount() >= 35){
+            Toast.makeText(this, "Cannot have more than 35 items", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(servings.getText().toString().equals("")){
             app.addBreakfast(new MealItem(foodItem, locked, MealItem.Meal.BREAKFAST));
         }
@@ -105,6 +109,9 @@ public class FoodActivity extends AppCompatActivity {
 
     public void addLunch(View view) {
         // Do something in response to button
+        if(app.getCount() >= 35){
+            Toast.makeText(this, "Cannot have more than 35 items", Toast.LENGTH_SHORT).show();
+        }
         if(servings.getText().toString().equals("")){
             app.addLunch(new MealItem(foodItem, locked, MealItem.Meal.LUNCH));
         }
@@ -115,6 +122,9 @@ public class FoodActivity extends AppCompatActivity {
 
     public void addDinner(View view) {
         // Do something in response to button
+        if(app.getCount() >= 35){
+            Toast.makeText(this, "Cannot have more than 35 items", Toast.LENGTH_SHORT).show();
+        }
         if(servings.getText().toString().equals("")){
             app.addDinner(new MealItem(foodItem, locked, MealItem.Meal.DINNER));
         }

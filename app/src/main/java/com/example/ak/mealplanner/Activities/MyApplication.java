@@ -201,5 +201,9 @@ public class MyApplication extends Application {
         return recipe != null;
     }
 
+    public int getCount(){
+        return getBreakfast().size() + getLunch().size() + getDinner().size();
+    }
+
 
 }
