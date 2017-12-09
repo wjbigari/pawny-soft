@@ -124,26 +124,6 @@ public class MealPlannerRec implements Serializable{
     @Override
     public String toString(){
         String result = "";
-        result += "Breakfast Items\n";
-        result += "***************\n";
-        for(MealItem item : breakfastItems){
-            result += item.getFoodItem().getName() + " - " + (item.getNumServings() * item.getFoodItem().getServingValue()) + " " + item.getFoodItem().getServingUnit() + "\n";
-        }
-        result += "\n";
-        result += "Lunch Items\n";
-        result += "***********\n";
-        for(MealItem item : lunchItems){
-            result += item.getFoodItem().getName() + " - " + (item.getNumServings() * item.getFoodItem().getServingValue()) + " " + item.getFoodItem().getServingUnit() + "\n";
-        }
-        result += "\n";
-        result += "Dinner Items\n";
-        result += "************\n";
-        for(MealItem item : dinnerItems){
-            result += item.getFoodItem().getName() + " - " + (item.getNumServings() * item.getFoodItem().getServingValue()) + " " + item.getFoodItem().getServingUnit() + "\n";
-        }
-        result += "\n";
-        result += "Daily Summary:\n";
-        result += "**************\n";
         result += "Total Calories - " + this.totalCals + "\n";
         result += "Total Carbs - " + this.totalCarbs + "\n";
         result += "Total Protein - " + this.totalProt + "\n";

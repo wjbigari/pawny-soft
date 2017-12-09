@@ -2,6 +2,7 @@ package com.example.ak.mealplanner.Controllers;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.example.ak.mealplanner.Activities.ResultsActivity;
 import com.example.ak.mealplanner.Adapters.CustomAdapter;
@@ -36,15 +37,17 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
     private Constraints requestConstraints;
     private ArrayList<MealItem> responseList;
     private CustomAdapter customAdapter;
-    MealPlannerRec mealPlannerRec;
-    ResultsActivity results;
+    private MealPlannerRec mealPlannerRec;
+    private ResultsActivity results;
+    private TextView text;
 
 
-    public MealPlannerController(Constraints c, ArrayList<MealItem> rl, CustomAdapter adapter, MealPlannerRec rec, ResultsActivity results){
+    public MealPlannerController(Constraints c, ArrayList<MealItem> rl, CustomAdapter adapter, MealPlannerRec rec, TextView text, ResultsActivity results){
         this.results = results;
         this.requestList = rl;
         this.requestConstraints = c;
         this.customAdapter = adapter;
+        this.text = text;
     }
 
     @Override
@@ -133,5 +136,7 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
         }
 
         customAdapter.notifyDataSetChanged();
+
+        text.setText(mealPlannerRec.toString());
     }
 }

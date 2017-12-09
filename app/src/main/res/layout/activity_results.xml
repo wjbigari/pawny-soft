@@ -22,10 +22,19 @@
     <ListView
         android:id="@+id/listRec"
         android:layout_width="match_parent"
-        android:layout_height="383dp"
+        android:layout_height="307dp"
         android:layout_margin="5dp">
 
     </ListView>
+
+    <TextView
+        android:id="@+id/textMealInfo"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="5dp"
+        android:scrollbars="vertical"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/buttonAccept"

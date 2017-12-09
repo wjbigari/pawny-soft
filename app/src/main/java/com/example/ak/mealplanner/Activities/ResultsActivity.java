@@ -3,9 +3,11 @@ package com.example.ak.mealplanner.Activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ak.mealplanner.Controllers.MealPlannerController;
@@ -19,6 +21,7 @@ public class ResultsActivity extends AppCompatActivity {
     private CustomAdapter mAdapter;
     private  MyApplication app;
     private MealPlannerRec mpr;
+    private TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,12 @@ public class ResultsActivity extends AppCompatActivity {
 
         app = (MyApplication) getApplicationContext();
 
+        text = (TextView) findViewById(R.id.textMealInfo);
+
+        text.setMovementMethod(new ScrollingMovementMethod());
+
         try {
-            MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), mAdapter, mpr, this);
+            MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), mAdapter, mpr, text,this);
             mpc.execute();
         }catch (Exception e){
             Toast.makeText(this, "Meal Build Error: Aborted", Toast.LENGTH_SHORT).show();
@@ -79,7 +86,7 @@ public class ResultsActivity extends AppCompatActivity {
         if(mpr == null){
             return;
         }
-        MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), mAdapter,mpr, this);
+        MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), mAdapter,mpr, text,this);
         mpc.execute();
     }
 }
