@@ -2,12 +2,13 @@ package com.example.ak.mealplanner.Controllers;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.TextView;
 
+import com.example.ak.mealplanner.Activities.ResultsActivity;
+import com.example.ak.mealplanner.Adapters.CustomAdapter;
 import com.example.ak.mealplanner.Models.Constraints;
+import com.example.ak.mealplanner.Models.FoodItem;
 import com.example.ak.mealplanner.Models.MealItem;
 import com.example.ak.mealplanner.Models.MealPlannerRec;
-import com.example.ak.mealplanner.Activities.ResultsActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,16 +35,16 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
     private ArrayList<MealItem> requestList;
     private Constraints requestConstraints;
     private ArrayList<MealItem> responseList;
-    private TextView textResponse;
+    private CustomAdapter customAdapter;
     MealPlannerRec mealPlannerRec;
     ResultsActivity results;
 
 
-    public MealPlannerController(Constraints c, ArrayList<MealItem> rl, TextView response, MealPlannerRec rec, ResultsActivity results){
+    public MealPlannerController(Constraints c, ArrayList<MealItem> rl, CustomAdapter adapter, MealPlannerRec rec, ResultsActivity results){
         this.results = results;
         this.requestList = rl;
         this.requestConstraints = c;
-        this.textResponse = response;
+        this.customAdapter = adapter;
     }
 
     @Override
@@ -104,6 +105,33 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void result) {
         super.onPostExecute(result);
 
-        textResponse.setText(mealPlannerRec.toString());
+        FoodItem head = new FoodItem();
+        head.setName("Breakfast");
+
+        customAdapter.addSectionHeaderItem(new MealItem(head, MealItem.Meal.BREAKFAST));
+
+        for(MealItem x : mealPlannerRec.getBreakfastItems()){
+            customAdapter.addItem(x);
+        }
+
+        head = new FoodItem();
+        head.setName("Lunch");
+
+        customAdapter.addSectionHeaderItem(new MealItem(head, MealItem.Meal.BREAKFAST));
+
+        for(MealItem x : mealPlannerRec.getLunchItems()){
+            customAdapter.addItem(x);
+        }
+
+        head = new FoodItem();
+        head.setName("Dinner");
+
+        customAdapter.addSectionHeaderItem(new MealItem(head, MealItem.Meal.BREAKFAST));
+
+        for(MealItem x : mealPlannerRec.getDinnerItems()){
+            customAdapter.addItem(x);
+        }
+
+        customAdapter.notifyDataSetChanged();
     }
 }

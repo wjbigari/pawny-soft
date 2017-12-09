@@ -103,7 +103,7 @@ public class HistoryFragment extends Fragment {
                 List<Event> events = calendarView.getEvents(dateClicked);
                 Log.i("will", "Day was clicked: " + dateClicked + " with events " + events);
                 if(events.size() >= 1){
-                    Intent intent = new Intent(thisfrag.getContext(), mealHistoryItemView.class);
+                    Intent intent = new Intent(thisfrag.getContext(), MealHistoryActivity.class);
                     MealPlannerRec mpr = (MealPlannerRec)events.get(0).getData();
                     intent.putExtra("mealplan", mpr);
                     startActivity(intent);

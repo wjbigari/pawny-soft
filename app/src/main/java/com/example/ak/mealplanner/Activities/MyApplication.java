@@ -3,6 +3,7 @@ package com.example.ak.mealplanner.Activities;
 import android.app.Application;
 
 import com.example.ak.mealplanner.Models.Constraints;
+import com.example.ak.mealplanner.Models.FoodItem;
 import com.example.ak.mealplanner.Models.MealItem;
 import com.example.ak.mealplanner.Models.RecipeItem;
 import com.example.ak.mealplanner.Models.UserProfile;

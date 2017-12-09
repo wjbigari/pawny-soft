@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.ak.mealplanner.Activities.BuilderFragment"
     android:orientation="vertical"
+    android:windowSoftInputMode="adjustResize"
     android:weightSum="1">
 
     <!-- TODO: Update blank fragment layout -->

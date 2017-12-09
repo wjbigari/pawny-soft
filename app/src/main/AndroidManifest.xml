@@ -17,7 +17,7 @@
         <activity
             android:name=".Activities.MainActivity"
             android:label="CAMP"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".Activities.AboutActivity"
             android:label="About"
@@ -40,11 +40,6 @@
         <activity
             android:name=".Activities.FoodActivity"
             android:label="Item"
-            android:parentActivityName=".Activities.MainActivity"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".Activities.ResultsActivity"
-            android:label="Recommendation"
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
@@ -78,7 +73,7 @@
             android:parentActivityName=".Activities.RecipeBuildActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activities.mealHistoryItemView"
+            android:name=".Activities.MealHistoryActivity"
             android:label="Meal History"
             android:parentActivityName=".Activities.RecipeBuildActivity"
             android:theme="@style/AppTheme" />
@@ -96,7 +91,8 @@
             android:name=".Activities.RatioActivity"
             android:label="Ratios"
             android:parentActivityName=".Activities.GoalsActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activities.ResultsActivity"></activity>
     </application>
 
 </manifest>

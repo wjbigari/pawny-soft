@@ -147,8 +147,6 @@ public class FoodActivity extends AppCompatActivity {
                 }else{
                     sendDelete(item);
                 }
-
-
                 break;
         }
         return true;

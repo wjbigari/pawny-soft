@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.ak.mealplanner.Activities.FavoritesActivity"
-    android:windowSoftInputMode="adjustPan"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -20,31 +19,11 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <ListView
-        android:id="@+id/listRec"
+        android:id="@+id/listHistoryRec"
         android:layout_width="match_parent"
         android:layout_height="383dp"
         android:layout_margin="5dp">
 
     </ListView>
-
-    <Button
-        android:id="@+id/buttonAccept"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@android:color/holo_red_light"
-        android:onClick="addToFavorite"
-        android:text="Accept"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/redoButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@android:color/holo_red_light"
-        android:text="Redo"
-        android:onClick="redoBuild"
-        android:textColor="@android:color/white" />
 
 </LinearLayout>
