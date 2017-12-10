@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -108,11 +109,23 @@ public class RecipeBuildActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.recipe_cart_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case android.R.id.home:
+                app.clearRecipeItems();
                 finish();
+                break;
+
+            case R.id.action_recipe_cart:
+                Intent intent = new Intent(this, RecipeCartActivity.class);
+                startActivity(intent);
                 break;
         }
         return true;

@@ -96,6 +96,11 @@ public class UserRecipeActivity extends AppCompatActivity {
     }
 
     @Override
+    public void finish(){
+        super.finish();
+    }
+
+    @Override
     public void onResume(){
         super.onResume();
         listAdapter.clear();

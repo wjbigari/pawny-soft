@@ -92,7 +92,13 @@
             android:label="Ratios"
             android:parentActivityName=".Activities.GoalsActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Activities.ResultsActivity"></activity>
+        <activity android:name=".Activities.ResultsActivity" />
+        <activity
+            android:name=".Activities.RecipeCartActivity"
+            android:label="Ingredient Cart"
+            android:parentActivityName=".Activities.RecipeBuildActivity"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>
