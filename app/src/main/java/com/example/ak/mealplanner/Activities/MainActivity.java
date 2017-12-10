@@ -132,18 +132,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void startFavorites(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, FavoritesActivity.class);
-        startActivity(intent);
-    }
-
-    public void startGoals(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, GoalsActivity.class);
-        startActivity(intent);
-    }
-
     public void buildMeals(View view) {
         // Do something in response to button
         if(app.isEmpty()){

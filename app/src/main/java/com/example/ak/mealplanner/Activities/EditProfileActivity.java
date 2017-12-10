@@ -88,6 +88,12 @@ public class EditProfileActivity extends AppCompatActivity {
         return true;
     }
 
+    public void startGoals(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, GoalsActivity.class);
+        startActivity(intent);
+    }
+
     public void saveProfile(View view) {
         // Do something in response to button
         save();

@@ -35,7 +35,7 @@
         <activity
             android:name=".Activities.GoalsActivity"
             android:label="Goals"
-            android:parentActivityName=".Activities.MainActivity"
+            android:parentActivityName=".Activities.EditProfileActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Activities.FoodActivity"
