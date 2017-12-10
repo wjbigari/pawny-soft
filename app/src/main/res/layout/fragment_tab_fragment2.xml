@@ -9,22 +9,31 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="463dp"
-        android:layout_margin="5dp">
+        android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="58dp"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom|center"
-        android:clickable="true"
-        android:onClick="buildRecipe"
-        android:src="@drawable/plus" />
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_gravity="end|bottom"
+            android:clickable="true"
+            android:onClick="buildRecipe"
+            app:layout_anchor="@id/rv"
+            app:layout_anchorGravity="bottom|right|end"
+            android:src="@drawable/plus" />
+
+
+
+    </android.support.design.widget.CoordinatorLayout>
 
 </LinearLayout>
