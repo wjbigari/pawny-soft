@@ -21,87 +21,68 @@
     <TextView
         android:id="@+id/textView7"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="42dp"
         android:layout_margin="5dp"
         android:text="Ingredients"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <ListView
-        android:id="@+id/userrecipeList"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="252dp"
-        android:layout_weight="0.38"
-        android:layout_margin="5dp" />
+        android:layout_height="320dp">
+
+        <ListView
+            android:id="@+id/userrecipeList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="0.38" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:onClick="modifyRecipeIngredients"
+            android:src="@drawable/plus"
+            app:layout_anchor="@id/userrecipeList"
+            app:layout_anchorGravity="bottom|right|end" />
+
+
+    </android.support.design.widget.CoordinatorLayout>
 
     <Button
-        android:id="@+id/addRecipeItems"
+        android:id="@+id/recipeBreakfast"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
+        android:layout_height="62dp"
+        android:layout_margin="5dp"
         android:background="@android:color/holo_red_light"
-        android:onClick="modifyRecipeIngredients"
-        android:text="Add Ingredients"
+        android:onClick="addRecipeBreakfast"
+        android:text="Breakfast"
         android:textColor="@android:color/white" />
 
     <Button
-        android:id="@+id/recipeDelete"
+        android:id="@+id/recipeLunch"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
+        android:layout_height="62dp"
+        android:layout_margin="5dp"
         android:background="@android:color/holo_red_light"
-        android:onClick="deleteUserRecipe"
-        android:text="Delete"
+        android:onClick="addRecipeLunch"
+        android:text="Lunch"
         android:textColor="@android:color/white" />
 
     <Button
-        android:id="@+id/updateRecipe"
+        android:id="@+id/recipeDinner"
         android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:layout_margin="2dp"
+        android:layout_height="62dp"
+        android:layout_margin="5dp"
         android:background="@android:color/holo_red_light"
-        android:onClick="updateUserRecipe"
-        android:text="Update Recipe"
+        android:onClick="addRecipeDinner"
+        android:text="Dinner"
         android:textColor="@android:color/white" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/recipeBreakfast"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_light"
-            android:onClick="addRecipeBreakfast"
-            android:text="Breakfast"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/recipeLunch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_light"
-            android:onClick="addRecipeLunch"
-            android:text="Lunch"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/recipeDinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_light"
-            android:onClick="addRecipeDinner"
-            android:text="Dinner"
-            android:textColor="@android:color/white" />
-    </LinearLayout>
 
 </LinearLayout>

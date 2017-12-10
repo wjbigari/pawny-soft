@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -45,16 +46,12 @@ public class RecipeActivity extends AppCompatActivity {
 
         servings = (EditText) findViewById(R.id.editServing);
 
-        Button deleteButton = (Button) findViewById(R.id.deleteRecipe);
-        Button saveButton = (Button) findViewById(R.id.saveRecipeItem);
+    }
 
-        if(app.hasUserRecipe()){
-            deleteButton.setEnabled(true);
-        }
-        else{
-            deleteButton.setEnabled(false);
-        }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.item_menu, menu);
+        return true;
     }
 
     @Override
@@ -64,6 +61,15 @@ public class RecipeActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 break;
+            case R.id.action_delete_recipeitem:
+                if(app.hasUserRecipe()){
+                    deleteRecipeItem();
+                    finish();
+                    break;
+                }
+                else{
+                    break;
+                }
         }
         return true;
     }
@@ -91,7 +97,7 @@ public class RecipeActivity extends AppCompatActivity {
         finish();
     }
 
-    public void deleteRecipeItem(View view){
+    public void deleteRecipeItem(){
         RecipeItem remove = null;
         for(RecipeItem item : app.getUserRecipe().getIngredients()){
             if(item.getFoodItem().getFoodId() == foodItem.getFoodId()){

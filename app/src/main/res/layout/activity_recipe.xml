@@ -48,27 +48,16 @@
             android:hint="Number of servings"
             android:inputType="number" />
 
-        <Button
-            android:id="@+id/saveRecipeItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_light"
-            android:onClick="saveItem"
-            android:text="Add Item"
-            android:textColor="@android:color/white" />
-
     </LinearLayout>
 
     <Button
-        android:id="@+id/deleteRecipe"
+        android:id="@+id/saveRecipeItem"
         android:layout_width="match_parent"
         android:layout_height="61dp"
-        android:layout_margin="5dp"
-        android:layout_weight="1"
         android:background="@android:color/holo_red_light"
-        android:onClick="deleteRecipeItem"
-        android:text="Remove"
+        android:onClick="saveItem"
+        android:text="Add Item"
+        android:layout_margin="5dp"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

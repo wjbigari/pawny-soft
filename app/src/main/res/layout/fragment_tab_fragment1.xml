@@ -24,16 +24,6 @@
             android:hint="Search foods..."
             android:imeOptions="actionSearch"
             android:inputType="text" />
-
-        <Button
-            android:id="@+id/buttonGoals"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_light"
-            android:onClick="startGoals"
-            android:text="Goals"
-            android:textColor="@android:color/white" />
     </LinearLayout>
 
     <ListView

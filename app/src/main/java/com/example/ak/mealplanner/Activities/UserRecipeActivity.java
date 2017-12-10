@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -71,12 +72,24 @@ public class UserRecipeActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.recipeitem_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case android.R.id.home:
                 app.removeUserRecipe();
                 finish();
+                break;
+            case R.id.action_delete_recipe:
+                deleteUserRecipe();
+                break;
+            case R.id.action_update_recipe:
+                updateUserRecipe();
                 break;
         }
         return true;
@@ -96,14 +109,14 @@ public class UserRecipeActivity extends AppCompatActivity {
         listAdapter.notifyDataSetChanged();
     }
 
-    public void deleteUserRecipe(View view){
+    public void deleteUserRecipe(){
         DeleteRecipeItemController dric = new DeleteRecipeItemController(app.getUserRecipe().getFoodId());
         dric.execute();
         app.removeUserRecipe();
         finish();
     }
 
-    public void updateUserRecipe(View view){
+    public void updateUserRecipe(){
         Intent intent = new Intent(this, RecipeSaveActivity.class);
         startActivity(intent);
         finish();
