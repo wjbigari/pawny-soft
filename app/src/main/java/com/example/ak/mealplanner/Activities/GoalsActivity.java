@@ -69,9 +69,14 @@ public class GoalsActivity extends AppCompatActivity {
         }
         app.addConstraint(new Constraints(Integer.parseInt(calMin.getText().toString()), Integer.parseInt(calMax.getText().toString()), Integer.parseInt(carbMin.getText().toString()), Integer.parseInt(carbMax.getText().toString()), Integer.parseInt(protMin.getText().toString()), Integer.parseInt(protMax.getText().toString()), Integer.parseInt(fatMin.getText().toString()), Integer.parseInt(fatMax.getText().toString())));
         save();
-        UpdateGoalsController ugc = new UpdateGoalsController(app.getConstraint(), this, app.getUser().getUsername());
-        ugc.execute();
-        finish();
+        try{
+            UpdateGoalsController ugc = new UpdateGoalsController(app.getConstraint(), this, app.getUser().getUsername());
+            ugc.execute();
+            finish();
+        }catch (Exception e){
+
+        }
+
     }
 
     @Override

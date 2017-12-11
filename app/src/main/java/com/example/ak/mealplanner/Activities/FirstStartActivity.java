@@ -58,8 +58,13 @@ public class FirstStartActivity extends AppCompatActivity {
             return;
         }
         app.addUser(new UserProfile(userName, "", 0,0,0,UserProfile.gender.MALE));
-        SendUserController sendUserController = new SendUserController(this, "insertUser", app.getUser(), text.getText().toString());
-        sendUserController.execute();
+        try{
+            SendUserController sendUserController = new SendUserController(this, "insertUser", app.getUser(), text.getText().toString());
+            sendUserController.execute();
+        }catch (Exception e){
+
+        }
+
         pref.edit().putBoolean("LOGIN", true).apply();
         Intent intent = new Intent(this, EditProfileActivity.class);
         startActivity(intent);

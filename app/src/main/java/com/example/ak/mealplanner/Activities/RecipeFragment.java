@@ -50,8 +50,13 @@ public class RecipeFragment extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
-        GetUserRecipesController gurc = new GetUserRecipesController(adapter,app.getUser().getUsername());
-        gurc.execute();
+        try{
+            GetUserRecipesController gurc = new GetUserRecipesController(adapter,app.getUser().getUsername());
+            gurc.execute();
+        }catch(Exception e){
+
+        }
+
     }
     /**
      * Use this factory method to create a new instance of
@@ -88,8 +93,13 @@ public class RecipeFragment extends Fragment {
         app = (MyApplication) getActivity().getApplication();
 
         adapter = new RVAdapter(recipes, (MainActivity) getActivity());
-        GetUserRecipesController gurc = new GetUserRecipesController(adapter, app.getUser().getUsername() );
-        gurc.execute();
+        try{
+            GetUserRecipesController gurc = new GetUserRecipesController(adapter, app.getUser().getUsername() );
+            gurc.execute();
+        }catch(Exception e){
+
+        }
+
 
         adapter.sort();
         adapter.notifyDataSetChanged();

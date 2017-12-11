@@ -138,9 +138,14 @@ public class BuilderFragment extends Fragment {
                 if(searchController!= null && searchController.getStatus()== AsyncTask.Status.RUNNING){
                     searchController.cancel(true);
                 }
-                searchController = new SearchController(cs.toString(), listAdapter, app.getUser().getUsername());
+                try{
+                    searchController = new SearchController(cs.toString(), listAdapter, app.getUser().getUsername());
 
-                searchController.execute();
+                    searchController.execute();
+                }catch (Exception e){
+
+                }
+
 
                 //listAdapter.getFilter().filter(cs);
             }

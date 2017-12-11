@@ -94,8 +94,13 @@ public class RecipeSaveActivity extends AppCompatActivity {
             app.getUserRecipe().setServingUnit(portionName);
             app.getUserRecipe().setPrepInstructions(instruct);
 
-            ModifyUserRecipesController murc = new ModifyUserRecipesController(app.getUserRecipe(), app.getUser().getUsername());
-            murc.execute();
+            try{
+                ModifyUserRecipesController murc = new ModifyUserRecipesController(app.getUserRecipe(), app.getUser().getUsername());
+                murc.execute();
+            }catch(Exception e){
+
+            }
+
             app.removeUserRecipe();
             app.clearRecipeItems();
             finish();
@@ -105,8 +110,13 @@ public class RecipeSaveActivity extends AppCompatActivity {
             app.clearRecipeItems();
             UserRecipe recipe = new UserRecipe(foodName, -42, copyList, portion, portionName, instruct);
 
-            SendUserRecipeController surc = new SendUserRecipeController(recipe,this, app.getUser().getUsername());
-            surc.execute();
+            try{
+                SendUserRecipeController surc = new SendUserRecipeController(recipe,this, app.getUser().getUsername());
+                surc.execute();
+            }catch (Exception e){
+
+            }
+
 
 
             finish();

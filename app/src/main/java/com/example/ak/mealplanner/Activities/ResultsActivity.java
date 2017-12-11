@@ -73,9 +73,14 @@ public class ResultsActivity extends AppCompatActivity {
 
     public void addToFavorite(View view){
         if(mpr != null) {
-            SendMealPlannerRecController smprc = new SendMealPlannerRecController(app.getUser().getUsername(), mpr, null);
-            smprc.execute();
-            finish();
+            try{
+                SendMealPlannerRecController smprc = new SendMealPlannerRecController(app.getUser().getUsername(), mpr, null);
+                smprc.execute();
+                finish();
+            }catch (Exception e){
+
+            }
+
         }
         else{
             return;
@@ -86,7 +91,12 @@ public class ResultsActivity extends AppCompatActivity {
         if(mpr == null){
             return;
         }
-        MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), mAdapter,mpr, text,this);
-        mpc.execute();
+        try{
+            MealPlannerController mpc = new MealPlannerController(app.getConstraint(), app.getList(), mAdapter,mpr, text,this);
+            mpc.execute();
+        }catch(Exception e){
+
+        }
+
     }
 }

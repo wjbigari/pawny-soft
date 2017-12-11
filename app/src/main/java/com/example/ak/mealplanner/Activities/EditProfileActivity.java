@@ -135,9 +135,13 @@ public class EditProfileActivity extends AppCompatActivity {
 
             objectOut.writeObject(profile);
             objectOut.close();
+            try{
+                SendUserController sendUserController = new SendUserController(this, "updateUser", profile, null);
+                sendUserController.execute();
+            }catch (Exception e){
 
-            SendUserController sendUserController = new SendUserController(this, "updateUser", profile, null);
-            sendUserController.execute();
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

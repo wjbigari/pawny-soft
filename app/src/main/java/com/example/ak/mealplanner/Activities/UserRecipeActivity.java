@@ -115,10 +115,15 @@ public class UserRecipeActivity extends AppCompatActivity {
     }
 
     public void deleteUserRecipe(){
-        DeleteRecipeItemController dric = new DeleteRecipeItemController(app.getUserRecipe().getFoodId());
-        dric.execute();
-        app.removeUserRecipe();
-        finish();
+        try{
+            DeleteRecipeItemController dric = new DeleteRecipeItemController(app.getUserRecipe().getFoodId());
+            dric.execute();
+            app.removeUserRecipe();
+            finish();
+        }catch(Exception e){
+
+        }
+
     }
 
     public void updateUserRecipe(){

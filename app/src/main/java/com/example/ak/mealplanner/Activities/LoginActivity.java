@@ -48,9 +48,13 @@ public class LoginActivity extends AppCompatActivity {
         if(uname.equals("") || pass.equals("")){
             return;
         }
+        try{
+            LoginController lc = new LoginController(uname,pass,app, this);
+            lc.execute();
+        }catch(Exception e){
 
-        LoginController lc = new LoginController(uname,pass,app, this);
-        lc.execute();
+        }
+
 
     }
     @Override
