@@ -62,7 +62,7 @@ public class MealPlannerController extends AsyncTask<Void, Void, Void> {
             writer.println(requestString);
             Log.i("al", requestString);
             writer.flush();
-
+            socket.setSoTimeout(10*1000);
             in = new BufferedReader(new InputStreamReader(
                     socket.getInputStream()));
             String lineInput;
